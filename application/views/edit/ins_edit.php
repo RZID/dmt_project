@@ -255,27 +255,48 @@
                       <h6 class="m-0 font-weight-bold text-secondary">Nama Pelatihan</h6>
                       <input type="text" class="form-control form-control-user" placeholder="Nama User" name="nama" value="<?= $whdb['nama_plth'] ?>" disabled>
                     </div>
+
+<!-- Awal Instruktur -->
                     <br>
                     <h5>Data Instruktur 1</h5>
                     <hr>
                     <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Instruktur</h6>
-                      <input type="text" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
-                    </div>
+                          <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
+                          <input type="number" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
+                        </div>
                     <div class="row">
+                     <div class="col-lg col-xl">
+                        <div class="form-group">
+                          <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
+                          <input type="text" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
+                        </div>
+                      </div>
                       <div class="col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
                           <input type="number" class="form-control form-control-user" name="sesins1" value="<?= $whdb2['sesins1_ins'] ?>">
                         </div>
                       </div>
+                    </div>
+                    <div class="row">
                       <div class="col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
                           <input type="number" class="form-control form-control-user" name="beains1" value="<?= $whdb2['beasesins1_ins'] ?>">
                         </div>
                       </div>
+                      <div class="col-lg col-xl">
+                      <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
+                        <div class="custom-file" id="customFile" lang="es">
+                          <input type="file" id="#" class="custom-file-input" name="#" aria-describedby="fileHelp">
+                          <label class="custom-file-label" for="#">
+                            Dokumen Sebelumnya :
+                          </label>
+                        </div>
+                      </div>
                     </div>
+
+<!-- Akhir Instruktur -->
                     <div id="dynamic_field" data-valdb="<?php if ($whdb2["ins1_ins"] == "") {
                                                           echo "N/A";
                                                         } else {
