@@ -98,6 +98,7 @@
                 );
                 $this->load->view('templating/head', $data);
                 $this->load->view('index/register', $data);
+                $this->load->view('templating/modal', $data);
                 $this->load->view('templating/foot', $data);
             } else {
 
@@ -180,6 +181,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view('edit/inputpelatihan', $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -287,6 +289,7 @@
                 );
                 $this->load->view('templating/head', $data);
                 $this->load->view('edit/editplth', $data);
+                $this->load->view('templating/modal', $data);
                 $this->load->view('templating/foot', $data);
             }
         }
@@ -322,6 +325,7 @@
                 );
                 $this->load->view('templating/head', $data);
                 $this->load->view('edit/edituser', $data);
+                $this->load->view('templating/modal', $data);
                 $this->load->view('templating/foot', $data);
             }
         }
@@ -484,6 +488,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view('table/user_mng', $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -583,6 +588,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view("edit/ins_edit", $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -983,6 +989,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view("edit/opr_edit", $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -1228,6 +1235,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view("edit/keu_edit", $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -1398,6 +1406,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view('index/realisasi', $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -1558,6 +1567,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view("edit/realisasi_edit.php", $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/head', $data);
         }
         public function core_realisasi_core()
@@ -1746,6 +1756,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view("edit/pesertapnd_edit", $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
 
@@ -1887,6 +1898,7 @@
             );
             $this->load->view('templating/head', $data);
             $this->load->view("edit/pesertakeu_edit", $data);
+            $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
         }
         function core_peserta_keu()
