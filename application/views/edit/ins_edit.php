@@ -70,7 +70,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Akhir Instruktur -->
             <div id="dynamic_field" data-valdb="<?php if ($whdb2["ins1_ins"] == "") {
                                                   echo "N/A";
@@ -140,10 +139,10 @@
         $('#add').click(function() {
           i++;
           if (i < 10) {
-            $('#dynamic_field').append('<div class="elemented' + i + '"><br><h5>Data Instruktur ' + i + '</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" id="checker" name="ins' + i + '"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" id="checker" name="ins' + i + '"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins' + i + '"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains' + i + '"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="#" class="custom-file-input" name="#" aria-describedby="fileHelp"><label class="custom-file-label" for="#">Dokumen Sebelumnya :</label></div></div></div></div>');
+            $('#dynamic_field').append('<div class="elemented' + i + '"><br><h5>Data Instruktur ' + i + '</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" id="checker" name="ins' + i + '"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" id="checker" name="ins' + i + '"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins' + i + '"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains' + i + '"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file' + i + '" class="custom-file-input" name="file' + i + '" aria-describedby="fileHelp"><label class="custom-file-label" for="file' + i + '">Dokumen Sebelumnya :</label></div></div></div></div>');
           } else {
             if (i = 10) {
-              $('#dynamic_field').append('<div class="elemented' + i + '"><br><h5>Data Instruktur ' + i + '</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" id="checker" name="ins' + i + '"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" id="checker" name="ins' + i + '"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins' + i + '"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains' + i + '"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="#" class="custom-file-input" name="#" aria-describedby="fileHelp"><label class="custom-file-label" for="#">Dokumen Sebelumnya :</label></div></div></div></div>');
+              $('#dynamic_field').append('<div class="elemented' + i + '"><br><h5>Data Instruktur ' + i + '</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" id="checker" name="ins' + i + '"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" id="checker" name="ins' + i + '"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins' + i + '"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains' + i + '"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file' + i + '" class="custom-file-input" name="file' + i + '" aria-describedby="fileHelp"><label class="custom-file-label" for="file' + i + '">Dokumen Sebelumnya :</label></div></div></div></div>');
               $("#add").hide();
             }
           }
@@ -170,53 +169,54 @@
         $("#status").prop("checked", true);
       }
 
-      document.querySelector('#file1').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file1").files[0].name;
+      $("#file1").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file2').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file2").files[0].name;
+
+      $("#file2").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file3').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file3").files[0].name;
+      $("#file3").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file4').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file4").files[0].name;
+      $("#file4").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file5').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file5").files[0].name;
+      $("#file5").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file6').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file6").files[0].name;
+      $("#file6").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file7').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file7").files[0].name;
+      $("#file7").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file8').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file8").files[0].name;
+      $("#file8").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file9').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file9").files[0].name;
+      $("#file9").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
-      document.querySelector('#file10').addEventListener('change', function(e) {
-        var fileName = document.getElementById("file10").files[0].name;
+      $("#file10").on("change", function(e) {
+        var fileName = $(this).files[0].name;
         var nextSibling = e.target.nextElementSibling
         nextSibling.innerText = fileName
       });
