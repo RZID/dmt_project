@@ -881,7 +881,229 @@
             } else {
                 $noven10 = $this->input->post("noven10");
             }
+            if ($_FILES and $_FILES['file1']['name']) {
+                $file1 = time() . $_FILES["file1"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file1
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file1')) {
+                    $upload_data = $this->upload->data();
+                    $file1 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"] == NULL) {
+                    $file1 = "N/A";
+                } else {
+                    $file1 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"];
+                }
+            }
 
+            if ($_FILES and $_FILES['file2']['name']) {
+                $file2 = time() . $_FILES["file2"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file2
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file2')) {
+                    $upload_data = $this->upload->data();
+                    $file2 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund2_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund2_ins"] == NULL) {
+                    $file2 = "N/A";
+                } else {
+                    $file2 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund2_ins"];
+                }
+            }
+
+            if ($_FILES and $_FILES['file3']['name']) {
+                $file3 = time() . $_FILES["file3"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file3
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file3')) {
+                    $upload_data = $this->upload->data();
+                    $file3 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund3_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund3_ins"] == NULL) {
+                    $file3 = "N/A";
+                } else {
+                    $file3 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"];
+                }
+            }
+
+            if ($_FILES and $_FILES['file4']['name']) {
+                $file4 = time() . $_FILES["file4"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file4
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file4')) {
+                    $upload_data = $this->upload->data();
+                    $file4 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"] == NULL) {
+                    $file4 = "N/A";
+                } else {
+                    $file4 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"];
+                }
+            }
+            if ($_FILES and $_FILES['file5']['name']) {
+                $file5 = time() . $_FILES["file5"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file5
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file5')) {
+                    $upload_data = $this->upload->data();
+                    $file5 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"] == NULL) {
+                    $file5 = "N/A";
+                } else {
+                    $file5 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"];
+                }
+            }
+            if ($_FILES and $_FILES['file6']['name']) {
+                $file6 = time() . $_FILES["file6"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file6
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file6')) {
+                    $upload_data = $this->upload->data();
+                    $file6 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"] == NULL) {
+                    $file6 = "N/A";
+                } else {
+                    $file6 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"];
+                }
+            }
+            if ($_FILES and $_FILES['file7']['name']) {
+                $file7 = time() . $_FILES["file7"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file7
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file7')) {
+                    $upload_data = $this->upload->data();
+                    $file7 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"] == NULL) {
+                    $file7 = "N/A";
+                } else {
+                    $file7 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"];
+                }
+            }
+            if ($_FILES and $_FILES['file8']['name']) {
+                $file8 = time() . $_FILES["file8"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file8
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file8')) {
+                    $upload_data = $this->upload->data();
+                    $file8 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"] == NULL) {
+                    $file8 = "N/A";
+                } else {
+                    $file8 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"];
+                }
+            }
+            if ($_FILES and $_FILES['file9']['name']) {
+                $file9 = time() . $_FILES["file9"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file9
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file9')) {
+                    $upload_data = $this->upload->data();
+                    $file9 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"] == NULL) {
+                    $file9 = "N/A";
+                } else {
+                    $file9 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"];
+                }
+            }
+            if ($_FILES and $_FILES['file10']['name']) {
+                $file10 = time() . $_FILES["file10"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file10
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file10')) {
+                    $upload_data = $this->upload->data();
+                    $file10 = $upload_data['file_name'];
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund10_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund10_ins"] == NULL) {
+                    $file10 = "N/A";
+                } else {
+                    $file10 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund10_ins"];
+                }
+            }
             //Biaya Instruktur 5
             if (!$this->input->post("status")) {
                 $status = "Pending";
@@ -924,6 +1146,28 @@
                     "beasesins8_ins" => $beains8,
                     "beasesins9_ins" => $beains9,
                     "beasesins10_ins" => $beains10,
+
+                    "novend1_ins" => $noven1,
+                    "novend2_ins" => $noven2,
+                    "novend3_ins" => $noven3,
+                    "novend4_ins" => $noven4,
+                    "novend5_ins" => $noven5,
+                    "novend6_ins" => $noven6,
+                    "novend7_ins" => $noven7,
+                    "novend8_ins" => $noven8,
+                    "novend9_ins" => $noven9,
+                    "novend10_ins" => $noven10,
+
+                    "surund1_ins" => $file1,
+                    "surund2_ins" => $file2,
+                    "surund3_ins" => $file3,
+                    "surund4_ins" => $file4,
+                    "surund5_ins" => $file5,
+                    "surund6_ins" => $file6,
+                    "surund7_ins" => $file7,
+                    "surund8_ins" => $file8,
+                    "surund9_ins" => $file9,
+                    "surund10_ins" => $file10,
 
                     "status_ins" => $status,
                 );
