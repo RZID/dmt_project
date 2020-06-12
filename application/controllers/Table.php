@@ -51,9 +51,11 @@ class Table extends CI_Controller
         }
         $data = array(
             "title" => "Tabel Instruktur - Dashboard Monitoring Training",
+            "input_kel" => "active",
             "dis" => $this
         );
         $this->load->view("templating/head", $data);
+        $this->load->view("navbar/ins", $data);
         $this->load->view("table/table_ins", $data);
         $this->load->view("templating/foot", $data);
     }

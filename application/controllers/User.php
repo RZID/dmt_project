@@ -127,6 +127,7 @@
             $data = array(
                 'title' => 'Dashboard - Dashboard Monitoring Training',
                 'dis' => $this,
+                'index' => "active",
             );
             $this->load->view('templating/head', $data);
             $this->load->view('templating/modal', $data);
@@ -144,6 +145,7 @@
 
                     //Instruktur
                 case 3:
+                    $this->load->view('navbar/ins', $data);
                     $this->load->view('index/index_ins', $data);
                     break;
 
@@ -583,10 +585,12 @@
             $data = array(
                 "title" => "(Instruktur) Kelengkapan Data | Dashboard Monitoring Training",
                 "dis" => $this,
+                "edit" => "Active",
                 "whdb" => $this->crud->select_where("plth_dmt", array("id_plth" => $id))->row_array(),
                 "whdb2" => $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()
             );
             $this->load->view('templating/head', $data);
+            $this->load->view('navbar/ins', $data);
             $this->load->view("edit/ins_edit", $data);
             $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
