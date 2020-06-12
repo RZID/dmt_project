@@ -256,16 +256,16 @@
                       <input type="text" class="form-control form-control-user" placeholder="Nama User" name="nama" value="<?= $whdb['nama_plth'] ?>" disabled>
                     </div>
 
-<!-- Awal Instruktur -->
+                    <!-- Awal Instruktur -->
                     <br>
                     <h5>Data Instruktur 1</h5>
                     <hr>
                     <div class="form-group">
-                          <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                          <input type="number" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
-                        </div>
+                      <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
+                      <input type="number" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
+                    </div>
                     <div class="row">
-                     <div class="col-lg col-xl">
+                      <div class="col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
                           <input type="text" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
@@ -286,7 +286,7 @@
                         </div>
                       </div>
                       <div class="col-lg col-xl">
-                      <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
+                        <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
                         <div class="custom-file" id="customFile" lang="es">
                           <input type="file" id="#" class="custom-file-input" name="#" aria-describedby="fileHelp">
                           <label class="custom-file-label" for="#">
@@ -296,7 +296,7 @@
                       </div>
                     </div>
 
-<!-- Akhir Instruktur -->
+                    <!-- Akhir Instruktur -->
                     <div id="dynamic_field" data-valdb="<?php if ($whdb2["ins1_ins"] == "") {
                                                           echo "N/A";
                                                         } else {
@@ -342,31 +342,12 @@
               <i class="fas fa-angle-up"></i>
             </a>
 
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin logout?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">Klik logout untuk mengakhiri sesi login anda.</div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url("home/logout") ?>">Logout</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- Scripting With JS -->
             <script>
               $(document).ready(function() {
                 if ($("#dynamic_field").attr("data-valdb") != "N/A") {
                   var i = 10;
-                  $('#dynamic_field').append('<div class="elemented2"><br><h5>Data Instruktur 2</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Instruktur</h6><input type="text" class="form-control form-control-user" name="ins2" value="<?= $whdb2["ins2_ins"] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins2" value="<?= $whdb2["sesins2_ins"] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains2" value="<?= $whdb2["beasesins2_ins"] ?>"></div></div></div></div>');
+                  $('#dynamic_field').append('<div class="elemented2"><br><h5>Data Instruktur 2</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins1" value="<?= $whdb2['sesins1_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains1" value="<?= $whdb2['beasesins1_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="#" class="custom-file-input" name="#" aria-describedby="fileHelp"><label class="custom-file-label" for="#">Dokumen Sebelumnya :</label></div></div></div></div>');
                   $('#dynamic_field').append('<div class="elemented3"><br><h5>Data Instruktur 3</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Instruktur</h6><input type="text" class="form-control form-control-user" name="ins3" value="<?= $whdb2["ins3_ins"] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins3" value="<?= $whdb2["sesins3_ins"] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains3" value="<?= $whdb2["beasesins3_ins"] ?>"></div></div></div></div>');
                   $('#dynamic_field').append('<div class="elemented4"><br><h5>Data Instruktur 4</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Instruktur</h6><input type="text" class="form-control form-control-user" name="ins4" value="<?= $whdb2["ins4_ins"] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins4" value="<?= $whdb2["sesins4_ins"] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains4" value="<?= $whdb2["beasesins4_ins"] ?>"></div></div></div></div>');
                   $('#dynamic_field').append('<div class="elemented5"><br><h5>Data Instruktur 5</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Instruktur</h6><input type="text" class="form-control form-control-user" name="ins5" value="<?= $whdb2["ins5_ins"] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins5" value="<?= $whdb2["sesins5_ins"] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains5" value="<?= $whdb2["beasesins5_ins"] ?>"></div></div></div></div>');
