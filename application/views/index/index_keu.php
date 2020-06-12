@@ -64,7 +64,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url("table/keuangan") ?>">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Input Kelengkapan </span>
+          <span>Kelengkapan Finance IP</span>
+        </a>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url("#") ?>">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Kelengkapan Finance BC</span>
         </a>
       </li>
 
