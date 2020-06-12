@@ -821,6 +821,68 @@
             }
 
             //Biaya Instruktur 5
+            if (!$this->input->post("noven1")) {
+                $noven1 = 0;
+            } else {
+                $noven1 = $this->input->post("noven1");
+            }
+
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven2")) {
+                $noven2 = 0;
+            } else {
+                $noven2 = $this->input->post("noven2");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven3")) {
+                $noven3 = 0;
+            } else {
+                $noven3 = $this->input->post("noven3");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven4")) {
+                $noven4 = 0;
+            } else {
+                $noven4 = $this->input->post("noven4");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven5")) {
+                $noven5 = 0;
+            } else {
+                $noven5 = $this->input->post("noven5");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven6")) {
+                $noven6 = 0;
+            } else {
+                $noven6 = $this->input->post("noven6");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven7")) {
+                $noven7 = 0;
+            } else {
+                $noven7 = $this->input->post("noven7");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven8")) {
+                $noven8 = 0;
+            } else {
+                $noven8 = $this->input->post("noven8");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven9")) {
+                $noven9 = 0;
+            } else {
+                $noven9 = $this->input->post("noven9");
+            }
+            //Biaya Instruktur 5
+            if (!$this->input->post("noven10")) {
+                $noven10 = 0;
+            } else {
+                $noven10 = $this->input->post("noven10");
+            }
+
+            //Biaya Instruktur 5
             if (!$this->input->post("status")) {
                 $status = "Pending";
             } else {
