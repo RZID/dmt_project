@@ -175,16 +175,17 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" id="logoutDialog">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
+                                <script>
+                                    $("#logoutDialog").on("click", function() {
+                                        $(".modal-body").html("Klik logout untuk mengakhiri sesi login anda.");
+                                        $("#logoutModal").modal("show");
+                                    });
+                                </script>
                             </div>
                         </li>
                     </ul>
                 </nav>
-                <script>
-                    $("#keluarData").on("click", function() {
-                        $(".modal-body").html("Klik logout untuk mengakhiri sesi login anda.");
-                    });
-                </script>

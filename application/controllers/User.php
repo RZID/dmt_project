@@ -1216,6 +1216,28 @@
                     "beasesins9_ins" => $beains9,
                     "beasesins10_ins" => $beains10,
 
+                    "novend1_ins" => $noven1,
+                    "novend2_ins" => $noven2,
+                    "novend3_ins" => $noven3,
+                    "novend4_ins" => $noven4,
+                    "novend5_ins" => $noven5,
+                    "novend6_ins" => $noven6,
+                    "novend7_ins" => $noven7,
+                    "novend8_ins" => $noven8,
+                    "novend9_ins" => $noven9,
+                    "novend10_ins" => $noven10,
+
+                    "surund1_ins" => $file1,
+                    "surund2_ins" => $file2,
+                    "surund3_ins" => $file3,
+                    "surund4_ins" => $file4,
+                    "surund5_ins" => $file5,
+                    "surund6_ins" => $file6,
+                    "surund7_ins" => $file7,
+                    "surund8_ins" => $file8,
+                    "surund9_ins" => $file9,
+                    "surund10_ins" => $file10,
+
                     "status_ins" => $status,
                 );
                 $this->crud->update("ins_dmt", "id_plth", $id, $array_biarrapih);

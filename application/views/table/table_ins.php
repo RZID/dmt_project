@@ -142,6 +142,12 @@
                             <h5 class="font-weight-bold">Detail Instruktur</h5>
                           </u>
                           <!-- Instruktur 1 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 1</div>
+                            :
+                            <div class="col-xl col-lg" id="noven1"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 1</div>
                             :
@@ -161,8 +167,23 @@
                             :
                             <div class="col-xl col-lg" id="beains1"></div>
                           </div>
+
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 1</div>
+                            :
+                            <div class="col-xl col-lg" id="surund1"></div>
+                          </div>
                           <br>
                           <!-- Instruktur 2 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 2</div>
+                            :
+                            <div class="col-xl col-lg" id="noven2"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 2</div>
                             :
@@ -182,9 +203,23 @@
                             :
                             <div class="col-xl col-lg" id="beains2"></div>
                           </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 2</div>
+                            :
+                            <div class="col-xl col-lg" id="surund2"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 3 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 3</div>
+                            :
+                            <div class="col-xl col-lg" id="noven3"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 3</div>
                             :
@@ -204,9 +239,23 @@
                             :
                             <div class="col-xl col-lg" id="beains3"></div>
                           </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 3</div>
+                            :
+                            <div class="col-xl col-lg" id="surund3"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 4 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 4</div>
+                            :
+                            <div class="col-xl col-lg" id="noven4"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 4</div>
                             :
@@ -226,9 +275,24 @@
                             :
                             <div class="col-xl col-lg" id="beains4"></div>
                           </div>
+
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 4</div>
+                            :
+                            <div class="col-xl col-lg" id="surund4"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 5 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 5</div>
+                            :
+                            <div class="col-xl col-lg" id="noven5"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 5</div>
                             :
@@ -248,9 +312,23 @@
                             :
                             <div class="col-xl col-lg" id="beains5"></div>
                           </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 5</div>
+                            :
+                            <div class="col-xl col-lg" id="surund5"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 5 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 6</div>
+                            :
+                            <div class="col-xl col-lg" id="noven6"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 6</div>
                             :
@@ -270,9 +348,23 @@
                             :
                             <div class="col-xl col-lg" id="beains6"></div>
                           </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 6</div>
+                            :
+                            <div class="col-xl col-lg" id="surund6"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 5 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 7</div>
+                            :
+                            <div class="col-xl col-lg" id="noven7"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 7</div>
                             :
@@ -280,6 +372,7 @@
                           </div>
 
                           <!-- Sesi Instruktur 5 -->
+
                           <div class="row">
                             <div class="col-xl col-lg">Sesi Instruktur 7</div>
                             :
@@ -292,9 +385,23 @@
                             :
                             <div class="col-xl col-lg" id="beains7"></div>
                           </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 7</div>
+                            :
+                            <div class="col-xl col-lg" id="surund7"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 5 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 8</div>
+                            :
+                            <div class="col-xl col-lg" id="noven8"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 8</div>
                             :
@@ -314,9 +421,22 @@
                             :
                             <div class="col-xl col-lg" id="beains8"></div>
                           </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 8</div>
+                            :
+                            <div class="col-xl col-lg" id="surund8"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 5 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 9</div>
+                            :
+                            <div class="col-xl col-lg" id="noven9"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 9</div>
                             :
@@ -336,9 +456,28 @@
                             :
                             <div class="col-xl col-lg" id="beains9"></div>
                           </div>
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 9</div>
+                            :
+                            <div class="col-xl col-lg" id="noven9"></div>
+                          </div>
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 9</div>
+                            :
+                            <div class="col-xl col-lg" id="surund9"></div>
+                          </div>
                           <br>
 
                           <!-- Instruktur 5 -->
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">No. Vendor 10</div>
+                            :
+                            <div class="col-xl col-lg" id="noven10"></div>
+                          </div>
                           <div class="row">
                             <div class="col-xl col-lg">Instruktur 10</div>
                             :
@@ -357,6 +496,14 @@
                             <div class="col-xl col-lg">Biaya & Honor Transport Instruktur 10</div>
                             :
                             <div class="col-xl col-lg" id="beains10"></div>
+                          </div>
+
+
+                          <!-- Biaya & Honor Transport Instruktur 1 -->
+                          <div class="row">
+                            <div class="col-xl col-lg">Surat Undangan Vendor 10</div>
+                            :
+                            <div class="col-xl col-lg" id="surund10"></div>
                           </div>
                         </div>
 
@@ -522,6 +669,67 @@
               $("#beains9").html(rupiahisasi(data2[0].beasesins9_ins, "Rp. ") + ",-");
               $("#beains10").html(rupiahisasi(data2[0].beasesins10_ins, "Rp. ") + ",-");
 
+              $("#noven1").html(data2[0].noven1_ins);
+              $("#noven2").html(data2[0].noven2_ins);
+              $("#noven3").html(data2[0].noven3_ins);
+              $("#noven4").html(data2[0].noven4_ins);
+              $("#noven5").html(data2[0].noven5_ins);
+              $("#noven6").html(data2[0].noven6_ins);
+              $("#noven7").html(data2[0].noven7_ins);
+              $("#noven8").html(data2[0].noven8_ins);
+              $("#noven9").html(data2[0].noven9_ins);
+              $("#noven10").html(data2[0].noven10_ins);
+
+              if (data2[0].surund1_ins != "N/A") {
+                $("#surund1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund1_ins + "'>" + data2[0].surund1_ins + "</a>");
+              } else {
+                $("#surund1").html("<a>" + data2[0].surund1_ins + "</a>");
+              }
+              if (data2[0].surund2_ins != "N/A") {
+                $("#surund2").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund2_ins + "'>" + data2[0].surund2_ins + "</a>");
+              } else {
+                $("#surund2").html("<a>" + data2[0].surund2_ins + "</a>");
+              }
+              if (data2[0].surund3_ins != "N/A") {
+                $("#surund3").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund3_ins + "'>" + data2[0].surund3_ins + "</a>");
+              } else {
+                $("#surund3").html("<a>" + data2[0].surund3_ins + "</a>");
+              }
+              if (data2[0].surund4_ins != "N/A") {
+                $("#surund4").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund4_ins + "'>" + data2[0].surund4_ins + "</a>");
+              } else {
+                $("#surund4").html("<a>" + data2[0].surund4_ins + "</a>");
+              }
+              if (data2[0].surund5_ins != "N/A") {
+                $("#surund5").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund5_ins + "'>" + data2[0].surund5_ins + "</a>");
+              } else {
+                $("#surund5").html("<a>" + data2[0].surund5_ins + "</a>");
+              }
+              if (data2[0].surund6_ins != "N/A") {
+                $("#surund6").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund6_ins + "'>" + data2[0].surund6_ins + "</a>");
+              } else {
+                $("#surund6").html("<a>" + data2[0].surund6_ins + "</a>");
+              }
+              if (data2[0].surund7_ins != "N/A") {
+                $("#surund7").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund7_ins + "'>" + data2[0].surund7_ins + "</a>");
+              } else {
+                $("#surund7").html("<a>" + data2[0].surund7_ins + "</a>");
+              }
+              if (data2[0].surund8_ins != "N/A") {
+                $("#surund8").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund8_ins + "'>" + data2[0].surund8_ins + "</a>");
+              } else {
+                $("#surund8").html("<a>" + data2[0].surund8_ins + "</a>");
+              }
+              if (data2[0].surund9_ins != "N/A") {
+                $("#surund9").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund9_ins + "'>" + data2[0].surund9_ins + "</a>");
+              } else {
+                $("#surund9").html("<a>" + data2[0].surund9_ins + "</a>");
+              }
+              if (data2[0].surund10_ins != "N/A") {
+                $("#surund10").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund10_ins + "'>" + data2[0].surund10_ins + "</a>");
+              } else {
+                $("#surund10").html("<a>" + data2[0].surund10_ins + "</a>");
+              }
             } else {
               var nulled = "Belum Diatur";
               $("#ins1").html("<a class='text-danger'>" + nulled + "</a>");
@@ -557,7 +765,27 @@
               $("#beains9").html("<a class='text-danger'>" + nulled + "</a>");
               $("#beains10").html("<a class='text-danger'>" + nulled + "</a>");
 
+              $("#noven1").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven2").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven3").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven4").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven5").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven6").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven7").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven8").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven9").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#noven10").html("<a class='text-danger'>" + nulled + "</a>");
 
+              $("#surund1").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund2").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund3").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund4").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund5").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund6").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund7").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund8").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund9").html("<a class='text-danger'>" + nulled + "</a>");
+              $("#surund10").html("<a class='text-danger'>" + nulled + "</a>");
             }
           });
         }
