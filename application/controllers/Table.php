@@ -172,9 +172,11 @@ class Table extends CI_Controller
         }
         $data = array(
             "title" => "Tabel Kelengkapan Peserta - Dashboard Monitoring Training",
+            "psrt_keu" => "active",
             "dis" => $this
         );
         $this->load->view("templating/head", $data);
+        $this->load->view("navbar/keu", $data);
         $this->load->view("table/table_peserta_keu", $data);
         $this->load->view("templating/foot", $data);
     }

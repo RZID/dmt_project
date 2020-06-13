@@ -1749,6 +1749,15 @@
                     'status_keu' => $stat
                 );
                 $this->crud->insert("keu_dmt", $array_biarrapih);
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Sukses!',
+                        'Anda berhasil menambah data Finance IP',
+                        'success'
+                    )});
+                </script>");
+                redirect("user/index");
             } else {
                 $array_biarrapih = array(
                     'ako1' => $ako1,
@@ -1781,6 +1790,15 @@
                     'status_keu' => $stat
                 );
                 $this->crud->update("keu_dmt", "id_plth", $id, $array_biarrapih);
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Sukses!',
+                        'Anda berhasil mengubah data Finance IP',
+                        'success'
+                    )});
+                </script>");
+                redirect("user/index");
             }
         }
         public function insert_realisasi()
@@ -2420,10 +2438,97 @@
                 "dis" => $this,
                 "keu_bc" => "active",
                 "whdb" => $this->crud->select_where("plth_dmt", array("id_plth" => $id))->row_array(),
-                "whdb2" => $this->crud->select_where("keu_dmt", array("id_plth" => $id))->row_array()
+                "whdb2" => $this->crud->select_where("keu_bc_dmt", array("id_plth" => $id))->row_array()
             );
             $this->load->view("templating/head", $data);
+            $this->load->view("navbar/keu", $data);
             $this->load->view("edit/keu_edit_bc", $data);
             $this->load->view("templating/foot", $data);
+        }
+        function edit_keu_bc_core()
+        {
+            if ($this->session->userdata("access_num") < 5) {
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Anda tidak punya akses ini!',
+                        'Silahkan login untuk melanjutkan.',
+                        'error'
+                    )
+                });
+                </script>");
+                redirect('user/index');
+                die;
+            }
+            if (!$this->input->post("stat")) {
+                $stat = "Pending";
+            } else {
+                $stat = $this->input->post("stat");
+            }
+            if ($this->crud->select_where("keu_bc_dmt", array("id_plth" => $this->input->post("id")))->num_rows() < 1) {
+                $array_biarrapih = array(
+                    "id_plth" => $this->input->post("id"),
+
+                    "nocs_ptmn" => $this->input->post("nocustom1"),
+                    "namacs_ptmn" => $this->input->post("namacustom1"),
+
+                    "nocs_tp" => $this->input->post("nocustom2"),
+                    "namacs_tp" => $this->input->post("namacustom2"),
+
+                    "trf_trf" => $this->input->post("trf"),
+
+                    "cash_pro" => $this->input->post("cash"),
+                    "internal_pro" => $this->input->post("internal"),
+                    "aptp_pro" => $this->input->post("aptp"),
+                    "ttlrev_pro" => $this->input->post("tr"),
+                    "noso_pro" => $this->input->post("noso"),
+                    "idssc_pro" => $this->input->post("idssc"),
+                    "noinv_pro" => $this->input->post("invno"),
+                    "stat_pro" => $this->input->post("status"),
+
+                    "status_keu_bc" => $stat,
+                );
+                $this->crud->insert("keu_bc_dmt", $array_biarrapih);
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Sukses!',
+                        'Anda berhasil menambah data Finance BC',
+                        'success'
+                    )});
+                </script>");
+                redirect("user/index");
+            } else {
+                $array_biarrapih = array(
+                    "nocs_ptmn" => $this->input->post("nocustom1"),
+                    "namacs_ptmn" => $this->input->post("namacustom1"),
+
+                    "nocs_tp" => $this->input->post("nocustom2"),
+                    "namacs_tp" => $this->input->post("namacustom2"),
+
+                    "trf_trf" => $this->input->post("trf"),
+
+                    "cash_pro" => $this->input->post("cash"),
+                    "internal_pro" => $this->input->post("internal"),
+                    "aptp_pro" => $this->input->post("aptp"),
+                    "ttlrev_pro" => $this->input->post("tr"),
+                    "noso_pro" => $this->input->post("noso"),
+                    "idssc_pro" => $this->input->post("idssc"),
+                    "noinv_pro" => $this->input->post("invno"),
+                    "stat_pro" => $this->input->post("status"),
+
+                    "status_keu_bc" => $stat,
+                );
+                $this->crud->update("keu_bc_dmt", "id_plth", $this->input->post("id"), $array_biarrapih);
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Sukses!',
+                        'Anda berhasil mengubah data Finance BC',
+                        'success'
+                    )});
+                </script>");
+                redirect("user/index");
+            }
         }
     }
