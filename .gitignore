@@ -14,7 +14,6 @@ user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 assets/uploaded_file/*
-application/config/*
 *.sql
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
@@ -32,3 +31,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
+application/config/*
+
