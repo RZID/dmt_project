@@ -34,4 +34,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/config/*
 application/config/development/*
 */config/development
-
+application/tempconf/*
