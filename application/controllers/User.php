@@ -156,6 +156,7 @@
 
                     //Keuangan
                 case 5:
+                    $this->load->view('navbar/keu', $data);
                     $this->load->view('index/index_keu', $data);
                     break;
             }
@@ -1560,12 +1561,14 @@
                 die;
             }
             $data = array(
-                "title" => "(Keuangan) Kelengkapan Data | Dashboard Monitoring Training",
+                "title" => "(Keuangan) Kelengkapan Data IP | Dashboard Monitoring Training",
                 "dis" => $this,
+                "keu_ip" => "active",
                 "whdb" => $this->crud->select_where("plth_dmt", array("id_plth" => $id))->row_array(),
                 "whdb2" => $this->crud->select_where("keu_dmt", array("id_plth" => $id))->row_array()
             );
             $this->load->view('templating/head', $data);
+            $this->load->view('navbar/keu', $data);
             $this->load->view("edit/keu_edit", $data);
             $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
@@ -1573,148 +1576,17 @@
 
         public function edit_keu_core()
         {
-            if ($this->session->userdata("access_num") != 5) {
-                redirect('user/index');
+            if ($this->session->userdata("access_num" < 5)) {
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Galat Akses!',
+                        'Anda tidak berhak mengakses fitur tersebut',
+                        'error'
+                    )});
+                </script>");
+                redirect("user/index");
                 die;
-            }
-
-            $id = $this->input->post("id");
-            $bind_db = $this->crud->select_where("keu_dmt", array("id_plth" => $id));
-
-            if (!$this->input->post("keu1")) {
-                $keu1 = "N/A";
-            } else {
-                $keu1 = $this->input->post("keu1");
-            }
-
-            if (!$this->input->post("keu2")) {
-                $keu2 = "N/A";
-            } else {
-                $keu2 = $this->input->post("keu2");
-            }
-
-            if (!$this->input->post("keu3")) {
-                $keu3 = 0;
-            } else {
-                $keu3 = $this->input->post("keu3");
-            }
-
-            if (!$this->input->post("keu4")) {
-                $keu4 = 0;
-            } else {
-                $keu4 = $this->input->post("keu4");
-            }
-
-            if (!$this->input->post("keu5")) {
-                $keu5 = 0;
-            } else {
-                $keu5 = $this->input->post("keu5");
-            }
-
-            if (!$this->input->post("keu6")) {
-                $keu6 = 0;
-            } else {
-                $keu6 = $this->input->post("keu6");
-            }
-
-            if (!$this->input->post("keu7")) {
-                $keu7 = 0;
-            } else {
-                $keu7 = $this->input->post("keu7");
-            }
-
-            if (!$this->input->post("keu8")) {
-                $keu8 = 0;
-            } else {
-                $keu8 = $this->input->post("keu8");
-            }
-
-            if (!$this->input->post("keu9")) {
-                $keu9 = 0;
-            } else {
-                $keu9 = $this->input->post("keu9");
-            }
-
-            if (!$this->input->post("keu10")) {
-                $keu10 = 0;
-            } else {
-                $keu10 = $this->input->post("keu10");
-            }
-
-            if (!$this->input->post("keu11")) {
-                $keu11 = 0;
-            } else {
-                $keu11 = $this->input->post("keu11");
-            }
-
-            if (!$this->input->post("keu12")) {
-                $keu12 = 0;
-            } else {
-                $keu12 = $this->input->post("keu12");
-            }
-
-            if (!$this->input->post("keu13")) {
-                $keu13 = "Pending";
-            } else {
-                $keu13 = $this->input->post("keu13");
-            }
-
-
-            if ($bind_db->num_rows() < 1) {
-                $array_biarrapih = array(
-                    "id_plth" => $id,
-
-                    "tgldelinv_keu" => strtotime($keu3),
-                    "tglkorekinv_keu" => strtotime($keu4),
-                    "tglprocessinv_keu" => strtotime($keu5),
-                    "tglpayven_keu" => strtotime($keu6),
-
-                    "tgldelinvako_keu" => strtotime($keu7),
-                    "tglkorekinvako_keu" => strtotime($keu8),
-                    "tglprocessinvako_keu" => strtotime($keu9),
-                    "tglpayvenako_keu" => strtotime($keu10),
-
-                    "tgldeldokins_keu" => strtotime($keu11),
-                    "tglpayhon_keu" => strtotime($keu12),
-                    "status_keu" => $keu13
-                );
-                $this->crud->insert("keu_dmt", $array_biarrapih);
-                $this->session->set_flashdata("msg", "<script>
-                $(document).ready(function() {
-                    sweetAlert(
-                        'Berhasil!',
-                        'Anda berhasil menambah kelengkapan data.',
-                        'success'
-                    )});
-                </script>");
-                redirect("user/index");
-            } else {
-                $array_biarrapih = array(
-
-                    "tgldelinv_keu" => strtotime($keu3),
-                    "tglkorekinv_keu" => strtotime($keu4),
-                    "tglprocessinv_keu" => strtotime($keu5),
-                    "tglpayven_keu" => strtotime($keu6),
-
-                    "tgldelinvako_keu" => strtotime($keu7),
-                    "tglkorekinvako_keu" => strtotime($keu8),
-                    "tglprocessinvako_keu" => strtotime($keu9),
-                    "tglpayvenako_keu" => strtotime($keu10),
-
-                    "tgldeldokins_keu" => strtotime($keu11),
-                    "tglpayhon_keu" => strtotime($keu12),
-                    "status_keu" => $keu13
-                );
-                $this->crud->update("keu_dmt", "id_plth", $id, $array_biarrapih);
-                $this->session->set_flashdata("msg", "<script>
-                $(document).ready(function() {
-                    sweetAlert(
-                        'Berhasil!',
-                        'Anda berhasil mengubah kelengkapan data.',
-                        'success'
-                    )});
-                </script>");
-                redirect("user/index");
             }
         }
         public function insert_realisasi()

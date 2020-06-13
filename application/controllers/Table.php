@@ -99,9 +99,11 @@ class Table extends CI_Controller
         }
         $data = array(
             "title" => "Tabel Keuangan - Dashboard Monitoring Training",
-            "dis" => $this
+            "dis" => $this,
+            "keu_ip" => "active"
         );
         $this->load->view("templating/head", $data);
+        $this->load->view("navbar/keu", $data);
         $this->load->view("table/table_keu", $data);
         $this->load->view("templating/foot", $data);
     }
