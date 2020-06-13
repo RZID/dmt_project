@@ -108,6 +108,31 @@ class Table extends CI_Controller
         $this->load->view("templating/foot", $data);
     }
 
+    public function keuangan_bc()
+    {
+        if ($this->session->userdata("access_num") != 5) {
+            $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Galat Akses!',
+                        'Anda tidak berhak mengakses fitur tersebut',
+                        'error'
+                    )});
+                </script>");
+            redirect("user/index");
+            die;
+        }
+        $data = array(
+            "title" => "Tabel Keuangan - Dashboard Monitoring Training",
+            "dis" => $this,
+            "keu_bc" => "active"
+        );
+        $this->load->view("templating/head", $data);
+        $this->load->view("navbar/keu", $data);
+        $this->load->view("table/table_keu_bc", $data);
+        $this->load->view("templating/foot", $data);
+    }
+
     public function peserta_pnd()
     {
         if ($this->session->userdata("access_num") > 2) {

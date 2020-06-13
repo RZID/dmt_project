@@ -75,7 +75,7 @@
             <li class="nav-item <?php if (isset($keu_bc)) {
                                     echo $keu_bc;
                                 }  ?>">
-                <a class="nav-link collapsed" href="<?= base_url("table/keuangan?bc=TRUE") ?>">
+                <a class="nav-link collapsed" href="<?= base_url("table/keuangan_bc") ?>">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Kelengkapan Finance BC</span>
                 </a>

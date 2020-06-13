@@ -54,7 +54,7 @@ echo $this->session->flashdata("msg"); ?>
               <th>Batch</th>
               <th>Tanggal Mulai</th>
               <th>Tanggal Selesai</th>
-              <th>Status Finance IP</th>
+              <th>Status Finance BC</th>
               <th class="no-sort">Aksi</th>
             </tr>
           </thead>
@@ -80,7 +80,7 @@ echo $this->session->flashdata("msg"); ?>
                   <button type="button" class="btn btn-primary" onclick="see(<?= $row->id_plth ?>)"><i class="fas fa-eye"></i></button>
                   <!-- Modal -->
 
-                  <a href="<?= base_url("user/edit_keu?id_pelatihan=") . $row->id_plth; ?>"><button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button></a>
+                  <a href="<?= base_url("user/edit_bc?id_pelatihan=") . $row->id_plth ?>"><button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button></a>
                 </td>
                 <!-- Modal -->
                 <div class="modal fade" id="modalSee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -139,132 +139,89 @@ echo $this->session->flashdata("msg"); ?>
                         </div>
                         <hr>
                         <u>
-                          <h5 class="font-weight-bold">Detail Finance IP</h5>
+                          <h5 class="font-weight-bold">Detail Keuangan</h5>
                         </u>
+
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">No. Vendor (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Penerimaan Invoice Pelatihan</div>
                           :
-                          <div class="col-xl col-lg" id="ako1"></div>
+                          <div class="col-xl col-lg" id="keu1"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Nama Vendor (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Penerimaan Invoice Akomodasi</div>
                           :
-                          <div class="col-xl col-lg" id="ako2"></div>
+                          <div class="col-xl col-lg" id="keu2"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">No. Invoice (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Koreksi Invoice Pelatihan</div>
                           :
-                          <div class="col-xl col-lg" id="ako3"></div>
+                          <div class="col-xl col-lg" id="keu3"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Nilai (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Koreksi Invoice Akomodasi</div>
                           :
-                          <div class="col-xl col-lg" id="ako4"></div>
+                          <div class="col-xl col-lg" id="keu4"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">PD (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Proses Invoice Pelatihan</div>
                           :
-                          <div class="col-xl col-lg" id="ako5"></div>
+                          <div class="col-xl col-lg" id="keu5"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">SSC ID / SP 3 ID (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Proses Invoice Akomodasi</div>
                           :
-                          <div class="col-xl col-lg" id="ako6"></div>
+                          <div class="col-xl col-lg" id="keu6"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Status (Akomodasi)</div>
+                          <div class="col-xl col-lg">Tanggal Pembayaran Ke Vendor Pelatihan</div>
                           :
-                          <div class="col-xl col-lg" id="ako7"></div>
-                        </div>
-                        <br>
-
-                        <!-- Vendor -->
-                        <div class="row">
-                          <div class="col-xl col-lg">No. Vendor (Provider)</div>
-                          :
-                          <div class="col-xl col-lg" id="pro1"></div>
+                          <div class="col-xl col-lg" id="keu7"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Nama Vendor (Provider)</div>
+                          <div class="col-xl col-lg">Tanggal Pembayaran Ke Vendor Akomodasi</div>
                           :
-                          <div class="col-xl col-lg" id="pro2"></div>
+                          <div class="col-xl col-lg" id="keu8"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">No. Invoice (Provider)</div>
+                          <div class="col-xl col-lg">Tanggal Penerimaan Dokumen Instruktur</div>
                           :
-                          <div class="col-xl col-lg" id="pro3"></div>
+                          <div class="col-xl col-lg" id="keu9"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Nilai (Provider)</div>
+                          <div class="col-xl col-lg">Tanggal Pembayaran Honor Instruktur</div>
                           :
-                          <div class="col-xl col-lg" id="pro4"></div>
+                          <div class="col-xl col-lg" id="keu10"></div>
                         </div>
 
-                        <!-- Vendor -->
-                        <div class="row">
-                          <div class="col-xl col-lg">PD (Provider)</div>
-                          :
-                          <div class="col-xl col-lg" id="pro5"></div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
                         </div>
-
-                        <!-- Vendor -->
-                        <div class="row">
-                          <div class="col-xl col-lg">SSC ID / SP 3 ID (Provider)</div>
-                          :
-                          <div class="col-xl col-lg" id="pro6"></div>
-                        </div>
-
-                        <!-- Vendor -->
-                        <div class="row">
-                          <div class="col-xl col-lg">Status (Provider)</div>
-                          :
-                          <div class="col-xl col-lg" id="pro7"></div>
-                        </div>
-                        <br>
-                        <div class="stat1"></div>
-                        <div class="stat2"></div>
-                        <div class="stat3"></div>
-                        <div class="stat4"></div>
-                        <div class="stat5"></div>
-                        <div class="stat6"></div>
-                        <div class="stat7"></div>
-                        <div class="stat8"></div>
-                        <div class="stat9"></div>
-                        <div class="stat10"></div>
-
-                        <!-- Vendor -->
-                        <div class="row">
-                          <div class="col-xl col-lg">Status Keuangan (IP)</div>
-                          :
-                          <div class="col-xl col-lg" id="status_keu123"></div>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
                       </div>
                     <?php
 
                   }
                     ?>
+
+
               </tr>
 
 
@@ -385,131 +342,56 @@ echo $this->session->flashdata("msg"); ?>
         $(document).ready(function() {
           var len = data2.length;
           if (len >= 1) {
+            if (data2[0].tgldelinv_keu == 0) {
+              $("#keu1").html("N/A");
+            } else {
+              $("#keu1").html($.format.date(new Date(data2[0].tgldelinv_keu * 1000), 'dd MMMM yyyy'));
+            }
 
-            if (data2[0].ako1 == "" || data2[0].ako1 == "0") {
-              $("#ako1").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tgldelinvako_keu == 0) {
+              $("#keu2").html("N/A");
             } else {
-              $("#ako1").html(data2[0].ako1);
+              $("#keu2").html($.format.date(new Date(data2[0].tgldelinvako_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].ako2 == "" || data2[0].ako2 == "N/A") {
-              $("#ako2").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglkorekinv_keu == 0) {
+              $("#keu3").html("N/A");
             } else {
-              $("#ako2").html(data2[0].ako2);
+              $("#keu3").html($.format.date(new Date(data2[0].tglkorekinv_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].ako3 == "" || data2[0].ako3 == "0") {
-              $("#ako3").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglkorekinvako_keu == 0) {
+              $("#keu4").html("N/A");
             } else {
-              $("#ako3").html(data2[0].ako3);
+              $("#keu4").html($.format.date(new Date(data2[0].tglkorekinvako_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].ako4 == "" || data2[0].ako4 == "0") {
-              $("#ako4").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglprocessinv_keu == 0) {
+              $("#keu5").html("N/A");
             } else {
-              $("#ako4").html(data2[0].ako4);
+              $("#keu5").html($.format.date(new Date(data2[0].tglprocessinv_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].ako5 == "" || data2[0].ako5 == "0") {
-              $("#ako5").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglprocessinvako_keu == 0) {
+              $("#keu6").html("N/A");
             } else {
-              $("#ako5").html(data2[0].ako5);
+              $("#keu6").html($.format.date(new Date(data2[0].tglprocessinvako_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].ako6 == "" || data2[0].ako6 == "0") {
-              $("#ako6").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglpayven_keu == 0) {
+              $("#keu7").html("N/A");
             } else {
-              $("#ako6").html(data2[0].ako6);
+              $("#keu7").html($.format.date(new Date(data2[0].tglpayven_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].ako7 == "" || data2[0].ako7 == "N/A") {
-              $("#ako7").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglpayvenako_keu == 0) {
+              $("#keu8").html("N/A");
             } else {
-              $("#ako7").html(data2[0].ako7);
+              $("#keu8").html($.format.date(new Date(data2[0].tglpayvenako_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].pro1 == "" || data2[0].pro1 == "0") {
-              $("#pro1").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tgldeldokins_keu == 0) {
+              $("#keu9").html("N/A");
             } else {
-              $("#pro1").html(data2[0].pro1);
+              $("#keu9").html($.format.date(new Date(data2[0].tgldeldokins_keu * 1000), 'dd MMMM yyyy'));
             }
-            if (data2[0].pro2 == "" || data2[0].pro2 == "N/A") {
-              $("#pro2").html("<a class='text-danger'>Belum Diatur</a>");
+            if (data2[0].tglpayhon_keu == 0) {
+              $("#keu10").html("N/A");
             } else {
-              $("#pro2").html(data2[0].pro2);
-            }
-            if (data2[0].pro3 == "" || data2[0].pro3 == "0") {
-              $("#pro3").html("<a class='text-danger'>Belum Diatur</a>");
-            } else {
-              $("#pro3").html(data2[0].pro3);
-            }
-            if (data2[0].pro4 == "" || data2[0].pro4 == "0") {
-              $("#pro4").html("<a class='text-danger'>Belum Diatur</a>");
-            } else {
-              $("#pro4").html(data2[0].pro4);
-            }
-            if (data2[0].pro5 == "" || data2[0].pro5 == "0") {
-              $("#pro5").html("<a class='text-danger'>Belum Diatur</a>");
-            } else {
-              $("#pro5").html(data2[0].pro5);
-            }
-            if (data2[0].pro6 == "" || data2[0].pro6 == "0") {
-              $("#pro6").html("<a class='text-danger'>Belum Diatur</a>");
-            } else {
-              $("#pro6").html(data2[0].pro6);
-            }
-            if (data2[0].pro7 == "" || data2[0].pro7 == "N/A") {
-              $("#pro7").html("<a class='text-danger'>Belum Diatur</a>");
-            } else {
-              $("#pro7").html(data2[0].pro7);
-            }
-            if ((data2[0].status1 == "N/A") || (data2[0].status1 == "")) {
-              $(".stat1").html('');
-            } else {
-              $(".stat1").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 1</div> : <div class="col-xl col-lg">' + data2[0].status1 + '</div></div><br>');
-            }
-            if ((data2[0].status2 == "N/A") || (data2[0].status2 == "")) {
-              $(".stat2").html('');
-            } else {
-              $(".stat2").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 2</div> : <div class="col-xl col-lg">' + data2[0].status2 + '</div></div><br>');
-            }
-            if ((data2[0].status3 == "N/A") || (data2[0].status3 == "")) {
-              $(".stat3").html('');
-            } else {
-              $(".stat3").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 3</div> : <div class="col-xl col-lg">' + data2[0].status3 + '</div></div><br>');
-            }
-            if ((data2[0].status4 == "N/A") || (data2[0].status4 == "")) {
-              $(".stat4").html('');
-            } else {
-              $(".stat4").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 4</div> : <div class="col-xl col-lg">' + data2[0].status4 + '</div></div><br>');
-            }
-            if ((data2[0].status5 == "N/A") || (data2[0].status5 == "")) {
-              $(".stat5").html('');
-            } else {
-              $(".stat5").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 5</div> : <div class="col-xl col-lg">' + data2[0].status5 + '</div></div><br>');
-            }
-            if ((data2[0].status6 == "N/A") || (data2[0].status6 == "")) {
-              $(".stat6").html('');
-            } else {
-              $(".stat6").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 6</div> : <div class="col-xl col-lg">' + data2[0].status6 + '</div></div><br>');
-            }
-            if ((data2[0].status7 == "N/A") || (data2[0].status7 == "")) {
-              $(".stat7").html('');
-            } else {
-              $(".stat7").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 7</div> : <div class="col-xl col-lg">' + data2[0].status7 + '</div></div><br>');
-            }
-            if ((data2[0].status8 == "N/A") || (data2[0].status8 == "")) {
-              $(".stat8").html('');
-            } else {
-              $(".stat8").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 8</div> : <div class="col-xl col-lg">' + data2[0].status8 + '</div></div><br>');
-            }
-            if ((data2[0].status9 == "N/A") || (data2[0].status9 == "")) {
-              $(".stat9").html('');
-            } else {
-              $(".stat9").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 9</div> : <div class="col-xl col-lg">' + data2[0].status9 + '</div></div><br>');
-            }
-            if ((data2[0].status10 == "N/A") || (data2[0].status10 == "")) {
-              $(".stat10").html('');
-            } else {
-              $(".stat10").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 10</div> : <div class="col-xl col-lg">' + data2[0].status10 + '</div></div><br>');
-            }
-            if (data2[0].status_keu == "") {
-              $("#status_keu123").html("<a class='text-danger'>Belum Diatur</a>");
-            } else {
-              $("#status_keu123").html(data2[0].status_keu);
+              $("#keu10").html($.format.date(new Date(data2[0].tglpayhon_keu * 1000), 'dd MMMM yyyy'));
             }
           } else {
             var nulled = "Belum Diatur";
@@ -523,8 +405,6 @@ echo $this->session->flashdata("msg"); ?>
             $("#keu8").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu9").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu10").html("<a class='text-danger'>" + nulled + "</a>");
-            $("#dinamis").html('<div class="row"><div class="col-xl col-lg">Status</div> <div class="col-xl col-lg">Belum Diatur</div></div>');
-            $("#status_keu123").html("<a class='text-danger'>Belum Diatur</a>");
           }
         });
       }
