@@ -26,7 +26,7 @@
                 <h6 class="m-0 font-weight-bold text-secondary">Nama Pelatihan</h6>
                 <input type="text" class="form-control form-control-user" placeholder="Nama User" name="nama" value="<?= $whdb['nama_plth'] ?>" disabled>
               </div>
-
+              <?php $keu = $dis->crud->select_where("keu_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array(); ?>
               <!-- Awal Data Akomodasi -->
               <br>
               <h5>Data Akomodasi</h5>
@@ -36,17 +36,13 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">No. Vendor</h6>
-                    <input type="number" class="form-control form-control-user" name="keu3" value="<?php if ($whdb2['tgldelinv_keu'] != 0) {
-                                                                                                      echo date('Y-m-d', $whdb2['tgldelinv_keu']);
-                                                                                                    }  ?>">
+                    <input type="number" class="form-control form-control-user" name="ako1" value="<?= $keu["ako1"] ?>">
                   </div>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Nama Vendor</h6>
-                    <input type="text" class="form-control form-control-user" name="keu4" value="<?php if ($whdb2['tglkorekinv_keu'] != 0) {
-                                                                                                    echo date('Y-m-d', $whdb2['tglkorekinv_keu']);
-                                                                                                  }  ?>">
+                    <input type="text" class="form-control form-control-user" name="ako2" value="<?= $keu["ako2"] ?>">
                   </div>
                 </div>
               </div>
@@ -55,17 +51,13 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">No. Invoice</h6>
-                    <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="ako3" value="<?= $keu["ako3"] ?>">
                   </div>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Nilai</h6>
-                    <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="ako4" value="<?= $keu["ako4"] ?>">
                   </div>
                 </div>
               </div>
@@ -75,17 +67,13 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">PO</h6>
-                    <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="ako5" value="<?= $keu["ako5"] ?>">
                   </div>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">SSC ID / SP 3 ID</h6>
-                    <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="ako6" value="<?= $keu["ako6"] ?>">
                   </div>
                 </div>
               </div>
@@ -93,10 +81,18 @@
               <div class="form-group">
                 <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                 <div class="form-group">
-                  <select class="form-control" name="sifat" id="sifatPlth">
-                    <option disabled selected>--- Pilih Salah Satu ---</option>
-                    <option value="#">Sudah dibayar</option>
-                    <option value="#">Belum dibayar</option>
+                  <select class="form-control" name="ako7">
+                    <?php if ($keu["ako7"] == "Sudah Dibayar") { ?>
+                      <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                      <option value="Belum Dibayar">Belum dibayar</option>
+                    <?php } elseif ($keu["ako7"] == "Belum Dibayar") { ?>
+                      <option value="Sudah Dibayar">Sudah dibayar</option>
+                      <option value="Belum Dibayar" selected>Belum dibayar</option>
+                    <?php } else { ?>
+                      <option disabled selected>--- Pilih Salah Satu ---</option>
+                      <option value="Sudah Dibayar">Sudah dibayar</option>
+                      <option value="Belum Dibayar">Belum dibayar</option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -113,17 +109,13 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">No. Vendor</h6>
-                    <input type="number" class="form-control form-control-user" name="keu3" value="<?php if ($whdb2['tgldelinv_keu'] != 0) {
-                                                                                                      echo date('Y-m-d', $whdb2['tgldelinv_keu']);
-                                                                                                    }  ?>">
+                    <input type="number" class="form-control form-control-user" name="pro1" value="<?= $keu["pro1"] ?>">
                   </div>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Nama Vendor</h6>
-                    <input type="text" class="form-control form-control-user" name="keu4" value="<?php if ($whdb2['tglkorekinv_keu'] != 0) {
-                                                                                                    echo date('Y-m-d', $whdb2['tglkorekinv_keu']);
-                                                                                                  }  ?>">
+                    <input type="text" class="form-control form-control-user" name="pro2" value="<?= $keu["pro2"] ?>">
                   </div>
                 </div>
               </div>
@@ -132,17 +124,13 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">No. Invoice</h6>
-                    <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="pro3" value="<?= $keu["pro3"] ?>">
                   </div>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Nilai</h6>
-                    <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="pro4" value="<?= $keu["pro4"] ?>">
                   </div>
                 </div>
               </div>
@@ -152,17 +140,13 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">PO</h6>
-                    <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="pro5" value="<?= $keu["pro5"] ?>">
                   </div>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">SSC ID / SP 3 ID</h6>
-                    <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                      echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                    } ?>">
+                    <input type="number" class="form-control form-control-user" name="pro6" value="<?= $keu["pro6"] ?>">
                   </div>
                 </div>
               </div>
@@ -170,10 +154,18 @@
               <div class="form-group">
                 <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                 <div class="form-group">
-                  <select class="form-control" name="sifat" id="sifatPlth">
-                    <option disabled selected>--- Pilih Salah Satu ---</option>
-                    <option value="#">Sudah dibayar</option>
-                    <option value="#">Belum dibayar</option>
+                  <select class="form-control" name="pro7">
+                    <?php if ($keu["pro7"] == "Sudah Dibayar") { ?>
+                      <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                      <option value="Belum Dibayar">Belum dibayar</option>
+                    <?php } elseif ($keu["pro7"] == "Belum Dibayar") { ?>
+                      <option value="Sudah Dibayar">Sudah dibayar</option>
+                      <option value="Belum Dibayar" selected>Belum dibayar</option>
+                    <?php } else { ?>
+                      <option disabled selected>--- Pilih Salah Satu ---</option>
+                      <option value="Sudah Dibayar">Sudah dibayar</option>
+                      <option value="Belum Dibayar">Belum dibayar</option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -226,9 +218,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status1" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status1"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status1"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -279,9 +279,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status2" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status2"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status2"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -290,7 +298,7 @@
               <?php if ($datanya["novend3_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 3</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -332,9 +340,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status3" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status3"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status3"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -343,7 +359,7 @@
               <?php if ($datanya["novend4_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 4</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -385,9 +401,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status4" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status4"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status4"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -396,7 +420,7 @@
               <?php if ($datanya["novend5_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 5</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -438,9 +462,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status5" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status5"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status5"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -449,7 +481,7 @@
               <?php if ($datanya["novend6_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 6</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -491,9 +523,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status6" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status6"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status6"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -502,7 +542,7 @@
               <?php if ($datanya["novend7_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 7</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -544,9 +584,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status7" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status7"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status7"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -555,7 +603,7 @@
               <?php if ($datanya["novend8_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 8</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -597,9 +645,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status8" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status8"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status8"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -608,7 +664,7 @@
               <?php if ($datanya["novend9_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 9</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -650,9 +706,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status9" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status9"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status9"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -661,7 +725,7 @@
               <?php if ($datanya["novend10_ins"] > 0) {
               ?>
                 <br>
-                <h5>Data Instruktur 2</h5>
+                <h5>Data Instruktur 10</h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
@@ -703,9 +767,17 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
                     <select class="form-control" name="status10" id="">
-                      <option disabled selected>--- Pilih Salah Satu ---</option>
-                      <option value="Sudah Dibayar">Sudah dibayar</option>
-                      <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php if ($keu["status10"] == "Sudah Dibayar") { ?>
+                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } elseif ($keu["status10"] == "Belum Dibayar") { ?>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar" selected>Belum dibayar</option>
+                      <?php } else { ?>
+                        <option disabled selected>--- Pilih Salah Satu ---</option>
+                        <option value="Sudah Dibayar">Sudah dibayar</option>
+                        <option value="Belum Dibayar">Belum dibayar</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -716,11 +788,12 @@
               <br>
               <div class="form-group">
                 <label class="form-check-label">
-                  <input type="checkbox" name="keu13" id="done" value="Completed">
+                  <input type="checkbox" name="stat" id="done" value="Completed">
                   Selesaikan Status Pelatihan
                 </label>
               </div>
               <p></p>
+              <input type="hidden" name="id" value="<?= $this->input->get("id_pelatihan") ?>">
               <!-- End Example events -->
               <button type="submit" class="btn btn-primary btn-user btn-block col-xl-3 col-lg-7">
                 Update Kelengkapan Data

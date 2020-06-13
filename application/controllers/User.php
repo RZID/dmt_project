@@ -1588,6 +1588,200 @@
                 redirect("user/index");
                 die;
             }
+
+            if (!$this->input->post("pro1")) {
+                $pro1 = "";
+            } else {
+                $pro1 = $this->input->post("pro1");
+            }
+            if (!$this->input->post("pro2")) {
+                $pro2 = "N/A";
+            } else {
+                $pro2 = $this->input->post("pro2");
+            }
+            if (!$this->input->post("pro3")) {
+                $pro3 = "";
+            } else {
+                $pro3 = $this->input->post("pro3");
+            }
+            if (!$this->input->post("pro4")) {
+                $pro4 = "";
+            } else {
+                $pro4 = $this->input->post("pro4");
+            }
+            if (!$this->input->post("pro5")) {
+                $pro5 = "";
+            } else {
+                $pro5 = $this->input->post("pro5");
+            }
+            if (!$this->input->post("pro6")) {
+                $pro6 = "";
+            } else {
+                $pro6 = $this->input->post("pro6");
+            }
+            if (!$this->input->post("pro7")) {
+                $pro7 = "N/A";
+            } else {
+                $pro7 = $this->input->post("pro7");
+            }
+            if (!$this->input->post("ako1")) {
+                $ako1 = "";
+            } else {
+                $ako1 = $this->input->post("ako1");
+            }
+            if (!$this->input->post("ako2")) {
+                $ako2 = "N/A";
+            } else {
+                $ako2 = $this->input->post("ako2");
+            }
+            if (!$this->input->post("ako3")) {
+                $ako3 = "";
+            } else {
+                $ako3 = $this->input->post("ako3");
+            }
+            if (!$this->input->post("ako4")) {
+                $ako4 = "";
+            } else {
+                $ako4 = $this->input->post("ako4");
+            }
+            if (!$this->input->post("ako5")) {
+                $ako5 = "";
+            } else {
+                $ako5 = $this->input->post("ako5");
+            }
+            if (!$this->input->post("ako6")) {
+                $ako6 = "";
+            } else {
+                $ako6 = $this->input->post("ako6");
+            }
+            if (!$this->input->post("ako7")) {
+                $ako7 = "N/A";
+            } else {
+                $ako7 = $this->input->post("ako7");
+            }
+            if (!$this->input->post("status1")) {
+                $status1 = "N/A";
+            } else {
+                $status1 = $this->input->post("status1");
+            }
+            if (!$this->input->post("status2")) {
+                $status2 = "N/A";
+            } else {
+                $status2 = $this->input->post("status2");
+            }
+            if (!$this->input->post("status3")) {
+                $status3 = "N/A";
+            } else {
+                $status3 = $this->input->post("status3");
+            }
+            if (!$this->input->post("status4")) {
+                $status4 = "N/A";
+            } else {
+                $status4 = $this->input->post("status4");
+            }
+            if (!$this->input->post("status5")) {
+                $status5 = "N/A";
+            } else {
+                $status5 = $this->input->post("status5");
+            }
+            if (!$this->input->post("status6")) {
+                $status6 = "N/A";
+            } else {
+                $status6 = $this->input->post("status6");
+            }
+            if (!$this->input->post("status7")) {
+                $status7 = "N/A";
+            } else {
+                $status7 = $this->input->post("status7");
+            }
+            if (!$this->input->post("status8")) {
+                $status8 = "N/A";
+            } else {
+                $status8 = $this->input->post("status8");
+            }
+            if (!$this->input->post("status9")) {
+                $status9 = "N/A";
+            } else {
+                $status9 = $this->input->post("status9");
+            }
+            if (!$this->input->post("status10")) {
+                $status10 = "N/A";
+            } else {
+                $status10 = $this->input->post("status10");
+            }
+            if (!$this->input->post("stat")) {
+                $stat = "Pending";
+            } else {
+                $stat = $this->input->post("stat");
+            }
+            $id = $this->input->post("id");
+            if ($this->crud->select_where("keu_dmt", array("id_plth" => $id))->num_rows() < 1) {
+                $array_biarrapih = array(
+                    'id_plth' => $id,
+
+                    'ako1' => $ako1,
+                    'ako2' => $ako2,
+                    'ako3' => $ako3,
+                    'ako4' => $ako4,
+                    'ako5' => $ako5,
+                    'ako6' => $ako6,
+                    'ako7' => $ako7,
+
+                    'pro1' => $pro1,
+                    'pro2' => $pro2,
+                    'pro3' => $pro3,
+                    'pro4' => $pro4,
+                    'pro5' => $pro5,
+                    'pro6' => $pro6,
+                    'pro7' => $pro7,
+
+                    'status1' => $status1,
+                    'status2' => $status2,
+                    'status3' => $status3,
+                    'status4' => $status4,
+                    'status5' => $status5,
+                    'status6' => $status6,
+                    'status7' => $status7,
+                    'status8' => $status8,
+                    'status9' => $status9,
+                    'status10' => $status10,
+
+                    'status_keu' => $stat
+                );
+                $this->crud->insert("keu_dmt", $array_biarrapih);
+            } else {
+                $array_biarrapih = array(
+                    'ako1' => $ako1,
+                    'ako2' => $ako2,
+                    'ako3' => $ako3,
+                    'ako4' => $ako4,
+                    'ako5' => $ako5,
+                    'ako6' => $ako6,
+                    'ako7' => $ako7,
+
+                    'pro1' => $pro1,
+                    'pro2' => $pro2,
+                    'pro3' => $pro3,
+                    'pro4' => $pro4,
+                    'pro5' => $pro5,
+                    'pro6' => $pro6,
+                    'pro7' => $pro7,
+
+                    'status1' => $status1,
+                    'status2' => $status2,
+                    'status3' => $status3,
+                    'status4' => $status4,
+                    'status5' => $status5,
+                    'status6' => $status6,
+                    'status7' => $status7,
+                    'status8' => $status8,
+                    'status9' => $status9,
+                    'status10' => $status10,
+
+                    'status_keu' => $stat
+                );
+                $this->crud->update("keu_dmt", "id_plth", $id, $array_biarrapih);
+            }
         }
         public function insert_realisasi()
         {
