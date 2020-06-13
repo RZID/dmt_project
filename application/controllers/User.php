@@ -2401,10 +2401,24 @@
         }
         function edit_bc()
         {
+            if ($this->session->userdata("access_num") < 5) {
+                $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Anda tidak punya akses ini!',
+                        'Silahkan login untuk melanjutkan.',
+                        'error'
+                    )
+                });
+                </script>");
+                redirect('user/index');
+                die;
+            }
             $id = $this->input->get("id_pelatihan");
             $data = array(
                 "title" => "(Keuangan) Kelengkapan Data | Dashboard Monitoring Training",
                 "dis" => $this,
+                "keu_bc" => "active",
                 "whdb" => $this->crud->select_where("plth_dmt", array("id_plth" => $id))->row_array(),
                 "whdb2" => $this->crud->select_where("keu_dmt", array("id_plth" => $id))->row_array()
             );
