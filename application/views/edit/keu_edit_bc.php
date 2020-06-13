@@ -272,11 +272,11 @@
                       <input type="text" class="form-control form-control-user" placeholder="Nama User" name="nama" value="<?= $whdb['nama_plth'] ?>" disabled>
                     </div>
 
-<!-- Awal Data Finance BC -->
+                    <!-- Awal Data Finance BC -->
 
-                      <div class="row">
+                    <div class="row">
                       <div class="col-lg col-xl">
-                      <h6 class="m-0 font-weight-bold text-secondary">Absensi Kehadiran</h6>
+                        <h6 class="m-0 font-weight-bold text-secondary">Absensi Kehadiran</h6>
                         <div class="custom-file" id="customFile" lang="es">
                           <input type="file" id="#" placeholder="ambil dari instruktur" class="custom-file-input" name="#" aria-describedby="fileHelp">
                           <label class="custom-file-label" for="#">
@@ -287,14 +287,14 @@
                       <div class="col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">Memo / Surat Pemanggilan / Kontrak / Agre</h6>
-                          <input type="text" placeholder = "dari pnd" class="form-control form-control-user" name="keu4" value="<?php if ($whdb2['tglkorekinv_keu'] != 0) {
-                                                                                                          echo date('Y-m-d', $whdb2['tglkorekinv_keu']);
-                                                                                                        }  ?>">
+                          <input type="text" placeholder="dari pnd" class="form-control form-control-user" name="keu4" value="<?php if ($whdb2['tglkorekinv_keu'] != 0) {
+                                                                                                                                echo date('Y-m-d', $whdb2['tglkorekinv_keu']);
+                                                                                                                              }  ?>">
                         </div>
                       </div>
 
                       <div class="col-lg col-xl">
-                      <h6 class="m-0 font-weight-bold text-secondary">Laporan Kegiatan</h6>
+                        <h6 class="m-0 font-weight-bold text-secondary">Laporan Kegiatan</h6>
                         <div class="custom-file" id="customFile" lang="es">
                           <input type="file" id="#" placeholder="ambil dari instruktur" class="custom-file-input" name="#" aria-describedby="fileHelp">
                           <label class="custom-file-label" for="#">
@@ -303,7 +303,7 @@
                         </div>
                       </div>
                     </div>
-<!-- Internal PTMN -->
+                    <!-- Internal PTMN -->
 
                     <br>
                     <h5>Internal PTMN</h5>
@@ -314,8 +314,8 @@
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">No. Customer</h6>
                           <input type="number" class="form-control form-control-user" name="keu3" value="<?php if ($whdb2['tgldelinv_keu'] != 0) {
-                                                                                                          echo date('Y-m-d', $whdb2['tgldelinv_keu']);
-                                                                                                        }  ?>">
+                                                                                                            echo date('Y-m-d', $whdb2['tgldelinv_keu']);
+                                                                                                          }  ?>">
                         </div>
                       </div>
                       <div class="col-lg col-xl">
@@ -327,8 +327,8 @@
                         </div>
                       </div>
                     </div>
-<!-- AP / Third Party -->
-                    
+                    <!-- AP / Third Party -->
+
                     <br>
                     <h5>AP / Third Party</h5>
                     <hr>
@@ -338,32 +338,32 @@
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">No. Customer</h6>
                           <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                        } ?>">
+                                                                                                            echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
+                                                                                                          } ?>">
                         </div>
                       </div>
                       <div class="col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">Nama Customer</h6>
                           <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                        } ?>">
+                                                                                                            echo date("Y-m-d", $whdb2['tglpayven_keu']);
+                                                                                                          } ?>">
                         </div>
                       </div>
                     </div>
-<!-- Tarif -->
+                    <!-- Tarif -->
                     <br>
                     <h5>Tarif</h5>
                     <hr>
-                    
-                    <div class="row">
-                        <div class="form-group">
-                          <h6 class="m-0 font-weight-bold text-secondary">Tarif (Rp.)</h6>
-                          <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                        } ?>">
-                                
-<!-- Profit -->
+
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">Tarif (Rp.)</h6>
+                      <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
+                                                                                                        echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
+                                                                                                      } ?>">
+                    </div>
+
+                    <!-- Profit -->
                     <br>
                     <h5>Profit</h5>
                     <hr>
@@ -373,72 +373,72 @@
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">Cash</h6>
                           <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
-                                                                                                        } ?>">
+                                                                                                            echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
+                                                                                                          } ?>">
                         </div>
                       </div>
                       <div class="col-md-4 col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">Internal</h6>
                           <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                        } ?>">
+                                                                                                            echo date("Y-m-d", $whdb2['tglpayven_keu']);
+                                                                                                          } ?>">
                         </div>
                       </div>
                       <div class="col-md-4 col-lg col-xl">
                         <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">AP / Third Party</h6>
                           <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                        } ?>">
+                                                                                                            echo date("Y-m-d", $whdb2['tglpayven_keu']);
+                                                                                                          } ?>">
                         </div>
                       </div>
                     </div>
-                    
-<!-- Akhir Form -->
 
-                      <div class="row">
-                        <div class="col-lg col-xl">
-                          <div class="form-group">
-                            <h6 class="m-0 font-weight-bold text-secondary">Total Revenue</h6>
-                            <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
+                    <!-- Akhir Form -->
+
+                    <div class="row">
+                      <div class="col-lg col-xl">
+                        <div class="form-group">
+                          <h6 class="m-0 font-weight-bold text-secondary">Total Revenue</h6>
+                          <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
                                                                                                             echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
                                                                                                           } ?>">
-                          </div>
                         </div>
-                        <div class="col-lg col-xl">
-                          <div class="form-group">
+                      </div>
+                      <div class="col-lg col-xl">
+                        <div class="form-group">
                           <h6 class="m-0 font-weight-bold text-secondary">No. SO</h6>
                           <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                        } ?>">
-                          </div>
+                                                                                                            echo date("Y-m-d", $whdb2['tglpayven_keu']);
+                                                                                                          } ?>">
                         </div>
                       </div>
+                    </div>
 
-                    
-                      <div class="row">
-                        <div class="col-lg col-xl">
-                          <div class="form-group">
-                            <h6 class="m-0 font-weight-bold text-secondary">ID SSC</h6>
-                            <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
+
+                    <div class="row">
+                      <div class="col-lg col-xl">
+                        <div class="form-group">
+                          <h6 class="m-0 font-weight-bold text-secondary">ID SSC</h6>
+                          <input type="number" class="form-control form-control-user" name="keu5" value="<?php if ($whdb2['tglprocessinv_keu'] != 0) {
                                                                                                             echo date("Y-m-d", $whdb2['tglprocessinv_keu']);
                                                                                                           } ?>">
-                          </div>
-                        </div>
-                        <div class="col-lg col-xl">
-                          <div class="form-group">
-                          <h6 class="m-0 font-weight-bold text-secondary">Invoice No.</h6>
-                          <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
-                                                                                                          echo date("Y-m-d", $whdb2['tglpayven_keu']);
-                                                                                                        } ?>">
-                          </div>
                         </div>
                       </div>
-                    
+                      <div class="col-lg col-xl">
+                        <div class="form-group">
+                          <h6 class="m-0 font-weight-bold text-secondary">Invoice No.</h6>
+                          <input type="number" class="form-control form-control-user" name="keu6" value="<?php if ($whdb2['tglpayven_keu'] != 0) {
+                                                                                                            echo date("Y-m-d", $whdb2['tglpayven_keu']);
+                                                                                                          } ?>">
+                        </div>
+                      </div>
+                    </div>
+
 
                     <div class="form-group">
-                    <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
+                      <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                       <div class="form-group">
                         <select class="form-control" name="sifat" id="sifatPlth">
                           <option disabled selected>--- Pilih Salah Satu ---</option>
@@ -448,7 +448,7 @@
                       </div>
                     </div>
 
-<!-- Akhir data Akomodasi -->
+                    <!-- Akhir data Akomodasi -->
 
 
                     <br>
@@ -464,54 +464,56 @@
                     <button type="submit" class="btn btn-primary btn-user btn-block col-xl-3 col-lg-7">
                       Update Kelengkapan Data
                     </button>
-                  </form>
                 </div>
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                  <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                      <span>Copyright &copy; IT Team HSE Training Center</span>
-                    </div>
-                  </div>
-                </footer>
-                <!-- End of Footer -->
-
-              </div>
-              <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-              <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin logout?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">Klik logout untuk mengakhiri sesi login anda.</div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?= base_url("home/logout") ?>">Logout</a>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
 
-            <!-- Scripting With JS -->
-            <?php if ($whdb2["status_keu"] == "Completed") { ?>
-              <script>
-                $(document).ready(function() {
-                  $("#done").prop("checked", true);
-                });
-              </script>
-            <?php } ?>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+              <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                  <span>Copyright &copy; IT Team HSE Training Center</span>
+                </div>
+              </div>
+            </footer>
+            <!-- End of Footer -->
+
+          </div>
+          <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin logout?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Klik logout untuk mengakhiri sesi login anda.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a class="btn btn-primary" href="<?= base_url("home/logout") ?>">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scripting With JS -->
+        <?php if ($whdb2["status_keu"] == "Completed") { ?>
+          <script>
+            $(document).ready(function() {
+              $("#done").prop("checked", true);
+            });
+          </script>
+        <?php } ?>

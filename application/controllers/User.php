@@ -2333,4 +2333,17 @@
                 redirect('user/index');
             }
         }
+        function edit_bc()
+        {
+            $id = $this->input->get("id_pelatihan");
+            $data = array(
+                "title" => "(Keuangan) Kelengkapan Data | Dashboard Monitoring Training",
+                "dis" => $this,
+                "whdb" => $this->crud->select_where("plth_dmt", array("id_plth" => $id))->row_array(),
+                "whdb2" => $this->crud->select_where("keu_dmt", array("id_plth" => $id))->row_array()
+            );
+            $this->load->view("templating/head", $data);
+            $this->load->view("edit/keu_edit_bc", $data);
+            $this->load->view("templating/foot", $data);
+        }
     }
