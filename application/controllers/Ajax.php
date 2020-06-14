@@ -186,89 +186,293 @@ class Ajax extends CI_Controller
         $id = $this->input->post("id");
         $keu = $this->crud->select_where("keu_dmt", array("id_plth" =>  $id));
         $keu_ra = $this->crud->select_where("keu_dmt", array("id_plth" =>  $id))->row_array();
+        $keubc = $this->crud->select_where("keu_bc_dmt", array("id_plth" =>  $id));
+        $keubc_ra = $this->crud->select_where("keu_bc_dmt", array("id_plth" =>  $id))->row_array();
         $pnd = $this->crud->select_where("plth_dmt", array("id_plth" =>  $id))->row_array();
         $out_keu['nama'] = "<div class='row'> <div class='col-lg-4'> Nama Pelatihan </div>" . ":<div class='col-lg'> " . $pnd["nama_plth"] . "</div></div>";
 
         if ($keu->num_rows() < 1) {
-            $out_keu["tgldelinv_keu"] = "";
-            $out_keu["tgldelinvako_keu"] = "";
-            $out_keu["tglkorekinv_keu"] = "";
-            $out_keu["tglkorekinvako_keu"] = "";
-            $out_keu["tglprocessinv_keu"] = "";
-            $out_keu["tglprocessinvako_keu"] = "";
-            $out_keu["tglpayven_keu"] = "";
-            $out_keu["tglpayvenako_keu"] = "";
-            $out_keu["tgldeldokins_keu"] = "";
-            $out_keu["tglpayhon_keu"] = "";
+            $out_keu["pro1"] = "";
+            $out_keu["pro2"] = "";
+            $out_keu["pro3"] = "";
+            $out_keu["pro4"] = "";
+            $out_keu["pro5"] = "";
+            $out_keu["pro6"] = "";
+            $out_keu["pro7"] = "";
+
+            $out_keu["ako1"] = "";
+            $out_keu["ako2"] = "";
+            $out_keu["ako3"] = "";
+            $out_keu["ako4"] = "";
+            $out_keu["ako5"] = "";
+            $out_keu["ako6"] = "";
+            $out_keu["ako7"] = "";
+
+            $out_keu["status1"] = "";
+            $out_keu["status2"] = "";
+            $out_keu["status3"] = "";
+            $out_keu["status4"] = "";
+            $out_keu["status5"] = "";
+            $out_keu["status6"] = "";
+            $out_keu["status7"] = "";
+            $out_keu["status8"] = "";
+            $out_keu["status9"] = "";
+            $out_keu["status10"] = "";
 
             $out_keu["status"] = "<li>Semua data belum diisi</li>";
         } else {
-
-            if ($keu_ra['tgldelinv_keu'] < 1) {
-                $out_keu["tgldelinv_keu"] = "<li>Tanggal Penerimaan Invoice Pelatihan Belum Diisi</li>";
+            if ($keu_ra["pro1"] < 1) {
+                $out_keu["pro1"] = "<li>No. Vendor Provider Belum Diisi</li>";
             } else {
-                $out_keu["tgldelinv_keu"] = "";
+                $out_keu["pro1"] = "";
+            }
+            if ($keu_ra["pro2"] == "N/A" or $keu_ra["pro2"] == "") {
+                $out_keu["pro2"] = "<li>Nama Vendor Provider Belum Diisi</li>";
+            } else {
+                $out_keu["pro2"] = "";
+            }
+            if ($keu_ra["pro3"] == 0) {
+                $out_keu["pro3"] = "<li>No. Invoice Provider Belum Diisi</li>";
+            } else {
+                $out_keu["pro3"] = "";
+            }
+            if ($keu_ra["pro4"] == 0) {
+                $out_keu["pro4"] = "<li>Nilai Provider Belum Diisi</li>";
+            } else {
+                $out_keu["pro4"] = "";
+            }
+            if ($keu_ra["pro5"] == 0) {
+                $out_keu["pro5"] = "<li>PO Provider Belum Diisi</li>";
+            } else {
+                $out_keu["pro5"] = "";
+            }
+            if ($keu_ra["pro6"] == 0) {
+                $out_keu["pro6"] = "<li>SSC ID Provider Belum Diisi</li>";
+            } else {
+                $out_keu["pro6"] = "";
+            }
+            if ($keu_ra["pro7"] == "N/A" or $keu_ra["pro7"] == "") {
+                $out_keu["pro7"] = "<li>Status Provider Belum Diisi</li>";
+            } else {
+                $out_keu["pro7"] = "";
             }
 
-            if ($keu_ra['tgldelinvako_keu'] < 1) {
-                $out_keu["tgldelinvako_keu"] = "<li>Tanggal Penerimaan Invoice Akomodasi Belum Diisi</li>";
+            if ($keu_ra["ako1"] < 1) {
+                $out_keu["ako1"] = "<li>No. Vendor Akomodasi Belum Diisi</li>";
             } else {
-                $out_keu["tgldelinvako_keu"] = "";
+                $out_keu["ako1"] = "";
+            }
+            if ($keu_ra["ako2"] == "N/A" or $keu_ra["ako2"] == "") {
+                $out_keu["ako2"] = "<li>Nama Vendor Akomodasi Belum Diisi</li>";
+            } else {
+                $out_keu["ako2"] = "";
+            }
+            if ($keu_ra["ako3"] == 0) {
+                $out_keu["ako3"] = "<li>No. Invoice Akomodasi Belum Diisi</li>";
+            } else {
+                $out_keu["ako3"] = "";
+            }
+            if ($keu_ra["ako4"] == 0) {
+                $out_keu["ako4"] = "<li>Nilai Akomodasi Belum Diisi</li>";
+            } else {
+                $out_keu["ako4"] = "";
+            }
+            if ($keu_ra["ako5"] == 0) {
+                $out_keu["ako5"] = "<li>PO Akomodasi Belum Diisi</li>";
+            } else {
+                $out_keu["ako5"] = "";
+            }
+            if ($keu_ra["ako6"] == 0) {
+                $out_keu["ako6"] = "<li>SSC ID Akomodasi Belum Diisi</li>";
+            } else {
+                $out_keu["ako6"] = "";
+            }
+            if ($keu_ra["ako7"] == "N/A" or $keu_ra["ako7"] == "") {
+                $out_keu["ako7"] = "<li>Status Akomodasi Belum Diisi</li>";
+            } else {
+                $out_keu["ako7"] = "";
             }
 
-            if ($keu_ra['tglkorekinv_keu'] < 1) {
-                $out_keu["tglkorekinv_keu"] = "<li>Tanggal Koreksi Invoice Pelatihan Belum Diisi</li>";
+            if ($keu_ra["status1"] == "N/A" or $keu_ra["status1"] == "") {
+                $out_keu["status1"] = "";
             } else {
-                $out_keu["tglkorekinv_keu"] = "";
+                if ($keu_ra["status1"] == "Belum Dibayar") {
+                    $out_keu["status1"] = "<li>Status Instruktur 1 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status1"] = "";
+                }
             }
-
-            if ($keu_ra['tglkorekinvako_keu'] < 1) {
-                $out_keu["tglkorekinvako_keu"] = "<li>Tanggal Koreksi Invoice Akomodasi Belum Diisi</li>";
+            if ($keu_ra["status2"] == "N/A" or $keu_ra["status2"] == "") {
+                $out_keu["status2"] = "";
             } else {
-                $out_keu["tglkorekinvako_keu"] = "";
+                if ($keu_ra["status2"] == "Belum Dibayar") {
+                    $out_keu["status2"] = "<li>Status Instruktur 2 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status2"] = "";
+                }
             }
-
-            if ($keu_ra['tglprocessinv_keu'] < 1) {
-                $out_keu["tglprocessinv_keu"] = "<li>Tanggal Proses Invoice Pelatihan Belum Diisi</li>";
+            if ($keu_ra["status3"] == "N/A" or $keu_ra["status3"] == "") {
+                $out_keu["status3"] = "";
             } else {
-                $out_keu["tglprocessinv_keu"] = "";
+                if ($keu_ra["status3"] == "Belum Dibayar") {
+                    $out_keu["status3"] = "<li>Status Instruktur 3 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status3"] = "";
+                }
             }
-
-            if ($keu_ra['tglprocessinvako_keu'] < 1) {
-                $out_keu["tglprocessinvako_keu"] = "<li>Tanggal Proses Invoice Akomodasi Belum Diisi</li>";
+            if ($keu_ra["status4"] == "N/A" or $keu_ra["status4"] == "") {
+                $out_keu["status4"] = "";
             } else {
-                $out_keu["tglprocessinvako_keu"] = "";
+                if ($keu_ra["status4"] == "Belum Dibayar") {
+                    $out_keu["status4"] = "<li>Status Instruktur 4 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status4"] = "";
+                }
             }
-
-            if ($keu_ra['tglpayven_keu'] < 1) {
-                $out_keu["tglpayven_keu"] = "<li>Tanggal Pembayaran Ke Vendor Pelatihan Belum Diisi</li>";
+            if ($keu_ra["status5"] == "N/A" or $keu_ra["status5"] == "") {
+                $out_keu["status5"] = "";
             } else {
-                $out_keu["tglpayven_keu"] = "";
+                if ($keu_ra["status5"] == "Belum Dibayar") {
+                    $out_keu["status5"] = "<li>Status Instruktur 5 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status5"] = "";
+                }
             }
-
-            if ($keu_ra['tglpayvenako_keu'] < 1) {
-                $out_keu["tglpayvenako_keu"] = "<li>Tanggal Pembayaran Ke Vendor Akomodasi Belum Diisi</li>";
+            if ($keu_ra["status6"] == "N/A" or $keu_ra["status6"] == "") {
+                $out_keu["status6"] = "";
             } else {
-                $out_keu["tglpayvenako_keu"] = "";
+                if ($keu_ra["status6"] == "Belum Dibayar") {
+                    $out_keu["status6"] = "<li>Status Instruktur 6 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status6"] = "";
+                }
             }
-
-            if ($keu_ra['tgldeldokins_keu'] < 1) {
-                $out_keu["tgldeldokins_keu"] = "<li>Tanggal Penerimaan Dokumen Instruktur Belum Diisi</li>";
+            if ($keu_ra["status7"] == "N/A" or $keu_ra["status7"] == "") {
+                $out_keu["status7"] = "";
             } else {
-                $out_keu["tgldeldokins_keu"] = "";
+                if ($keu_ra["status7"] == "Belum Dibayar") {
+                    $out_keu["status7"] = "<li>Status Instruktur 7 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status7"] = "";
+                }
             }
-
-            if ($keu_ra['tglpayhon_keu'] < 1) {
-                $out_keu["tglpayhon_keu"] = "<li>Tanggal Pembayaran Honor Instruktur Belum Diisi</li>";
+            if ($keu_ra["status8"] == "N/A" or $keu_ra["status8"] == "") {
+                $out_keu["status8"] = "";
             } else {
-                $out_keu["tglpayhon_keu"] = "";
+                if ($keu_ra["status8"] == "Belum Dibayar") {
+                    $out_keu["status8"] = "<li>Status Instruktur 8 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status8"] = "";
+                }
             }
-
+            if ($keu_ra["status9"] == "N/A" or $keu_ra["status9"] == "") {
+                $out_keu["status9"] = "";
+            } else {
+                if ($keu_ra["status9"] == "Belum Dibayar") {
+                    $out_keu["status9"] = "<li>Status Instruktur 9 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status9"] = "";
+                }
+            }
+            if ($keu_ra["status10"] == "N/A" or $keu_ra["status10"] == "") {
+                $out_keu["status10"] = "";
+            } else {
+                if ($keu_ra["status10"] == "Belum Dibayar") {
+                    $out_keu["status10"] = "<li>Status Instruktur 10 Belum Dibayar</li>";
+                } else {
+                    $out_keu["status10"] = "";
+                }
+            }
             if ($keu_ra['status_keu'] == "" or $keu_ra['status_keu'] == "Pending") {
-                $out_keu["status"] = "<li>Status Belum diselesaikan</li>";
+                $out_keu["status"] = "<li>Status Finance IP Belum diselesaikan</li>";
             } else {
                 $out_keu["status"] = "";
             }
+        }
+        if ($keubc->num_rows() < 1) {
+            $out_keu["nocs_ptmn"] = "";
+            $out_keu["namacs_ptmn"] = "";
+            $out_keu["nocs_tp"] = "";
+            $out_keu["namacs_tp"] = "";
+            $out_keu["trf"] = "";
+            $out_keu["cash"] = "";
+            $out_keu["internal"] = "";
+            $out_keu["aptp"] = "";
+            $out_keu["ttlrev"] = "";
+            $out_keu["noso"] = "";
+            $out_keu["idssc"] = "";
+            $out_keu["noinv"] = "";
+            $out_keu["stat"] = "";
+
+            $out_keu["status_bc"] = "<li>Semua data belum diisi</li>";
+        } else {
+            if ($keubc_ra["nocs_ptmn"] < 1) {
+                $out_keu["nocs_ptmn"] = "<li>No. Customer PTMN Belum Diisi</li>";
+            } else {
+                $out_keu["nocs_ptmn"] = "";
+            }
+            if ($keubc_ra["namacs_ptmn"] = "" or $keubc_ra["namacs_ptmn"] = "N/A") {
+                $out_keu["namacs_ptmn"] = "<li>Nama. Customer PTMN Belum Diisi</li>";
+            } else {
+                $out_keu["namacs_ptmn"] = "";
+            }
+            if ($keubc_ra["nocs_tp"] < 1) {
+                $out_keu["nocs_tp"] = "<li>No. Customer AP / Third Party Belum Diisi</li>";
+            } else {
+                $out_keu["nocs_tp"] = "";
+            }
+            if ($keubc_ra["namacs_tp"] = "" or $keubc_ra["namacs_tp"] = "N/A") {
+                $out_keu["namacs_tp"] = "<li>Nama. Customer AP / Third Party Belum Diisi</li>";
+            } else {
+                $out_keu["namacs_tp"] = "";
+            }
+            if ($keubc_ra["trf_trf"] < 1) {
+                $out_keu["trf"] = "<li>Tarif Belum Diisi</li>";
+            } else {
+                $out_keu["trf"] = "";
+            }
+            if ($keubc_ra["cash_pro"] < 1) {
+                $out_keu["cash"] = "<li>Cash Profit Belum Diisi</li>";
+            } else {
+                $out_keu["cash"] = "";
+            }
+            if ($keubc_ra["internal_pro"] < 1) {
+                $out_keu["internal"] = "<li>Internal Profit Belum Diisi</li>";
+            } else {
+                $out_keu["internal"] = "";
+            }
+            if ($keubc_ra["aptp_pro"] < 1) {
+                $out_keu["aptp"] = "<li>AP / Third Party Profit Belum Diisi</li>";
+            } else {
+                $out_keu["aptp"] = "";
+            }
+            if ($keubc_ra["ttlrev_pro"] < 1) {
+                $out_keu["ttlrev"] = "<li>Total Revenue Profit Belum Diisi</li>";
+            } else {
+                $out_keu["ttlrev"] = "";
+            }
+            if ($keubc_ra["noso_pro"] < 1) {
+                $out_keu["noso"] = "<li>No. SO Profit Belum Diisi</li>";
+            } else {
+                $out_keu["noso"] = "";
+            }
+            if ($keubc_ra["idssc_pro"] < 1) {
+                $out_keu["idssc"] = "<li>ID SSC Profit Belum Diisi</li>";
+            } else {
+                $out_keu["idssc"] = "";
+            }
+            if ($keubc_ra["noinv_pro"] < 1) {
+                $out_keu["noinv"] = "<li>Invoice No. Profit Belum Diisi</li>";
+            } else {
+                $out_keu["noinv"] = "";
+            }
+            if ($keubc_ra["stat_pro"] == "Belum Dibayar") {
+                $out_keu["stat"] = "<li>Status Profit Belum Dibayar</li>";
+            } else {
+                $out_keu["stat"] = "";
+            }
+
+            $out_keu["status_bc"] = $keubc_ra["status_keu_bc"];
         }
         echo json_encode($out_keu);
     }

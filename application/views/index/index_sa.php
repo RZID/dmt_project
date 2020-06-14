@@ -255,12 +255,17 @@ echo $this->session->flashdata("msg"); ?>
 
                     <td data-valuefrm="<?= $row->id_plth ?>">
                       <?php $keu = $dis->crud->select_where("keu_dmt", array("id_plth" => $row->id_plth));
-                      if ($keu->num_rows() < 1) {
+                      $keu_bc = $dis->crud->select_where("keu_bc_dmt", array("id_plth" => $row->id_plth));
+                      if ($keu->num_rows() < 1 or $keu_bc->num_rows() < 1) {
                         $keu_stat = "Pending";
                       } else {
                         $keu_stat = $keu->row_array()["status_keu"];
                       }
-                      echo $keu_stat;
+                      if ($keu->row_array()["status_keu"] == "Completed" && $keu_bc->row_array()["status_keu_bc"] == "Completed") {
+                        echo "Completed";
+                      } else {
+                        echo "Pending";
+                      }
                       ?>
                     </td>
                     <td data-valuefrm="<?= $row->id_plth ?>"><?php if ($dis->crud->select_where("pesertakeu_dmt", array("id_plth" => $row->id_plth))->row_array()["status_pesertakeu"] == "Completed" && $dis->crud->select_where("pesertapnd_dmt", array("id_plth" => $row->id_plth))->row_array()["status_pesertapnd"] == "Completed") {
@@ -694,18 +699,53 @@ echo $this->session->flashdata("msg"); ?>
         $(".modal-body").html(
           data4.nama +
           "<hr>" +
+          "<h5><u>Data Finance IP</u></h5>" +
           "<ul>" +
-          data4.tgldelinv_keu +
-          data4.tgldelinvako_keu +
-          data4.tglkorekinv_keu +
-          data4.tglkorekinvako_keu +
-          data4.tglprocessinv_keu +
-          data4.tglprocessinvako_keu +
-          data4.tglpayven_keu +
-          data4.tglpayvenako_keu +
-          data4.tgldeldokins_keu +
-          data4.tglpayhon_keu +
+          data4.ako1 +
+          data4.ako2 +
+          data4.ako3 +
+          data4.ako4 +
+          data4.ako5 +
+          data4.ako6 +
+          data4.ako7 +
+
+          data4.pro1 +
+          data4.pro2 +
+          data4.pro3 +
+          data4.pro4 +
+          data4.pro5 +
+          data4.pro6 +
+          data4.pro7 +
+
+          data4.status1 +
+          data4.status2 +
+          data4.status3 +
+          data4.status4 +
+          data4.status5 +
+          data4.status6 +
+          data4.status7 +
+          data4.status8 +
+          data4.status9 +
+          data4.status10 +
+
           data4.status +
+          "</ul>" +
+          "<h5><u>Data Finance BC</u></h5>" +
+          "<ul>" +
+          data4.nocs_ptmn +
+          data4.namacs_ptmn +
+          data4.nocs_tp +
+          data4.namacs_tp +
+          data4.trf +
+          data4.cash +
+          data4.internal +
+          data4.aptp +
+          data4.ttlrev +
+          data4.noso +
+          data4.idssc +
+          data4.noinv +
+          data4.stat +
+          data4.status_bc +
           "</ul>");
       }
     });
