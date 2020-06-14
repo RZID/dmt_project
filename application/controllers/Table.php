@@ -149,9 +149,15 @@ class Table extends CI_Controller
         }
         $data = array(
             "title" => "Tabel Kelengkapan Peserta - Dashboard Monitoring Training",
+            "peserta" => "active",
             "dis" => $this
         );
         $this->load->view("templating/head", $data);
+        if ($this->session->userdata("access_num") == 2) {
+            $this->load->view("navbar/pnd", $data);
+        } else {
+            $this->load->view("navbar/sa", $data);
+        }
         $this->load->view("table/table_peserta_pnd", $data);
         $this->load->view("templating/foot", $data);
     }

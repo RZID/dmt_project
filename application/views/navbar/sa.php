@@ -9,6 +9,8 @@
     }
   </style> -->
     <?php
+    if ($this->input->get("from") && $this->input->get("to")) {
+    }
     switch ($this->session->userdata("access_num")) {
         case 1:
             $lv = "Super Admin";
@@ -46,9 +48,9 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?php if (isset($index)) {
-                                    echo $index;
-                                }  ?>">
+            <li class="nav-item <?php if (isset($dashboard)) {
+                                    echo $dashboard;
+                                } ?>">
                 <a class="nav-link" href="<?= base_url("user/index") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard <?= $lv ?></span></a>
@@ -63,29 +65,29 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?php if (isset($keu_ip)) {
-                                    echo $keu_ip;
-                                }  ?>">
-                <a class="nav-link collapsed" href="<?= base_url("table/keuangan") ?>">
+            <li class="nav-item <?php if (isset($insert)) {
+                                    echo $insert;
+                                } ?>">
+                <a class="nav-link collapsed" href="<?= base_url("user/insert_pelatihan") ?>">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Kelengkapan Finance IP</span>
-                </a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?php if (isset($keu_bc)) {
-                                    echo $keu_bc;
-                                }  ?>">
-                <a class="nav-link collapsed" href="<?= base_url("table/keuangan_bc") ?>">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kelengkapan Finance BC</span>
+                    <span>Input Pelatihan</span>
                 </a>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item <?php if (isset($realisasi)) {
+                                    echo $realisasi;
+                                } ?>">
+                <a class="nav-link collapsed" href="<?= base_url("user/insert_realisasi") ?>">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Realisasi Pelatihan</span>
+                </a>
+            </li>
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?php if (isset($psrt_keu)) {
-                                    echo $psrt_keu;
-                                }  ?>">
-                <a class="nav-link collapsed" href="<?= base_url("table/peserta_keu") ?>">
+            <li class="nav-item <?php if (isset($peserta)) {
+                                    echo $peserta;
+                                } ?>">
+                <a class="nav-link collapsed" href="<?= base_url("table/peserta_pnd") ?>">
                     <i class="fas fa-table"></i>
                     <span>Kelengkapan Peserta</span>
                 </a>
@@ -93,6 +95,23 @@
 
             <!-- Heading -->
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                User Management
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= base_url("user/register") ?>">
+                    <i class="fas fa-plus"></i>
+                    <span>Tambah User</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= base_url("user/user_manager") ?>">
+                    <i class="fas fa-cog"></i>
+                    <span>Tabel User</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -121,8 +140,7 @@
                     <!-- Topbar Search
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-           
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -282,37 +300,13 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" id="keluarData" href="#">
+                                <a class="dropdown-item" href="#" data-toggle="modal" id="keluarData" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
-                                <script>
-                                    $("#keluarData").on("click", function() {
-                                        $(".modal-body").html("Klik logout untuk mengakhiri sesi login anda.");
-                                        $("#logoutModal").modal("show");
-                                    });
-                                </script>
                             </div>
                         </li>
+
                     </ul>
 
                 </nav>
-
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin logout?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                <a class="btn btn-primary" href="<?= base_url("home/logout") ?>">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>

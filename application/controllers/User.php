@@ -128,6 +128,7 @@
                 'title' => 'Dashboard - Dashboard Monitoring Training',
                 'dis' => $this,
                 'index' => "active",
+                'dashboard' => "active",
             );
             $this->load->view('templating/head', $data);
             $this->load->view('templating/modal', $data);
@@ -136,10 +137,12 @@
 
                     //Super Admin
                 case 1:
+                    $this->load->view('navbar/sa', $data);
                     $this->load->view('index/index_sa', $data);
                     break;
                     //PND
                 case 2:
+                    $this->load->view('navbar/pnd', $data);
                     $this->load->view('index/index_pnd', $data);
                     break;
 
@@ -180,9 +183,15 @@
 
             $data = array(
                 'title' => 'Input Pelatihan - Dashboard Monitoring Training',
+                'insert' => 'active',
                 'dis' => $this,
             );
             $this->load->view('templating/head', $data);
+            if ($this->session->userdata("access_num") == 1) {
+                $this->load->view('navbar/sa', $data);
+            } else {
+                $this->load->view('navbar/pnd', $data);
+            }
             $this->load->view('edit/inputpelatihan', $data);
             $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
@@ -346,63 +355,74 @@
                 $status = $this->input->post("status");
             }
 
-            if (!$_FILES["berkas"]['name']) {
-                $postdata = array(
-                    'nama_plth' => $this->input->post('nama'),
-                    'ketpros_plth' => $status,
-                    'batch_plth' => $this->input->post('batch'),
-                    'tglmulai_plth' => strtotime($this->input->post('tglmulai')),
-                    'tgldone_plth' => strtotime($this->input->post('tglsls')),
-                    'sifat_plth' => $this->input->post('sifat'),
-                    'vendor_plth' => $this->input->post('vonv'),
-                    'sertifikasi_plth' => $this->input->post('cert'),
-                    'nmvendor_plth' => $this->input->post('vend'),
-                    'hrgkspvend_plth' => $this->input->post('harga'),
-                    'ketkspvend_plth' => $this->input->post('ket'),
-                    'memopem_plth' => $select['memopem_plth'],
-                    'uniquefile_plth' => $select['uniquefile_plth'],
-                );
-            } else {
-                $new_name = time() . $_FILES["berkas"]['name'];
-                $old_name = $_FILES["berkas"]['name'];
+            if ($_FILES and $_FILES['berkas']['name']) {
+                $file1 = $_FILES["berkas"]['name'];
+                $file1_unique = time() . $_FILES["berkas"]['name'];
                 $config = array(
-                    'upload_path' => 'assets/uploaded_file',
+                    'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
                     'max_size' => '25000',
-                    'file_name' => $new_name
+                    'file_name' => $file1_unique
                 );
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('berkas')) {
-                    $upload_data = $this->upload->data();
-                    $file_name = $upload_data['file_name'];
-                    $postdata = array(
-                        'nama_plth' => $this->input->post('nama'),
-                        'ketpros_plth' => $status,
-                        'batch_plth' => $this->input->post('batch'),
-                        'tglmulai_plth' => strtotime($this->input->post('tglmulai')),
-                        'tgldone_plth' => strtotime($this->input->post('tglsls')),
-                        'sifat_plth' => $this->input->post('sifat'),
-                        'vendor_plth' => $this->input->post('vonv'),
-                        'sertifikasi_plth' => $this->input->post('cert'),
-                        'nmvendor_plth' => $this->input->post('vend'),
-                        'hrgkspvend_plth' => $this->input->post('harga'),
-                        'ketkspvend_plth' => $this->input->post('ket'),
-                        'memopem_plth' => $old_name,
-                        'uniquefile_plth' => $file_name,
-                    );
+                    $this->upload->data();
                 } else {
-                    echo $this->upload->display_errors();
+                    $this->upload->display_errors();
                 }
+            } else {
+                $file1 = "";
+                $file1_unique = "";
             }
+
+            if ($_FILES and $_FILES['berkas_memo']['name']) {
+                $file2_unique = time() . $_FILES["berkas_memo"]['name'];
+                $file2 = $_FILES["berkas_memo"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file2_unique
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('berkas_memo')) {
+                    $this->upload->data();
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                $file2 = "";
+                $file2_unique = "";
+            }
+            if (!$this->input->post("feedback")) {
+                $fb = 0;
+            } else {
+                $fb = 1;
+            }
+
+            $postdata = array(
+                'nama_plth' => $this->input->post('nama'),
+                'ketpros_plth' => $status,
+                'batch_plth' => $this->input->post('batch'),
+                'tglmulai_plth' => strtotime($this->input->post('tglmulai')),
+                'tgldone_plth' => strtotime($this->input->post('tglsls')),
+                'sifat_plth' => $this->input->post('sifat'),
+                'vendor_plth' => $this->input->post('vonv'),
+                'sertifikasi_plth' => $this->input->post('cert'),
+                'nmvendor_plth' => $this->input->post('vend'),
+                'hrgkspvend_plth' => $this->input->post('harga'),
+                'ketkspvend_plth' => $this->input->post('ket'),
+                'memopem_plth' => $file1,
+                'uniquefile_plth' => $file1_unique,
+                'filememo_plth' => $file2,
+                'uniquememo_plth' => $file2_unique,
+                'pretest_plth' => strtotime($this->input->post("pretest")),
+                'postest_plth' => strtotime($this->input->post("postest")),
+                'feedback_plth' => $fb,
+                'tglmemo_plth' => strtotime($this->input->post("tglmemo")),
+            );
             $this->crud->update("plth_dmt", "id_plth", $select['id_plth'], $postdata);
-            $this->session->set_flashdata("msg", "<script>
-        $(document).ready(function() {
-            sweetAlert(
-                'Sukses Mengubah Data!',
-                'Data telah di ubah',
-                'success'
-            )});
-        </script>");
+            $this->session->set_flashdata("msg", "<script>$(document).ready(function() {sweetAlert('Sukses Mengubah Data!','Data telah di ubah','success')});</script>");
             redirect("user/index");
         }
 
@@ -416,56 +436,71 @@
             } else {
                 $status = $this->input->post("status");
             }
-
             if ($_FILES and $_FILES['berkas']['name']) {
-                $new_name = time() . $_FILES["berkas"]['name'];
-                $old_name = $_FILES["berkas"]['name'];
+                $file1 = $_FILES["berkas"]['name'];
+                $file1_unique = time() . $_FILES["berkas"]['name'];
                 $config = array(
-                    'upload_path' => 'assets/uploaded_file',
+                    'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
                     'max_size' => '25000',
-                    'file_name' => $new_name
+                    'file_name' => $file1_unique
                 );
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('berkas')) {
-                    $upload_data = $this->upload->data();
-                    $file_name = $upload_data['file_name'];
-                    $postdata = array(
-                        'nama_plth' => $this->input->post('nama'),
-                        'ketpros_plth' => $status,
-                        'batch_plth' => $this->input->post('batch'),
-                        'tglmulai_plth' => strtotime($this->input->post('tglmulai')),
-                        'tgldone_plth' => strtotime($this->input->post('tglsls')),
-                        'sifat_plth' => $this->input->post('sifat'),
-                        'vendor_plth' => $this->input->post('vonv'),
-                        'sertifikasi_plth' => $this->input->post('cert'),
-                        'nmvendor_plth' => $this->input->post('vend'),
-                        'hrgkspvend_plth' => $this->input->post('harga'),
-                        'ketkspvend_plth' => $this->input->post('ket'),
-                        'memopem_plth' => $old_name,
-                        'uniquefile_plth' => $file_name,
-                    );
+                    $this->upload->data();
                 } else {
-                    echo $this->upload->display_errors();
+                    $this->upload->display_errors();
                 }
             } else {
-                $postdata = array(
-                    'nama_plth' => $this->input->post('nama'),
-                    'ketpros_plth' => $status,
-                    'batch_plth' => $this->input->post('batch'),
-                    'tglmulai_plth' => strtotime($this->input->post('tglmulai')),
-                    'tgldone_plth' => strtotime($this->input->post('tglsls')),
-                    'sifat_plth' => $this->input->post('sifat'),
-                    'vendor_plth' => $this->input->post('vonv'),
-                    'sertifikasi_plth' => $this->input->post('cert'),
-                    'nmvendor_plth' => $this->input->post('vend'),
-                    'hrgkspvend_plth' => $this->input->post('harga'),
-                    'ketkspvend_plth' => $this->input->post('ket'),
-                    'memopem_plth' => "N/A",
-                    'uniquefile_plth' => "N/A"
-                );
+                $file1 = "";
+                $file1_unique = "";
             }
 
+            if ($_FILES and $_FILES['berkas_memo']['name']) {
+                $file2_unique = time() . $_FILES["berkas_memo"]['name'];
+                $file2 = $_FILES["berkas_memo"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file2_unique
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('berkas_memo')) {
+                    $this->upload->data();
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                $file2 = "";
+                $file2_unique = "";
+            }
+            if (!$this->input->post("feedback")) {
+                $fb = 0;
+            } else {
+                $fb = 1;
+            }
+            $postdata = array(
+                'nama_plth' => $this->input->post('nama'),
+                'ketpros_plth' => $status,
+                'batch_plth' => $this->input->post('batch'),
+                'tglmulai_plth' => strtotime($this->input->post('tglmulai')),
+                'tgldone_plth' => strtotime($this->input->post('tglsls')),
+                'sifat_plth' => $this->input->post('sifat'),
+                'vendor_plth' => $this->input->post('vonv'),
+                'sertifikasi_plth' => $this->input->post('cert'),
+                'nmvendor_plth' => $this->input->post('vend'),
+                'hrgkspvend_plth' => $this->input->post('harga'),
+                'ketkspvend_plth' => $this->input->post('ket'),
+                'memopem_plth' => $file1,
+                'uniquefile_plth' => $file1_unique,
+                'filememo_plth' => $file2,
+                'uniquememo_plth' => $file2_unique,
+                'pretest_plth' => strtotime($this->input->post("pretest")),
+                'postest_plth' => strtotime($this->input->post("postest")),
+                'feedback_plth' => $fb,
+                'tglmemo_plth' => strtotime($this->input->post("tglmemo")),
+            );
 
             $this->crud->insert("plth_dmt", $postdata);
             $this->session->set_flashdata("msg", "<script>
@@ -1818,9 +1853,15 @@
 
             $data = array(
                 'title' => 'Realisasi Pelatihan - Dashboard Monitoring Training',
+                'realisasi' => 'active',
                 'dis' => $this,
             );
             $this->load->view('templating/head', $data);
+            if ($this->session->userdata("access_num") == 1) {
+                $this->load->view('navbar/sa', $data);
+            } else {
+                $this->load->view('navbar/pnd', $data);
+            }
             $this->load->view('index/realisasi', $data);
             $this->load->view('templating/modal', $data);
             $this->load->view('templating/foot', $data);
