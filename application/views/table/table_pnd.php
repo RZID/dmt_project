@@ -335,6 +335,11 @@
                       <th>Harga Kesepakatan Vendor</th>
                       <th>Keterangan Kesepakatan Vendor</th>
                       <th>Memo Pemanggilan</th>
+                      <th>Tanggal Pre Test</th>
+                      <th>Tanggal Post Test</th>
+                      <th>Feedback</th>
+                      <th>Tanggal Memo</th>
+                      <th>Dokumen Upload Memo</th>
                       <th>Status PND</th>
                       <th class="no-sort">Aksi</th>
                     </tr>
@@ -366,6 +371,32 @@
                           <?php } else { ?>
                             <a><?= $row->memopem_plth ?></a>
                           <?php } ?></td>
+
+                        <td><?php if ($row->pretest_plth < 1) {
+                              echo "N/A";
+                            } else {
+                              echo date("d-m-Y", $row->pretest_plth);
+                            }  ?></td>
+                        <td><?php if ($row->postest_plth < 1) {
+                              echo "N/A";
+                            } else {
+                              echo date("d-m-Y", $row->postest_plth);
+                            }  ?></td>
+                        <td><?php if ($row->feedback_plth) {
+                              echo "Sudah";
+                            } else {
+                              echo "Belum";
+                            } ?></td>
+                        <td><?php if ($row->tglmemo_plth < 1) {
+                              echo "N/A";
+                            } else {
+                              echo date("d-m-Y", $row->tglmemo_plth);
+                            }  ?></td>
+                        <td><?php if ($row->filememo_plth == "" or $row->filememo_plth == "N/A") {
+                              echo "N/A";
+                            } else {
+                              echo "<a href='" . base_url("assets/uploaded_file/") . $row->uniquememo_plth . "'>" . $row->filememo_plth . "</a>";
+                            }  ?></td>
                         <td><?php
                             $opr_get = $dis->crud->select_where("plth_dmt", array("id_plth" => $row->id_plth));
                             if ($opr_get->num_rows() < 1) {

@@ -300,6 +300,11 @@
                     'whdb' => $this->crud->select_where("plth_dmt", array("id_plth" => $id))->row_array(),
                 );
                 $this->load->view('templating/head', $data);
+                if ($this->session->userdata("access_num") == 1) {
+                    $this->load->view('navbar/sa', $data);
+                } else {
+                    $this->load->view('navbar/pnd', $data);
+                }
                 $this->load->view('edit/editplth', $data);
                 $this->load->view('templating/modal', $data);
                 $this->load->view('templating/foot', $data);
@@ -357,7 +362,8 @@
 
             if ($_FILES and $_FILES['berkas']['name']) {
                 $file1 = $_FILES["berkas"]['name'];
-                $file1_unique = time() . $_FILES["berkas"]['name'];
+                $file1_unique = time() . "." . pathinfo($_FILES["berkas"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -375,8 +381,8 @@
                 $file1_unique = "";
             }
 
-            if ($_FILES and $_FILES['berkas_memo']['name']) {
-                $file2_unique = time() . $_FILES["berkas_memo"]['name'];
+            if ($_FILES and $_FILES['berkas_memo']['name']) {;
+                $file2_unique = time() . "." . pathinfo($_FILES['berkas_memo']["name"], PATHINFO_EXTENSION);
                 $file2 = $_FILES["berkas_memo"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
@@ -438,7 +444,7 @@
             }
             if ($_FILES and $_FILES['berkas']['name']) {
                 $file1 = $_FILES["berkas"]['name'];
-                $file1_unique = time() . $_FILES["berkas"]['name'];
+                $file1_unique = time() . "." . pathinfo($_FILES["berkas"]['name'], PATHINFO_EXTENSION);
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -457,7 +463,7 @@
             }
 
             if ($_FILES and $_FILES['berkas_memo']['name']) {
-                $file2_unique = time() . $_FILES["berkas_memo"]['name'];
+                $file2_unique = time() . "." . pathinfo($_FILES["berkas_memo"]['name'], PATHINFO_EXTENSION);
                 $file2 = $_FILES["berkas_memo"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
@@ -918,7 +924,8 @@
                 $noven10 = $this->input->post("noven10");
             }
             if ($_FILES and $_FILES['file1']['name']) {
-                $file1 = time() . $_FILES["file1"]['name'];
+                $file1 = time() . "." . pathinfo($_FILES["file1"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -941,7 +948,8 @@
             }
 
             if ($_FILES and $_FILES['file2']['name']) {
-                $file2 = time() . $_FILES["file2"]['name'];
+                $file2 = time() . "." . pathinfo($_FILES["file2"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -964,7 +972,8 @@
             }
 
             if ($_FILES and $_FILES['file3']['name']) {
-                $file3 = time() . $_FILES["file3"]['name'];
+                $file3 = time() . "." . pathinfo($_FILES["file3"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -987,7 +996,8 @@
             }
 
             if ($_FILES and $_FILES['file4']['name']) {
-                $file4 = time() . $_FILES["file4"]['name'];
+                $file4 = time() . "." . pathinfo($_FILES["file4"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1009,7 +1019,8 @@
                 }
             }
             if ($_FILES and $_FILES['file5']['name']) {
-                $file5 = time() . $_FILES["file5"]['name'];
+                $file5 = time() . "." . pathinfo($_FILES["file5"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1031,7 +1042,8 @@
                 }
             }
             if ($_FILES and $_FILES['file6']['name']) {
-                $file6 = time() . $_FILES["file6"]['name'];
+                $file6 = time() . "." . pathinfo($_FILES["file6"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1053,7 +1065,7 @@
                 }
             }
             if ($_FILES and $_FILES['file7']['name']) {
-                $file7 = time() . $_FILES["file7"]['name'];
+                $file7 = time() . "." . pathinfo($_FILES["file7"]['name'], PATHINFO_EXTENSION);
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1075,7 +1087,8 @@
                 }
             }
             if ($_FILES and $_FILES['file8']['name']) {
-                $file8 = time() . $_FILES["file8"]['name'];
+                $file8 = time() . "." . pathinfo($_FILES["file8"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1097,7 +1110,8 @@
                 }
             }
             if ($_FILES and $_FILES['file9']['name']) {
-                $file9 = time() . $_FILES["file9"]['name'];
+                $file9 = time() . "." . pathinfo($_FILES["file9"]['name'], PATHINFO_EXTENSION);
+
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1119,7 +1133,7 @@
                 }
             }
             if ($_FILES and $_FILES['file10']['name']) {
-                $file10 = time() . $_FILES["file10"]['name'];
+                $file10 = time() . "." . pathinfo($_FILES["file10"]['name'], PATHINFO_EXTENSION);
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
                     'allowed_types' => '*',
@@ -1330,6 +1344,13 @@
             echo json_encode($getdata);
         }
 
+        function ajaxgetdata_keubc()
+        {
+            $id = $this->input->post("id_pelatihan");
+            $getdata = $this->crud->select_where("keu_bc_dmt", array("id_plth" => $id))->result_array();
+            echo json_encode($getdata);
+        }
+
         public function opr_edit()
         {
             $id = $this->input->get("id_pelatihan");
@@ -1380,7 +1401,8 @@
 
             //INSTRUKTUR 1
             if ($_FILES and $_FILES['opr1']['name']) {
-                $opr1_unique = time() . $_FILES["opr1"]['name'];
+                $opr1_unique = time() . "." . pathinfo($_FILES["opr1"]['name'], PATHINFO_EXTENSION);
+
                 $opr1 = $_FILES["opr1"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/operation',
@@ -1421,7 +1443,8 @@
 
             //INSTRUKTUR 4
             if ($_FILES and $_FILES['opr4']['name']) {
-                $opr4_unique = time() . $_FILES["opr4"]['name'];
+                $opr4_unique = time() . "." . pathinfo($_FILES["opr4"]['name'], PATHINFO_EXTENSION);
+
                 $opr4 = $_FILES["opr4"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/operation',
@@ -1448,7 +1471,8 @@
 
             //INSTRUKTUR 5
             if ($_FILES and $_FILES['opr5']['name']) {
-                $opr5_unique = time() . $_FILES["opr5"]['name'];
+                $opr5_unique = time() . "." . pathinfo($_FILES["opr5"]['name'], PATHINFO_EXTENSION);
+
                 $opr5 = $_FILES["opr5"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/operation',
@@ -1489,7 +1513,8 @@
 
             //INSTRUKTUR 4
             if ($_FILES and $_FILES['opr8']['name']) {
-                $opr8_unique = time() . $_FILES["opr8"]['name'];
+                $opr8_unique = time() . "." . pathinfo($_FILES["opr8"]['name'], PATHINFO_EXTENSION);
+
                 $opr8 = $_FILES["opr8"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/operation',
@@ -2254,7 +2279,7 @@
                 $pnd3 = $this->input->post("psrtpnd3");
             }
             if ($_FILES and $_FILES['psrtpnd4']['name']) {
-                $pnd4_unique = time() . $_FILES["psrtpnd4"]['name'];
+                $pnd4_unique = time() . "." . pathinfo($_FILES["psrtpnd4"]['name'], PATHINFO_EXTENSION);
                 $pnd4 = $_FILES["psrtpnd4"]['name'];
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
@@ -2506,9 +2531,66 @@
             } else {
                 $stat = $this->input->post("stat");
             }
+            if ($_FILES and $_FILES['file1']['name']) {
+                $file1_unique = time() . "." . pathinfo($_FILES["file1"]['name'], PATHINFO_EXTENSION);
+                $file1 = $_FILES["file1"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file1_unique
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file1')) {
+                    $this->upload->data();
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                $getCrud = $this->crud->select_where("keu_bc_dmt", array("id_plth", $this->input->post("id")))->row_array();
+                if ($getCrud["file1_keubc"] != "") {
+                    $file1 = $getCrud["file1_keubc"];
+                    $file1_unique = $getCrud["file1unik_keubc"];
+                } else {
+                    $file1 = "";
+                    $file1_unique = "";
+                }
+            }
+            if ($_FILES and $_FILES['file2']['name']) {
+                $file2_unique = time() . "." . pathinfo($_FILES["file2"]['name'], PATHINFO_EXTENSION);
+                $file2 = $_FILES["file1"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file2_unique
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('file2')) {
+                    $this->upload->data();
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                $getCrud = $this->crud->select_where("keu_bc_dmt", array("id_plth", $this->input->post("id")))->row_array();
+
+                if ($getCrud["file2_keubc"] != "") {
+                    $file2 = $getCrud["file2_keubc"];
+                    $file2_unique = $getCrud["file2unik_keubc"];
+                } else {
+                    $file2 = "";
+                    $file2_unique = "";
+                }
+            }
+
             if ($this->crud->select_where("keu_bc_dmt", array("id_plth" => $this->input->post("id")))->num_rows() < 1) {
                 $array_biarrapih = array(
                     "id_plth" => $this->input->post("id"),
+
+                    "file1_keubc" => $file1,
+                    "file2_keubc" => $file2,
+                    "file1unik_keubc" => $file1_unique,
+                    "file2unik_keubc" => $file2_unique,
 
                     "nocs_ptmn" => $this->input->post("nocustom1"),
                     "namacs_ptmn" => $this->input->post("namacustom1"),
@@ -2541,6 +2623,11 @@
                 redirect("user/index");
             } else {
                 $array_biarrapih = array(
+                    "file1_keubc" => $file1,
+                    "file2_keubc" => $file2,
+                    "file1unik_keubc" => $file1_unique,
+                    "file2unik_keubc" => $file2_unique,
+
                     "nocs_ptmn" => $this->input->post("nocustom1"),
                     "namacs_ptmn" => $this->input->post("namacustom1"),
 

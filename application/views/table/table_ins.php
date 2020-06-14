@@ -172,7 +172,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 1</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund1"></div>
                           </div>
@@ -207,7 +207,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 2</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund2"></div>
                           </div>
@@ -280,7 +280,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 4</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund4"></div>
                           </div>
@@ -316,7 +316,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 5</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund5"></div>
                           </div>
@@ -352,7 +352,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 6</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund6"></div>
                           </div>
@@ -389,7 +389,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 7</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund7"></div>
                           </div>
@@ -425,7 +425,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 8</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund8"></div>
                           </div>
@@ -465,7 +465,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 9</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund9"></div>
                           </div>
@@ -501,7 +501,7 @@
 
                           <!-- Biaya & Honor Transport Instruktur 1 -->
                           <div class="row">
-                            <div class="col-xl col-lg">Surat Undangan Vendor 10</div>
+                            <div class="col-xl col-lg">Surat Undangan</div>
                             :
                             <div class="col-xl col-lg" id="surund10"></div>
                           </div>
@@ -669,16 +669,16 @@
               $("#beains9").html(rupiahisasi(data2[0].beasesins9_ins, "Rp. ") + ",-");
               $("#beains10").html(rupiahisasi(data2[0].beasesins10_ins, "Rp. ") + ",-");
 
-              $("#noven1").html(data2[0].noven1_ins);
-              $("#noven2").html(data2[0].noven2_ins);
-              $("#noven3").html(data2[0].noven3_ins);
-              $("#noven4").html(data2[0].noven4_ins);
-              $("#noven5").html(data2[0].noven5_ins);
-              $("#noven6").html(data2[0].noven6_ins);
-              $("#noven7").html(data2[0].noven7_ins);
-              $("#noven8").html(data2[0].noven8_ins);
-              $("#noven9").html(data2[0].noven9_ins);
-              $("#noven10").html(data2[0].noven10_ins);
+              $("#noven1").html(data2[0].novend1_ins);
+              $("#noven2").html(data2[0].novend2_ins);
+              $("#noven3").html(data2[0].novend3_ins);
+              $("#noven4").html(data2[0].novend4_ins);
+              $("#noven5").html(data2[0].novend5_ins);
+              $("#noven6").html(data2[0].novend6_ins);
+              $("#noven7").html(data2[0].novend7_ins);
+              $("#noven8").html(data2[0].novend8_ins);
+              $("#noven9").html(data2[0].novend9_ins);
+              $("#noven10").html(data2[0].novend10_ins);
 
               if (data2[0].surund1_ins != "N/A") {
                 $("#surund1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].surund1_ins + "'>" + data2[0].surund1_ins + "</a>");

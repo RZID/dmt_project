@@ -144,72 +144,114 @@ echo $this->session->flashdata("msg"); ?>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Penerimaan Invoice Pelatihan</div>
+                          <div class="col-xl col-lg">Absensi Kehadiran</div>
                           :
                           <div class="col-xl col-lg" id="keu1"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Penerimaan Invoice Akomodasi</div>
+                          <div class="col-xl col-lg">Laporan Kegiatan</div>
                           :
                           <div class="col-xl col-lg" id="keu2"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Koreksi Invoice Pelatihan</div>
+                          <div class="col-xl col-lg">No. Customer (Internal PTMN)</div>
                           :
                           <div class="col-xl col-lg" id="keu3"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Koreksi Invoice Akomodasi</div>
+                          <div class="col-xl col-lg">Nama. Customer (Internal PTMN)</div>
                           :
                           <div class="col-xl col-lg" id="keu4"></div>
                         </div>
+                        <br>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Proses Invoice Pelatihan</div>
+                          <div class="col-xl col-lg">No. Customer (AP / Third Party)</div>
                           :
                           <div class="col-xl col-lg" id="keu5"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Proses Invoice Akomodasi</div>
+                          <div class="col-xl col-lg">Nama. Customer (AP / Third Party)</div>
                           :
                           <div class="col-xl col-lg" id="keu6"></div>
                         </div>
+                        <br>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Pembayaran Ke Vendor Pelatihan</div>
+                          <div class="col-xl col-lg">Tarif</div>
                           :
                           <div class="col-xl col-lg" id="keu7"></div>
                         </div>
-
+                        <br>
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Pembayaran Ke Vendor Akomodasi</div>
+                          <div class="col-xl col-lg">Cash (Profit)</div>
                           :
                           <div class="col-xl col-lg" id="keu8"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Penerimaan Dokumen Instruktur</div>
+                          <div class="col-xl col-lg">Internal (Profit)</div>
                           :
                           <div class="col-xl col-lg" id="keu9"></div>
                         </div>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Tanggal Pembayaran Honor Instruktur</div>
+                          <div class="col-xl col-lg">AP / Third Party (Profit)</div>
                           :
                           <div class="col-xl col-lg" id="keu10"></div>
+                        </div>
+
+                        <!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">Total Revenue (Profit)</div>
+                          :
+                          <div class="col-xl col-lg" id="keu11"></div>
+                        </div>
+
+                        <!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">No. SO (Profit)</div>
+                          :
+                          <div class="col-xl col-lg" id="keu12"></div>
+                        </div>
+
+                        <!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">ID SSC (Profit)</div>
+                          :
+                          <div class="col-xl col-lg" id="keu13"></div>
+                        </div>
+                        <!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">Invoice No. (Profit)</div>
+                          :
+                          <div class="col-xl col-lg" id="keu14"></div>
+                        </div>
+                        <!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">Status (Profit)</div>
+                          :
+                          <div class="col-xl col-lg" id="keu15"></div>
+                        </div>
+                        <br>
+                        <!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">Status Finance BC</div>
+                          :
+                          <div class="col-xl col-lg" id="keu16"></div>
                         </div>
 
                         <div class="modal-footer">
@@ -337,62 +379,27 @@ echo $this->session->flashdata("msg"); ?>
       data: {
         id_pelatihan: id
       },
-      url: "<?= base_url("user/ajaxgetdata_keu") ?>",
+      url: "<?= base_url("user/ajaxgetdata_keubc") ?>",
       success: function(data2) {
         $(document).ready(function() {
           var len = data2.length;
           if (len >= 1) {
-            if (data2[0].tgldelinv_keu == 0) {
-              $("#keu1").html("N/A");
-            } else {
-              $("#keu1").html($.format.date(new Date(data2[0].tgldelinv_keu * 1000), 'dd MMMM yyyy'));
-            }
-
-            if (data2[0].tgldelinvako_keu == 0) {
-              $("#keu2").html("N/A");
-            } else {
-              $("#keu2").html($.format.date(new Date(data2[0].tgldelinvako_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglkorekinv_keu == 0) {
-              $("#keu3").html("N/A");
-            } else {
-              $("#keu3").html($.format.date(new Date(data2[0].tglkorekinv_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglkorekinvako_keu == 0) {
-              $("#keu4").html("N/A");
-            } else {
-              $("#keu4").html($.format.date(new Date(data2[0].tglkorekinvako_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglprocessinv_keu == 0) {
-              $("#keu5").html("N/A");
-            } else {
-              $("#keu5").html($.format.date(new Date(data2[0].tglprocessinv_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglprocessinvako_keu == 0) {
-              $("#keu6").html("N/A");
-            } else {
-              $("#keu6").html($.format.date(new Date(data2[0].tglprocessinvako_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglpayven_keu == 0) {
-              $("#keu7").html("N/A");
-            } else {
-              $("#keu7").html($.format.date(new Date(data2[0].tglpayven_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglpayvenako_keu == 0) {
-              $("#keu8").html("N/A");
-            } else {
-              $("#keu8").html($.format.date(new Date(data2[0].tglpayvenako_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tgldeldokins_keu == 0) {
-              $("#keu9").html("N/A");
-            } else {
-              $("#keu9").html($.format.date(new Date(data2[0].tgldeldokins_keu * 1000), 'dd MMMM yyyy'));
-            }
-            if (data2[0].tglpayhon_keu == 0) {
-              $("#keu10").html("N/A");
-            } else {
-              $("#keu10").html($.format.date(new Date(data2[0].tglpayhon_keu * 1000), 'dd MMMM yyyy'));
-            }
+            $("#keu1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file1unik_keubc + "'>" + data2[0].file1_keubc + "</a>");
+            $("#keu2").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file2unik_keubc + "'>" + data2[0].file2_keubc + "</a>");
+            $("#keu3").html(data2[0].nocs_ptmn);
+            $("#keu4").html(data2[0].namacs_ptmn);
+            $("#keu5").html(data2[0].nocs_tp);
+            $("#keu6").html(data2[0].namacs_tp);
+            $("#keu7").html(rupiahisasi(data2[0].trf_trf, "Rp.") + " ,-");
+            $("#keu8").html(data2[0].cash_pro);
+            $("#keu9").html(data2[0].internal_pro);
+            $("#keu10").html(data2[0].aptp_pro);
+            $("#keu11").html(data2[0].ttlrev_pro);
+            $("#keu12").html(data2[0].noso_pro);
+            $("#keu13").html(data2[0].idssc_pro);
+            $("#keu14").html(data2[0].noinv_pro);
+            $("#keu15").html(data2[0].statpro_pro);
+            $("#keu16").html(data2[0].status_keu_bc);
           } else {
             var nulled = "Belum Diatur";
             $("#keu1").html("<a class='text-danger'>" + nulled + "</a>");
@@ -405,6 +412,12 @@ echo $this->session->flashdata("msg"); ?>
             $("#keu8").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu9").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu10").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu11").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu12").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu13").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu14").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu15").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu16").html("<a class='text-danger'>Pending</a>");
           }
         });
       }

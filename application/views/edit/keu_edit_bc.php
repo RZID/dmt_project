@@ -31,7 +31,11 @@
               <div class="row">
                 <div class="col-lg col-xl">
                   <h6 class="m-0 font-weight-bold text-secondary">Absensi Kehadiran</h6>
-                  <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("opr_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["dokumen_opr"]; ?>" disabled>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input file-type" id="inputGroupFile01" name="file1" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" id="file1" for="inputGroupFile01">Choose file</label>
+                  </div>
+                  <small id="fileHelpId" class="form-text text-muted">File Sebelumnya : <?= $whdb2["file1_keubc"] ?></small>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
@@ -42,9 +46,20 @@
 
                 <div class="col-lg col-xl">
                   <h6 class="m-0 font-weight-bold text-secondary">Laporan Kegiatan</h6>
-                  <input type="text" class="form-control form-control-user" value="Belum Tersedia" disabled>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input file-type" id="inputGroupFile01" name="file2" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" id="file2" for="inputGroupFile01">Choose file</label>
+                  </div>
+                  <small id="fileHelpId" class="form-text text-muted">File Sebelumnya : <?= $whdb2["file2_keubc"] ?></small>
                 </div>
+
               </div>
+              <script>
+                $(document).on('change', '.file-type', function() {
+                  let fileName = $(this).val().replace(/\\/g, '/').replace(/.*\//, '');
+                  $(this).parent('.custom-file').find('.custom-file-label').text(fileName);
+                });
+              </script>
               <!-- Internal PTMN -->
 
               <br>
