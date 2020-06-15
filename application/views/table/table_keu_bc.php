@@ -69,11 +69,11 @@ echo $this->session->flashdata("msg"); ?>
                 <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
                 <td><?= date("d-m-Y", $row->tgldone_plth) ?></td>
                 <td><?php
-                    $ins_get = $dis->crud->select_where("keu_dmt", array("id_plth" => $row->id_plth));
+                    $ins_get = $dis->crud->select_where("keu_bc_dmt", array("id_plth" => $row->id_plth));
                     if ($ins_get->num_rows() < 1) {
                       echo "Pending";
                     } else {
-                      echo $ins_get->row_array()["status_keu"];
+                      echo $ins_get->row_array()["status_keu_bc"];
                     } ?>
                 </td>
                 <td class="text-center">
