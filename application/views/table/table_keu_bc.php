@@ -398,7 +398,7 @@ echo $this->session->flashdata("msg"); ?>
             $("#keu12").html(data2[0].noso_pro);
             $("#keu13").html(data2[0].idssc_pro);
             $("#keu14").html(data2[0].noinv_pro);
-            $("#keu15").html(data2[0].statpro_pro);
+            $("#keu15").html(data2[0].stat_pro);
             $("#keu16").html(data2[0].status_keu_bc);
           } else {
             var nulled = "Belum Diatur";
