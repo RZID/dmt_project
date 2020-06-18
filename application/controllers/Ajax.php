@@ -412,7 +412,7 @@ class Ajax extends CI_Controller
                 $out_keu["nocs_ptmn"] = "";
             }
             if ($keubc_ra["namacs_ptmn"] = "" or $keubc_ra["namacs_ptmn"] = "N/A") {
-                $out_keu["namacs_ptmn"] = "<li>Nama. Customer PTMN Belum Diisi</li>";
+                $out_keu["namacs_ptmn"] = "<li>Nama Customer PTMN Belum Diisi</li>";
             } else {
                 $out_keu["namacs_ptmn"] = "";
             }
@@ -422,7 +422,7 @@ class Ajax extends CI_Controller
                 $out_keu["nocs_tp"] = "";
             }
             if ($keubc_ra["namacs_tp"] = "" or $keubc_ra["namacs_tp"] = "N/A") {
-                $out_keu["namacs_tp"] = "<li>Nama. Customer AP / Third Party Belum Diisi</li>";
+                $out_keu["namacs_tp"] = "<li>Nama Customer AP / Third Party Belum Diisi</li>";
             } else {
                 $out_keu["namacs_tp"] = "";
             }
@@ -579,6 +579,15 @@ class Ajax extends CI_Controller
             }
         }
 
+
         echo json_encode($out_keu);
+    }
+
+    function getpnd_export()
+    {
+        $data_down = $this->input->post("data");
+        $gave_data = $this->db->query("select * from plth_dmt where id_plth in (" . $data_down . ")")->result_array();
+        echo json_encode($gave_data);
+        json_encode($gave_data);
     }
 }

@@ -442,26 +442,6 @@
             } else {
                 $status = $this->input->post("status");
             }
-            if ($_FILES and $_FILES['berkas']['name']) {
-                $file1 = $_FILES["berkas"]['name'];
-                $file1_unique = time() . "." . pathinfo($_FILES["berkas"]['name'], PATHINFO_EXTENSION);
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file1_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('berkas')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                $file1 = "";
-                $file1_unique = "";
-            }
-
             if ($_FILES and $_FILES['berkas_memo']['name']) {
                 $file2_unique = time() . "." . pathinfo($_FILES["berkas_memo"]['name'], PATHINFO_EXTENSION);
                 $file2 = $_FILES["berkas_memo"]['name'];
@@ -481,12 +461,35 @@
                 $file2 = "";
                 $file2_unique = "";
             }
+            if ($_FILES and $_FILES['berkas_laporan']['name']) {
+                $file1_unique = time() . "." . pathinfo($_FILES["berkas_laporan"]['name'], PATHINFO_EXTENSION);
+                $file1 = $_FILES["berkas_laporan"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file1_unique
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('berkas_laporan')) {
+                    $this->upload->data();
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                $file1 = "";
+                $file1_unique = "";
+            }
             if (!$this->input->post("feedback")) {
                 $fb = 0;
             } else {
                 $fb = 1;
             }
             $postdata = array(
+                'jenis_plth' => $this->input->post('jenis'),
+                'lokasi_plth' => $this->input->post('lokasi'),
+                'tgllpr_plth' => strtotime($this->input->post('tgllpr')),
+                'filelapor_plth' => $file1_unique,
                 'nama_plth' => $this->input->post('nama'),
                 'ketpros_plth' => $status,
                 'batch_plth' => $this->input->post('batch'),
@@ -498,8 +501,6 @@
                 'nmvendor_plth' => $this->input->post('vend'),
                 'hrgkspvend_plth' => $this->input->post('harga'),
                 'ketkspvend_plth' => $this->input->post('ket'),
-                'memopem_plth' => $file1,
-                'uniquefile_plth' => $file1_unique,
                 'filememo_plth' => $file2,
                 'uniquememo_plth' => $file2_unique,
                 'pretest_plth' => strtotime($this->input->post("pretest")),
@@ -1341,6 +1342,12 @@
         {
             $id = $this->input->post("id_pelatihan");
             $getdata = $this->crud->select_where("keu_dmt", array("id_plth" => $id))->result_array();
+            echo json_encode($getdata);
+        }
+        function ajaxgetdata2_keu()
+        {
+            $id = $this->input->post("id_pelatihan");
+            $getdata = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->result_array();
             echo json_encode($getdata);
         }
 

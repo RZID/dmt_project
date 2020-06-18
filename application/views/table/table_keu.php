@@ -456,56 +456,160 @@ echo $this->session->flashdata("msg"); ?>
             } else {
               $("#pro7").html(data2[0].pro7);
             }
+
             if ((data2[0].status1 == "N/A") || (data2[0].status1 == "")) {
               $(".stat1").html('');
             } else {
-              $(".stat1").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 1</div> : <div class="col-xl col-lg">' + data2[0].status1 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat1").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 1</div> : <div class="col-xl col-lg">' + data2[0].status1 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 1</div> : <div class="col-xl col-lg">' + data3[0].novend1_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 1</div> : <div class="col-xl col-lg">' + data3[0].ins1_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 1</div> : <div class="col-xl col-lg">' + data3[0].sesins1_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 1</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins1_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status2 == "N/A") || (data2[0].status2 == "")) {
               $(".stat2").html('');
             } else {
-              $(".stat2").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 2</div> : <div class="col-xl col-lg">' + data2[0].status2 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat2").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 2</div> : <div class="col-xl col-lg">' + data2[0].status2 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 2</div> : <div class="col-xl col-lg">' + data3[0].novend2_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 2</div> : <div class="col-xl col-lg">' + data3[0].ins2_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 2</div> : <div class="col-xl col-lg">' + data3[0].sesins2_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 2</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins2_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status3 == "N/A") || (data2[0].status3 == "")) {
               $(".stat3").html('');
             } else {
-              $(".stat3").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 3</div> : <div class="col-xl col-lg">' + data2[0].status3 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat3").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 3</div> : <div class="col-xl col-lg">' + data2[0].status3 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 3</div> : <div class="col-xl col-lg">' + data3[0].novend3_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 3</div> : <div class="col-xl col-lg">' + data3[0].ins3_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 3</div> : <div class="col-xl col-lg">' + data3[0].sesins3_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 3</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins3_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status4 == "N/A") || (data2[0].status4 == "")) {
               $(".stat4").html('');
             } else {
-              $(".stat4").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 4</div> : <div class="col-xl col-lg">' + data2[0].status4 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat4").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 4</div> : <div class="col-xl col-lg">' + data2[0].status4 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 4</div> : <div class="col-xl col-lg">' + data3[0].novend4_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 4</div> : <div class="col-xl col-lg">' + data3[0].ins4_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 4</div> : <div class="col-xl col-lg">' + data3[0].sesins4_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 4</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins4_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status5 == "N/A") || (data2[0].status5 == "")) {
               $(".stat5").html('');
             } else {
-              $(".stat5").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 5</div> : <div class="col-xl col-lg">' + data2[0].status5 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat5").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 5</div> : <div class="col-xl col-lg">' + data2[0].status5 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 5</div> : <div class="col-xl col-lg">' + data3[0].novend5_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 5</div> : <div class="col-xl col-lg">' + data3[0].ins5_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 5</div> : <div class="col-xl col-lg">' + data3[0].sesins5_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 5</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins5_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
+
             if ((data2[0].status6 == "N/A") || (data2[0].status6 == "")) {
               $(".stat6").html('');
             } else {
-              $(".stat6").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 6</div> : <div class="col-xl col-lg">' + data2[0].status6 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat6").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 6</div> : <div class="col-xl col-lg">' + data2[0].status6 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 6</div> : <div class="col-xl col-lg">' + data3[0].novend6_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 6</div> : <div class="col-xl col-lg">' + data3[0].ins6_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 6</div> : <div class="col-xl col-lg">' + data3[0].sesins6_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 6</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins6_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+
+              });
             }
             if ((data2[0].status7 == "N/A") || (data2[0].status7 == "")) {
               $(".stat7").html('');
             } else {
-              $(".stat7").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 7</div> : <div class="col-xl col-lg">' + data2[0].status7 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat7").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 7</div> : <div class="col-xl col-lg">' + data2[0].status7 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 7</div> : <div class="col-xl col-lg">' + data3[0].novend7_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 7</div> : <div class="col-xl col-lg">' + data3[0].ins7_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 7</div> : <div class="col-xl col-lg">' + data3[0].sesins7_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 7</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins7_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status8 == "N/A") || (data2[0].status8 == "")) {
               $(".stat8").html('');
             } else {
-              $(".stat8").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 8</div> : <div class="col-xl col-lg">' + data2[0].status8 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat8").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 8</div> : <div class="col-xl col-lg">' + data2[0].status8 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 8</div> : <div class="col-xl col-lg">' + data3[0].novend8_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 8</div> : <div class="col-xl col-lg">' + data3[0].ins8_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 8</div> : <div class="col-xl col-lg">' + data3[0].sesins8_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 8</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins8_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status9 == "N/A") || (data2[0].status9 == "")) {
               $(".stat9").html('');
             } else {
-              $(".stat9").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 9</div> : <div class="col-xl col-lg">' + data2[0].status9 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat9").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 9</div> : <div class="col-xl col-lg">' + data2[0].status9 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 9</div> : <div class="col-xl col-lg">' + data3[0].novend9_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 9</div> : <div class="col-xl col-lg">' + data3[0].ins9_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 9</div> : <div class="col-xl col-lg">' + data3[0].sesins9_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 9</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins9_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
             if ((data2[0].status10 == "N/A") || (data2[0].status10 == "")) {
               $(".stat10").html('');
             } else {
-              $(".stat10").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 10</div> : <div class="col-xl col-lg">' + data2[0].status10 + '</div></div><br>');
+              $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data: {
+                  id_pelatihan: id
+                },
+                url: "<?= base_url("user/ajaxgetdata2_keu") ?>",
+                success: function(data3) {
+                  $(".stat10").html('<div class="row"><div class="col-xl col-lg">Status Instruktur 10</div> : <div class="col-xl col-lg">' + data2[0].status10 + '</div></div><div class="row"><div class="col-xl col-lg">No. Vendor Instruktur 10</div> : <div class="col-xl col-lg">' + data3[0].novend10_ins + '</div></div><div class="row"><div class="col-xl col-lg">Nama Instruktur 10</div> : <div class="col-xl col-lg">' + data3[0].ins10_ins + '</div></div><div class="row"><div class="col-xl col-lg">Sesi Instruktur 10</div> : <div class="col-xl col-lg">' + data3[0].sesins10_ins + '</div></div><div class="row"><div class="col-xl col-lg">Biaya Transport Instruktur 10</div> : <div class="col-xl col-lg">' + rupiahisasi(data3[0].beasesins10_ins, "Rp. ") + ' ,-</div></div><br>');
+                }
+              });
             }
+
             if (data2[0].status_keu == "") {
               $("#status_keu123").html("<a class='text-danger'>Belum Diatur</a>");
             } else {

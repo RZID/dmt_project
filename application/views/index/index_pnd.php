@@ -194,6 +194,7 @@
                 <tr>
                   <th class="no-sort">No.</th>
                   <th>Nama Pelatihan Dan Event</th>
+                  <th>Jenis Pelatihan</th>
                   <th>Batch</th>
                   <th>Tanggal Mulai</th>
                   <th>Tanggal Selesai</th>
@@ -223,6 +224,7 @@
                   <tr>
                     <td></td>
                     <td><?= $row->nama_plth ?></td>
+                    <td><?= $row->jenis_plth ?></td>
                     <td><?= $row->batch_plth ?></td>
                     <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
                     <td data-id=<?= $row->tgldone_plth * 1000 ?>><?= date("d-m-Y", $row->tgldone_plth) ?></td>

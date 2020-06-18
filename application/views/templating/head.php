@@ -33,4 +33,6 @@
     <script src="<?= base_url() ?>/assets/dtable/js/jquery.dataTables.js"></script>
     <script src="<?= base_url() ?>/assets/dtable/js/dataTables.bootstrap4.js"></script>
     <script src="<?= base_url() ?>/assets/date/jquery-dateformat.js"></script>
+
+    <!-- Tambahan -->
 </head>
