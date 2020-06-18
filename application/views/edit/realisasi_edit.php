@@ -400,6 +400,17 @@
                         </div>
                       </div>
                     </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" dbval="<?= $row["status_realisasi"] ?>" class="form-check-input" name="stat" id="stat" value="Completed">
+                        Selesaikan Status Realisasi Pelatihan
+                      </label>
+                    </div>
+                    <script>
+                      if ($("#stat").attr("dbval") == "Completed") {
+                        $("#stat").prop("checked", true);
+                      } else {}
+                    </script>
                     <input type="hidden" name="id" value="<?= $row["id_realisasi"] ?>">
                     <!-- End Example events -->
                     <p></p>

@@ -20,38 +20,40 @@
         </div>
         <!-- Form -->
         <br>
+        <?php
+        $row_alldata = $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array();
+        ?>
         <div class="col-xl-12 col-lg-7">
           <form class="namapelatihan" method="POST" action="<?= base_url("user/insert_realisasi_core"); ?>">
-
+            <input type="hidden" name="id" value="<?= $this->input->get("id_pelatihan") ?>">
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Jenis Pelatihan</h6>
-              <input type="text" class="form-control form-control-user" name="real1">
+              <input type="text" class="form-control form-control-user" name="real1" value="<?= $row_alldata["jenis_plth"] ?>" disabled>
             </div>
 
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Nama Pelatihan</h6>
-              <input type="text" class="form-control form-control-user" name="real2">
+              <input type="text" class="form-control form-control-user" name="real2" value="<?= $row_alldata["nama_plth"] ?>" disabled>
             </div>
 
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Batch</h6>
-              <input type="number" class="form-control form-control-user" name="real3">
+              <input type="number" class="form-control form-control-user" name="real3" value="<?= $row_alldata["batch_plth"] ?>" disabled>
             </div>
 
             <div class="row">
               <div class="form-group col-lg">
                 <h6 class="m-0 font-weight-bold text-secondary">Tanggal Mulai</h6>
-                <input type="date" class="form-control form-control-user" name="real4">
+                <input type="date" class="form-control form-control-user" name="real4" value="<?= date("Y-m-d", $row_alldata["tglmulai_plth"]) ?>" disabled>
               </div>
               <div class="form-group col-lg">
                 <h6 class="m-0 font-weight-bold text-secondary">Tanggal Selesai</h6>
-                <input type="date" class="form-control form-control-user" name="real5">
+                <input type="date" class="form-control form-control-user" name="real5" value="<?= date("Y-m-d", $row_alldata["tgldone_plth"]) ?>" disabled>
               </div>
             </div>
-
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Lokasi Pelatihan</h6>
-              <input type="text" class="form-control form-control-user" name="real6">
+              <input type="text" class="form-control form-control-user" name="real6" value="<?= $row_alldata["lokasi_plth"] ?>" disabled>
             </div>
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Durasi Pelatihan (HK)</h6>
@@ -91,6 +93,12 @@
                   <input type="number" class="form-control form-control-user" name="real12">
                 </div>
               </div>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="stat" id="stat" value="Completed">
+                Selesaikan Status Realisasi Pelatihan
+              </label>
             </div>
 
             <!-- End Example events -->

@@ -397,8 +397,36 @@
                     $this->upload->display_errors();
                 }
             } else {
-                $file2 = "";
-                $file2_unique = "";
+                if ($select["filememo_plth"] == "N/A" or $select["filememo_plth"] == "") {
+                    $file2 = "";
+                    $file2_unique = "";
+                } else {
+                    $file2 = $select["filememo_plth"];
+                    $file2_unique = $select["uniquememo_plth"];
+                }
+            }
+            if ($_FILES and $_FILES['berkas_laporan']['name']) {
+                $file1_unique = time() . "." . pathinfo($_FILES["berkas_laporan"]['name'], PATHINFO_EXTENSION);
+                $file1 = $_FILES["berkas_laporan"]['name'];
+                $config = array(
+                    'upload_path' => 'assets/uploaded_file/',
+                    'allowed_types' => '*',
+                    'max_size' => '25000',
+                    'file_name' => $file1_unique
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('berkas_laporan')) {
+                    $this->upload->data();
+                } else {
+                    $this->upload->display_errors();
+                }
+            } else {
+                if ($select["filelapor_plth"] == "" or $select["filelapor_plth"] == "N/A") {
+                    $file1 = "";
+                    $file1_unique = "";
+                } else {
+                    $file1_unique = $select["filelapor_plth"];
+                }
             }
             if (!$this->input->post("feedback")) {
                 $fb = 0;
@@ -407,6 +435,9 @@
             }
 
             $postdata = array(
+                'jenis_plth' => $this->input->post('jenis'),
+                'lokasi_plth' => $this->input->post('lokasi'),
+                'tgllpr_plth' => strtotime($this->input->post('tgllpr')),
                 'nama_plth' => $this->input->post('nama'),
                 'ketpros_plth' => $status,
                 'batch_plth' => $this->input->post('batch'),
@@ -418,10 +449,9 @@
                 'nmvendor_plth' => $this->input->post('vend'),
                 'hrgkspvend_plth' => $this->input->post('harga'),
                 'ketkspvend_plth' => $this->input->post('ket'),
-                'memopem_plth' => $file1,
-                'uniquefile_plth' => $file1_unique,
                 'filememo_plth' => $file2,
                 'uniquememo_plth' => $file2_unique,
+                'filelapor_plth' => $file1_unique,
                 'pretest_plth' => strtotime($this->input->post("pretest")),
                 'postest_plth' => strtotime($this->input->post("postest")),
                 'feedback_plth' => $fb,
@@ -1998,10 +2028,14 @@
             } else {
                 $pos_real12 = $real12;
             }
-
-
+            if (!$this->input->post("stat")) {
+                $stat = "Pending";
+            } else {
+                $stat = "Completed";
+            }
 
             $arraydata_send = array(
+                "id_plth" => $this->input->post("id"),
                 "jnsplth_realisasi" => $pos_real1,
                 "nama_realisasi" => $pos_real2,
                 "batch_realisasi" => $pos_real3,
@@ -2015,6 +2049,7 @@
                 "dtgpersero_realisasi" => $pos_real11,
                 "dtgnonpersero_realisasi" => $pos_real12,
                 "lndhours_realisasi" => ($pos_real11 * $pos_real8),
+                "status_realisasi" => $stat,
             );
             $this->crud->insert("realisasi_dmt", $arraydata_send);
             $this->session->set_flashdata("msg", "<script>
@@ -2032,8 +2067,8 @@
         public function edit_realisasi()
         {
             $id = $this->input->get("id_pelatihan");
-            if (!$id) {
-                redirect('user/index');
+            if ($this->crud->select_where("realisasi_dmt", array("id_plth" => $id))->num_rows() < 1) {
+                redirect('user/insert_realisasi?id_pelatihan=' . $id);
                 die;
             }
             if ($this->session->userdata("access_num") > 2) {
@@ -2158,6 +2193,12 @@
             } else {
                 $pos_real12 = $real12;
             }
+            if (!$this->input->post("stat")) {
+                $stat = "Pending";
+            } else {
+                $stat = "Completed";
+            }
+
 
             $arraydata_send = array(
                 "jnsplth_realisasi" => $pos_real1,
@@ -2173,6 +2214,7 @@
                 "dtgpersero_realisasi" => $pos_real11,
                 "dtgnonpersero_realisasi" => $pos_real12,
                 "lndhours_realisasi" => ($pos_real11 * $pos_real8),
+                "status_realisasi" => $stat,
             );
             $this->crud->update("realisasi_dmt", "id_realisasi", $this->input->post("id"), $arraydata_send);
             $this->session->set_flashdata("msg", "<script>

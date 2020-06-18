@@ -324,6 +324,7 @@
                     <tr>
                       <th class="no-sort">No.</th>
                       <th>Nama Pelatihan Dan Event</th>
+                      <th>Jenis Pelatihan</th>
                       <th>Batch</th>
                       <th>Tanggal Mulai</th>
                       <th>Tanggal Selesai</th>
@@ -334,12 +335,13 @@
                       <th>Nama Vendor</th>
                       <th>Harga Kesepakatan Vendor</th>
                       <th>Keterangan Kesepakatan Vendor</th>
-                      <th>Memo Pemanggilan</th>
                       <th>Tanggal Pre Test</th>
                       <th>Tanggal Post Test</th>
                       <th>Feedback</th>
                       <th>Tanggal Memo</th>
                       <th>Dokumen Upload Memo</th>
+                      <th>Tanggal Laporan Pelatihan</th>
+                      <th>Dokumen Laporan Pelatihan</th>
                       <th>Status PND</th>
                       <th class="no-sort">Aksi</th>
                     </tr>
@@ -351,6 +353,7 @@
                       <tr>
                         <td></td>
                         <td><?= $row->nama_plth ?></td>
+                        <td><?= $row->jenis_plth ?></td>
                         <td><?= $row->batch_plth ?></td>
                         <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
                         <td><?= date("d-m-Y", $row->tgldone_plth) ?></td>
@@ -366,12 +369,6 @@
                         <td><?= $row->nmvendor_plth ?></td>
                         <td><?= $dis->Miscellaneous->rupiahisasi($row->hrgkspvend_plth) ?>,-</td>
                         <td><?= $row->ketkspvend_plth ?></td>
-                        <td><?php if ($row->uniquefile_plth != "N/A") { ?>
-                            <a href="<?= base_url("assets/uploaded_file/") . $row->uniquefile_plth ?>"><?= $row->memopem_plth ?></a>
-                          <?php } else { ?>
-                            <a><?= $row->memopem_plth ?></a>
-                          <?php } ?></td>
-
                         <td><?php if ($row->pretest_plth < 1) {
                               echo "N/A";
                             } else {
@@ -396,6 +393,16 @@
                               echo "N/A";
                             } else {
                               echo "<a href='" . base_url("assets/uploaded_file/") . $row->uniquememo_plth . "'>" . $row->filememo_plth . "</a>";
+                            }  ?></td>
+                        <td><?php if ($row->tgllpr_plth < 1) {
+                              echo "N/A";
+                            } else {
+                              echo date("d-m-Y", $row->tgllpr_plth);
+                            }  ?></td>
+                        <td><?php if ($row->filelapor_plth == "" or $row->filelapor_plth == "N/A") {
+                              echo "N/A";
+                            } else {
+                              echo "<a href='" . base_url("assets/uploaded_file/") . $row->filelapor_plth . "'>" . $row->filelapor_plth . "</a>";
                             }  ?></td>
                         <td><?php
                             $opr_get = $dis->crud->select_where("plth_dmt", array("id_plth" => $row->id_plth));
@@ -539,10 +546,10 @@
           var index = iDisplayIndex + 1;
           $('td:eq(0)', nRow).html(index);
 
-          if (aData[13] == "Pending") {
+          if (aData[20] == "Pending") {
             $(nRow).find('td:eq(13)').addClass('bg-warning text-white font-weight-bold');
           }
-          if (aData[13] == 'Completed') {
+          if (aData[20] == 'Completed') {
             $(nRow).find('td:eq(13)').addClass('bg-success text-white font-weight-bold');
           }
 

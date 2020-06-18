@@ -84,7 +84,7 @@
             <li class="nav-item <?php if (isset($realisasi)) {
                                     echo $realisasi;
                                 } ?>">
-                <a class="nav-link collapsed" href="<?= base_url("user/insert_realisasi") ?>">
+                <a class="nav-link collapsed" href="<?= base_url("table/realisasi") ?>">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Realisasi Pelatihan</span>
                 </a>

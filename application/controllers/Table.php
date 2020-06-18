@@ -108,6 +108,35 @@ class Table extends CI_Controller
         $this->load->view("templating/foot", $data);
     }
 
+    public function realisasi()
+    {
+        if ($this->session->userdata("access_num") > 2) {
+            $this->session->set_flashdata("msg", "<script>
+                $(document).ready(function() {
+                    sweetAlert(
+                        'Galat Akses!',
+                        'Anda tidak berhak mengakses fitur tersebut',
+                        'error'
+                    )});
+                </script>");
+            redirect("user/index");
+            die;
+        }
+        $data = array(
+            "title" => "Tabel Realisasi - Dashboard Monitoring Training",
+            "dis" => $this,
+            "realisasi" => "active"
+        );
+        $this->load->view("templating/head", $data);
+        if ($this->session->userdata("access_num") == 1) {
+            $this->load->view("navbar/sa", $data);
+        } else {
+            $this->load->view("navbar/pnd", $data);
+        }
+        $this->load->view("table/table_realisasi", $data);
+        $this->load->view("templating/foot", $data);
+    }
+
     public function keuangan_bc()
     {
         if ($this->session->userdata("access_num") != 5) {

@@ -23,7 +23,10 @@
         <div class="col-xl-12 col-lg-7">
           <form class="namapelatihan" enctype="multipart/form-data" action="<?= base_url("user/edit_pelatihan_core") ?>" method="post">
             <input type="hidden" class="form-control form-control-user" placeholder="Nama Pelatihan" name="id" value="<?= $whdb['id_plth'] ?>" />
-
+            <div class="form-group">
+              <h6 class="m-0 font-weight-bold text-secondary">Jenis Pelatihan</h6>
+              <input type="text" class="form-control form-control-user" placeholder="Jenis Pelatihan" name="jenis" value="<?= $whdb['jenis_plth'] ?>">
+            </div>
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Nama Pelatihan</h6>
               <input type="text" class="form-control form-control-user" placeholder="Nama Pelatihan" name="nama" value="<?= $whdb['nama_plth'] ?>">
@@ -41,6 +44,10 @@
                 <h7 class="m-0 font-weight-bold text-secondary">Tanggal Selesai</h6>
                   <input type="date" class="form-control form-control-user" placeholder="Tanggal Selesai" name="tglsls" value="<?= date("Y-m-d", $whdb['tgldone_plth']) ?>">
               </div>
+            </div>
+            <div class="form-group">
+              <h7 class="m-0 font-weight-bold text-secondary">Lokasi Pelatihan</h6>
+                <input type="text" class="form-control form-control-user" placeholder="Lokasi Pelatihan" name="lokasi" value="<?= $whdb["lokasi_plth"] ?>">
             </div>
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Sifat Pelatihan</h6>
@@ -80,13 +87,6 @@
               <input type="text" class="form-control form-control-user" placeholder="Keterangan Kesepakatan Vendor" name="ket" value="<?= $whdb['ketkspvend_plth'] ?>">
             </div>
 
-            <div class="example-wrap">
-              <h6 class="m-0 font-weight-bold text-secondary">Upload Memo Pemanggilan</h6>
-              <div class="example">
-                <input type="text" id="input-file-events" class="form-control form-control-user" name="berkas" value="Memo Sebelumnya: <?= $whdb['memopem_plth'] ?>" disabled />
-                <input type="file" id="input-file-events" class="form-control form-control-user my-2" style="border: none" name="berkas" value="<?= $whdb['memopem_plth'] ?>">
-              </div>
-            </div>
             <div class="row">
               <div class="form-group col-lg">
                 <h6 class="m-0 font-weight-bold text-secondary">Pelaksanaan Pre Test</h6>
@@ -116,9 +116,22 @@
               </div>
               <div class="form-group col-lg">
                 <h6 class="m-0 font-weight-bold text-secondary">Upload Memo</h6>
-                <a>File Sebelumnya : <?= $whdb["filememo_plth"] ?></a>
                 <div class="example">
                   <input type="file" id="input-file-events" class="dropify-event" name="berkas_memo">
+                  <a>File Sebelumnya : <?= $whdb["filememo_plth"] ?></a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg">
+                <h6 class="m-0 font-weight-bold text-secondary">Tanggal Laporan Pelatihan</h6>
+                <input type="date" class="form-control form-control-user" placeholder="Tanggal Laportan Pelatihan" name="tgllpr" value="<?= date("Y-m-d", $whdb["tgllpr_plth"]) ?>">
+              </div>
+              <div class="form-group col-lg">
+                <h6 class="m-0 font-weight-bold text-secondary">Upload Laporan Pelatihan</h6>
+                <div class="example">
+                  <input type="file" id="input-file-events" class="dropify-event" name="berkas_laporan">
+                  <a>File Sebelumnya : <?= $whdb["filelapor_plth"] ?></a>
                 </div>
               </div>
             </div>
