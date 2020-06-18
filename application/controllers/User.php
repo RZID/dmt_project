@@ -2560,9 +2560,9 @@
             } else {
                 $array_biarrapih = array(
                     "file1_keubc" => $file1,
-                    "file2_keubc" => $file2,
+                    "file2_keubc" => "",
                     "file1unik_keubc" => $file1_unique,
-                    "file2unik_keubc" => $file2_unique,
+                    "file2unik_keubc" => "",
 
                     "nocs_ptmn" => $this->input->post("nocustom1"),
                     "namacs_ptmn" => $this->input->post("namacustom1"),
