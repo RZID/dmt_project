@@ -40,7 +40,7 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Memo / Surat Pemanggilan / Kontrak / Agre</h6>
-                    <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["memopem_plth"] ?>" disabled>
+                    <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filememo_plth"] ?>" disabled>
                   </div>
                 </div>
 
