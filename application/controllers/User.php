@@ -360,53 +360,25 @@
                 $status = $this->input->post("status");
             }
 
-            if ($_FILES and $_FILES['berkas_memo']['name']) {;
-                $file2_unique = time() . "berkasmemo." . pathinfo($_FILES['berkas_memo']["name"], PATHINFO_EXTENSION);
-                $file2 = $_FILES["berkas_memo"]['name'];
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file2_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('berkas_memo')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
+            if ($this->input->post("berkaslap_up")) {
+                $fileberkas = $this->input->post("berkaslap_up");
             } else {
-                if ($select["filememo_plth"] == "N/A" or $select["filememo_plth"] == "") {
-                    $file2 = "";
-                    $file2_unique = "";
+                if ($select["filelapor_plth"] != "" or $select["filelapor_plth"] != null) {
+                    $fileberkas = $select["filelapor_plth"];
                 } else {
-                    $file2 = $select["filememo_plth"];
-                    $file2_unique = $select["uniquememo_plth"];
+                    $fileberkas = "";
                 }
             }
-            if ($_FILES and $_FILES['berkas_laporan']['name']) {
-                $file1_unique = time() . "berkaslaporan." . pathinfo($_FILES["berkas_laporan"]['name'], PATHINFO_EXTENSION);
-                $file1 = $_FILES["berkas_laporan"]['name'];
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file1_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('berkas_laporan')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
+            if ($this->input->post("berkasmemo_up")) {
+                $filememo = $this->input->post("berkasmemo_up");
             } else {
-                if ($select["filelapor_plth"] == "" or $select["filelapor_plth"] == "N/A") {
-                    $file1 = "";
-                    $file1_unique = "";
+                if ($select["filememo_plth"] != "" or $select["filememo_plth"] != null) {
+                    $filememo = $select["filememo_plth"];
                 } else {
-                    $file1_unique = $select["filelapor_plth"];
+                    $filememo = "";
                 }
             }
+
             if (!$this->input->post("feedback")) {
                 $fb = 0;
             } else {
@@ -428,9 +400,9 @@
                 'nmvendor_plth' => $this->input->post('vend'),
                 'hrgkspvend_plth' => $this->input->post('harga'),
                 'ketkspvend_plth' => $this->input->post('ket'),
-                'filememo_plth' => $file2,
-                'uniquememo_plth' => $file2_unique,
-                'filelapor_plth' => $file1_unique,
+                'filememo_plth' => $fileberkas,
+                'uniquememo_plth' => $fileberkas,
+                'filelapor_plth' => $filememo,
                 'pretest_plth' => strtotime($this->input->post("pretest")),
                 'postest_plth' => strtotime($this->input->post("postest")),
                 'feedback_plth' => $fb,
@@ -443,6 +415,7 @@
 
         public function input_pelatihan_core()
         {
+            $select = $this->crud->select_where("realisasi_dmt", array("id_plth" => $this->input->post("id")))->row_array();
             if ($this->session->userdata("access_num") > 2) {
                 redirect('user/index');
             }
@@ -451,54 +424,20 @@
             } else {
                 $status = $this->input->post("status");
             }
-            if ($_FILES and $_FILES['berkas_memo']['name']) {
-                $file2_unique = time() . "berkas_memo." . pathinfo($_FILES["berkas_memo"]['name'], PATHINFO_EXTENSION);
-                $file2 = $_FILES["berkas_memo"]['name'];
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file2_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('berkas_memo')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                $file2 = "";
-                $file2_unique = "";
-            }
-            if ($_FILES and $_FILES['berkas_laporan']['name']) {
-                $file1_unique = time() . "berkas_laporan." . pathinfo($_FILES["berkas_laporan"]['name'], PATHINFO_EXTENSION);
-                $file1 = $_FILES["berkas_laporan"]['name'];
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file1_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('berkas_laporan')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                $file1 = "";
-                $file1_unique = "";
-            }
+
+
+
             if (!$this->input->post("feedback")) {
                 $fb = 0;
             } else {
                 $fb = 1;
             }
+
             $postdata = array(
                 'jenis_plth' => $this->input->post('jenis'),
                 'lokasi_plth' => $this->input->post('lokasi'),
                 'tgllpr_plth' => strtotime($this->input->post('tgllpr')),
-                'filelapor_plth' => $file1_unique,
+                'filelapor_plth' => $this->input->post("berkaslap_up"),
                 'nama_plth' => $this->input->post('nama'),
                 'ketpros_plth' => $status,
                 'batch_plth' => $this->input->post('batch'),
@@ -510,8 +449,8 @@
                 'nmvendor_plth' => $this->input->post('vend'),
                 'hrgkspvend_plth' => $this->input->post('harga'),
                 'ketkspvend_plth' => $this->input->post('ket'),
-                'filememo_plth' => $file2,
-                'uniquememo_plth' => $file2_unique,
+                'filememo_plth' => $this->input->post("berkasmemo_up"),
+                'uniquememo_plth' => $this->input->post("berkasmemo_up"),
                 'pretest_plth' => strtotime($this->input->post("pretest")),
                 'postest_plth' => strtotime($this->input->post("postest")),
                 'feedback_plth' => $fb,
@@ -933,7 +872,7 @@
             } else {
                 $noven10 = $this->input->post("noven10");
             }
-            if ($_FILES and $_FILES['file1']['name']) {
+            if (isset($_FILES['file1']['name'])) {
                 $file1 = time() . "_1." . pathinfo($_FILES["file1"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -957,7 +896,7 @@
                 }
             }
 
-            if ($_FILES and $_FILES['file2']['name']) {
+            if (isset($_FILES['file2']['name'])) {
                 $file2 = time() . "_2." . pathinfo($_FILES["file2"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -981,7 +920,7 @@
                 }
             }
 
-            if ($_FILES and $_FILES['file3']['name']) {
+            if (isset($_FILES['file3']['name'])) {
                 $file3 = time() . "_3." . pathinfo($_FILES["file3"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -1005,7 +944,7 @@
                 }
             }
 
-            if ($_FILES and $_FILES['file4']['name']) {
+            if (isset($_FILES['file4']['name'])) {
                 $file4 = time() . "_4." . pathinfo($_FILES["file4"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -1028,7 +967,7 @@
                     $file4 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"];
                 }
             }
-            if ($_FILES and $_FILES['file5']['name']) {
+            if (isset($_FILES['file5']['name'])) {
                 $file5 = time() . "_5." . pathinfo($_FILES["file5"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -1051,7 +990,7 @@
                     $file5 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"];
                 }
             }
-            if ($_FILES and $_FILES['file6']['name']) {
+            if (isset($_FILES['file6']['name'])) {
                 $file6 = time() . "_6." . pathinfo($_FILES["file6"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -1074,7 +1013,7 @@
                     $file6 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"];
                 }
             }
-            if ($_FILES and $_FILES['file7']['name']) {
+            if (isset($_FILES['file7']['name'])) {
                 $file7 = time() . "_7." . pathinfo($_FILES["file7"]['name'], PATHINFO_EXTENSION);
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
@@ -1096,7 +1035,7 @@
                     $file7 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"];
                 }
             }
-            if ($_FILES and $_FILES['file8']['name']) {
+            if (isset($_FILES['file8']['name'])) {
                 $file8 = time() . "_8." . pathinfo($_FILES["file8"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -1119,7 +1058,7 @@
                     $file8 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"];
                 }
             }
-            if ($_FILES and $_FILES['file9']['name']) {
+            if (isset($_FILES['file9']['name'])) {
                 $file9 = time() . "_9." . pathinfo($_FILES["file9"]['name'], PATHINFO_EXTENSION);
 
                 $config = array(
@@ -1142,7 +1081,7 @@
                     $file9 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"];
                 }
             }
-            if ($_FILES and $_FILES['file10']['name']) {
+            if (isset($_FILES['file10']['name'])) {
                 $file10 = time() . "_10." . pathinfo($_FILES["file10"]['name'], PATHINFO_EXTENSION);
                 $config = array(
                     'upload_path' => 'assets/uploaded_file/',
@@ -2578,41 +2517,16 @@
                     $file1_unique = "";
                 }
             }
-            if ($_FILES and $_FILES['file2']['name']) {
-                $file2_unique = time() . "_2keu." . pathinfo($_FILES["file2"]['name'], PATHINFO_EXTENSION);
-                $file2 = $_FILES["file1"]['name'];
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file2_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file2')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                $getCrud = $this->crud->select_where("keu_bc_dmt", array("id_plth", $this->input->post("id")))->row_array();
 
-                if ($getCrud["file2_keubc"] != "") {
-                    $file2 = $getCrud["file2_keubc"];
-                    $file2_unique = $getCrud["file2unik_keubc"];
-                } else {
-                    $file2 = "";
-                    $file2_unique = "";
-                }
-            }
 
             if ($this->crud->select_where("keu_bc_dmt", array("id_plth" => $this->input->post("id")))->num_rows() < 1) {
                 $array_biarrapih = array(
                     "id_plth" => $this->input->post("id"),
 
                     "file1_keubc" => $file1,
-                    "file2_keubc" => $file2,
+                    "file2_keubc" => "",
                     "file1unik_keubc" => $file1_unique,
-                    "file2unik_keubc" => $file2_unique,
+                    "file2unik_keubc" => "",
 
                     "nocs_ptmn" => $this->input->post("nocustom1"),
                     "namacs_ptmn" => $this->input->post("namacustom1"),

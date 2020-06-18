@@ -40,17 +40,21 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Memo / Surat Pemanggilan / Kontrak / Agre</h6>
-                    <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filememo_plth"] ?>" disabled>
+                    <?php if ($dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filememo_plth"] != "") { ?>
+                      <a href="<?= base_url("assets/uploaded_file/") . $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filememo_plth"] ?>">
+                      <?php } ?>
+                      <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filememo_plth"] ?>" disabled>
+                      </a>
                   </div>
                 </div>
 
                 <div class="col-lg col-xl">
                   <h6 class="m-0 font-weight-bold text-secondary">Laporan Kegiatan</h6>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input file-type" id="inputGroupFile01" name="file2" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" id="file2" for="inputGroupFile01">Choose file</label>
-                  </div>
-                  <small id="fileHelpId" class="form-text text-muted">File Sebelumnya : <?= $whdb2["file2_keubc"] ?></small>
+                  <?php if ($dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filelapor_plth"] != "") { ?>
+                    <a href="<?= base_url("assets/uploaded_file/") . $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filelapor_plth"] ?>">
+                    <?php } ?>
+                    <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["filelapor_plth"] ?>" disabled>
+                    </a>
                 </div>
 
               </div>

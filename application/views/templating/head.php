@@ -19,6 +19,7 @@
     <link href="<?= base_url() ?>/assets/sweetalert/sweetalert2.min.css" rel="stylesheet">
     <!-- Data Table -->
     <link href="<?= base_url() ?>/assets/dtable/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/assets/jQ_upload/css/fileinput.css" rel="stylesheet">
 
 
     <!-- JS -->
@@ -33,6 +34,10 @@
     <script src="<?= base_url() ?>/assets/dtable/js/jquery.dataTables.js"></script>
     <script src="<?= base_url() ?>/assets/dtable/js/dataTables.bootstrap4.js"></script>
     <script src="<?= base_url() ?>/assets/date/jquery-dateformat.js"></script>
+    <script src="<?= base_url() ?>/assets/jQ_upload/js/fileinput.js"></script>
+    <script src="<?= base_url() ?>assets/jQ_upload/js/plugins/piexif.js"></script>
+    <script src="<?= base_url() ?>assets/jQ_upload/js/plugins/sortable.js"></script>
+    <script src="<?= base_url() ?>assets/jQ_upload/js/plugins/purify.js"></script>
 
     <!-- Tambahan -->
 </head>

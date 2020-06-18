@@ -349,12 +349,12 @@
                 foreach ($realisasikan as $row_rea) { ?>
                   <tr>
                     <td></td>
-                    <td><?= $row_rea->jnsplth_realisasi ?></td>
-                    <td><?= $row_rea->nama_realisasi ?></td>
-                    <td><?= $row_rea->batch_realisasi ?></td>
-                    <td><?= $row_rea->lokasi_realisasi ?></td>
-                    <td><?= date("d-m-Y", $row_rea->tglmulai_realisasi) ?></td>
-                    <td><?= date("d-m-Y", $row_rea->tglsls_realisasi) ?></td>
+                    <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["jenis_plth"] ?></td>
+                    <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["nama_plth"] ?></td>
+                    <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["batch_plth"] ?></td>
+                    <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["lokasi_plth"] ?></td>
+                    <td><?= date("d-m-Y", $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tglmulai_plth"]) ?></td>
+                    <td><?= date("d-m-Y", $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tgldone_plth"]) ?></td>
                     <td><?= $row_rea->durasi_realisasi ?></td>
                     <td><?= $row_rea->jmlsesi_realisasi ?></td>
                     <td><?= $row_rea->undpersero_realisasi ?></td>
