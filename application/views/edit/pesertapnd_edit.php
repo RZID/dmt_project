@@ -289,7 +289,7 @@
                     </div>
 
                     <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Jumlah Yang Ditagih</h6>
+                      <h6 class="m-0 font-weight-bold text-secondary">Jumlah Peserta Yang Ditagih</h6>
                       <input type="number" class="form-control form-control-user" placeholder="Jumlah Yang Ditagih" name="psrtpnd2" value="<?= $whdb2['jmldtgh_pesertapnd'] ?>">
                     </div>
 
