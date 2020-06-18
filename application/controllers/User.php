@@ -2036,12 +2036,6 @@
 
             $arraydata_send = array(
                 "id_plth" => $this->input->post("id"),
-                "jnsplth_realisasi" => $pos_real1,
-                "nama_realisasi" => $pos_real2,
-                "batch_realisasi" => $pos_real3,
-                "tglmulai_realisasi" => $pos_real4,
-                "tglsls_realisasi" => $pos_real5,
-                "lokasi_realisasi" => $pos_real6,
                 "durasi_realisasi" => $pos_real7,
                 "jmlsesi_realisasi" => $pos_real8,
                 "undpersero_realisasi" => $pos_real9,
@@ -2087,9 +2081,15 @@
             $data = array(
                 "title" => "Update Data Realisasi - Dashboard Monitoring Training",
                 "dis" => $this,
-                "row" => $this->crud->select_where("realisasi_dmt", array("id_realisasi" => $id))->row_array()
+                "realisasi" => "active",
+                "row" => $this->crud->select_where("realisasi_dmt", array("id_plth" => $id))->row_array()
             );
             $this->load->view('templating/head', $data);
+            if ($this->session->userdata("access_num") == 1) {
+                $this->load->view('navbar/sa', $data);
+            } else {
+                $this->load->view('navbar/pnd', $data);
+            }
             $this->load->view("edit/realisasi_edit.php", $data);
             $this->load->view('templating/modal', $data);
             $this->load->view('templating/head', $data);
@@ -2201,12 +2201,6 @@
 
 
             $arraydata_send = array(
-                "jnsplth_realisasi" => $pos_real1,
-                "nama_realisasi" => $pos_real2,
-                "batch_realisasi" => $pos_real3,
-                "tglmulai_realisasi" => $pos_real4,
-                "tglsls_realisasi" => $pos_real5,
-                "lokasi_realisasi" => $pos_real6,
                 "durasi_realisasi" => $pos_real7,
                 "jmlsesi_realisasi" => $pos_real8,
                 "undpersero_realisasi" => $pos_real9,
