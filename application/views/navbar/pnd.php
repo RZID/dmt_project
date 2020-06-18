@@ -63,7 +63,9 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item  <?php if (isset($insert)) {
+                                        echo $insert;
+                                    } ?>">
                 <a class="nav-link collapsed" href="<?= base_url("user/insert_pelatihan") ?>">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Input Pelatihan</span>
@@ -71,9 +73,9 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?php if (isset($insert)) {
-                                    echo $insert;
-                                } ?>">
+            <li class="nav-item  <?php if (isset($tabelinsert)) {
+                                        echo $tabelinsert;
+                                    } ?>">
                 <a class="nav-link collapsed" href="<?= base_url("table/pelatihan") ?>">
                     <i class="fas fa-table"></i>
                     <span>Tabel Pelatihan</span>
@@ -91,7 +93,9 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?php if (isset($peserta)) {
+                                    echo $peserta;
+                                } ?>">
                 <a class="nav-link collapsed" href="<?= base_url("table/peserta_pnd") ?>">
                     <i class="fas fa-table"></i>
                     <span>Kelengkapan Peserta</span>

@@ -118,7 +118,7 @@
                 <h6 class="m-0 font-weight-bold text-secondary">Upload Memo</h6>
                 <div class="example">
                   <input type="file" id="input-file-events" class="dropify-event" name="berkas_memo">
-                  <a>File Sebelumnya : <?= $whdb["filememo_plth"] ?></a>
+                  <p>File Sebelumnya : <?= $whdb["filememo_plth"] ?></p>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
                 <h6 class="m-0 font-weight-bold text-secondary">Upload Laporan Pelatihan</h6>
                 <div class="example">
                   <input type="file" id="input-file-events" class="dropify-event" name="berkas_laporan">
-                  <a>File Sebelumnya : <?= $whdb["filelapor_plth"] ?></a>
+                  <p>File Sebelumnya : <?= $whdb["filelapor_plth"] ?></p>
                 </div>
               </div>
             </div>

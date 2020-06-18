@@ -76,9 +76,11 @@ class Table extends CI_Controller
         }
         $data = array(
             "title" => "Tabel PND - Dashboard Monitoring Training",
-            "dis" => $this
+            "dis" => $this,
+            "tabelinsert" => "active"
         );
         $this->load->view("templating/head", $data);
+        $this->load->view("navbar/pnd", $data);
         $this->load->view("table/table_pnd", $data);
         $this->load->view("templating/foot", $data);
     }
