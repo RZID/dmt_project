@@ -16,7 +16,7 @@ class Upload extends CI_Controller
         $config['upload_path']          = "assets/uploaded_file/";
         $config['allowed_types']        = '*';
         $config['max_size']             = 25000;
-        $config['file_name']             = time() . "-Memo-" . $_FILES["berkasmemo"]["name"];
+        $config['file_name']             = str_replace(" ", "", time() . "-Memo-" . $_FILES["berkasmemo"]["name"]);
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('berkasmemo')) {
@@ -35,7 +35,7 @@ class Upload extends CI_Controller
         $config['upload_path']          = "assets/uploaded_file/";
         $config['allowed_types']        = '*';
         $config['max_size']             = 25000;
-        $config['file_name']             = time() . "-laporan-" . $_FILES["berkaslaporan"]["name"];
+        $config['file_name']             = str_replace(" ", "", time() . "-laporan-" . $_FILES["berkaslaporan"]["name"]);
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('berkaslaporan')) {
