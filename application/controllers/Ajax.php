@@ -411,7 +411,7 @@ class Ajax extends CI_Controller
             } else {
                 $out_keu["nocs_ptmn"] = "";
             }
-            if ($keubc_ra["namacs_ptmn"] = "" or $keubc_ra["namacs_ptmn"] = "N/A") {
+            if ($keubc_ra["namacs_ptmn"] == "" or $keubc_ra["namacs_ptmn"] == "N/A") {
                 $out_keu["namacs_ptmn"] = "<li>Nama Customer PTMN Belum Diisi</li>";
             } else {
                 $out_keu["namacs_ptmn"] = "";
@@ -421,7 +421,7 @@ class Ajax extends CI_Controller
             } else {
                 $out_keu["nocs_tp"] = "";
             }
-            if ($keubc_ra["namacs_tp"] = "" or $keubc_ra["namacs_tp"] = "N/A") {
+            if ($keubc_ra["namacs_tp"] == "" or $keubc_ra["namacs_tp"] == "N/A") {
                 $out_keu["namacs_tp"] = "<li>Nama Customer AP / Third Party Belum Diisi</li>";
             } else {
                 $out_keu["namacs_tp"] = "";
@@ -471,8 +471,11 @@ class Ajax extends CI_Controller
             } else {
                 $out_keu["stat"] = "";
             }
-
-            $out_keu["status_bc"] = $keubc_ra["status_keu_bc"];
+            if ($keubc_ra["status_keu_bc"] == "Completed") {
+                $out_keu["status_bc"] = "<li class='text-success'>Completed</li>";
+            } else {
+                $out_keu["status_bc"] = "<li class='text-danger'>Pending</li>";
+            }
         }
         echo json_encode($out_keu);
     }

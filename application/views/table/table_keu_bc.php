@@ -151,13 +151,6 @@ echo $this->session->flashdata("msg"); ?>
 
                         <!-- Vendor -->
                         <div class="row">
-                          <div class="col-xl col-lg">Laporan Kegiatan</div>
-                          :
-                          <div class="col-xl col-lg" id="keu2"></div>
-                        </div>
-
-                        <!-- Vendor -->
-                        <div class="row">
                           <div class="col-xl col-lg">No. Customer (Internal PTMN)</div>
                           :
                           <div class="col-xl col-lg" id="keu3"></div>
@@ -385,7 +378,6 @@ echo $this->session->flashdata("msg"); ?>
           var len = data2.length;
           if (len >= 1) {
             $("#keu1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file1unik_keubc + "'>" + data2[0].file1_keubc + "</a>");
-            $("#keu2").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file2unik_keubc + "'>" + data2[0].file2_keubc + "</a>");
             $("#keu3").html(data2[0].nocs_ptmn);
             $("#keu4").html(data2[0].namacs_ptmn);
             $("#keu5").html(data2[0].nocs_tp);
@@ -403,7 +395,6 @@ echo $this->session->flashdata("msg"); ?>
           } else {
             var nulled = "Belum Diatur";
             $("#keu1").html("<a class='text-danger'>" + nulled + "</a>");
-            $("#keu2").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu3").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu4").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu5").html("<a class='text-danger'>" + nulled + "</a>");
