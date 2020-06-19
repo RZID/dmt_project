@@ -131,6 +131,7 @@
                   'uploadUrl': '<?= base_url("upload/plth1") ?>',
                   'elErrorContainer': '#errorBlock1',
                   'uploadAsync': true,
+                  'initialCaption': "<?= $whdb["filememo_plth"] ?>",
                   uploadExtraData: function() {}
                 });
                 $('#filemem').on('fileuploaded', function(event, data, previewId, index) {
@@ -160,6 +161,7 @@
                   'maxFileCount': 1,
                   'uploadUrl': '<?= base_url("upload/plth2") ?>',
                   'elErrorContainer': '#errorBlock1',
+                  'initialCaption': "<?= $whdb["filelapor_plth"] ?>",
                   'uploadAsync': true,
                   uploadExtraData: function() {}
                 });
