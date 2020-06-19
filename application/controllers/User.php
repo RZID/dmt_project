@@ -218,6 +218,7 @@
                 $this->crud->delete("plth_dmt", array('id_plth' => $id));
                 $this->crud->delete("ins_dmt", array('id_plth' => $id));
                 $this->crud->delete("keu_dmt", array('id_plth' => $id));
+                $this->crud->delete("realisasi_dmt", array('id_plth' => $id));
                 $this->crud->delete("opr_dmt", array('id_plth' => $id));
                 $this->session->set_flashdata("msg", "<script>
 			$(document).ready(function() {
