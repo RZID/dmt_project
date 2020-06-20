@@ -1,9 +1,3 @@
-<style>
-  .custom-file-input~.custom-file-label::after {
-    content: "Browse...";
-  }
-</style>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -26,65 +20,174 @@
         <br>
         <div class="col-xl-12 col-lg-7">
           <form class="namapelatihan" enctype="multipart/form-data" action="<?= base_url("user/edit_ins_core") ?>" method="post">
-            <input type="hidden" class="form-control form-control-user" name="id" value="<?= $whdb['id_plth'] ?>" />
+            <input type="hidden" class="form-control form-control-user" name="id" value="<?= $this->input->get("id_pelatihan") ?>" />
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Nama Pelatihan</h6>
               <input type="text" class="form-control form-control-user" placeholder="Nama User" name="nama" value="<?= $whdb['nama_plth'] ?>" disabled>
             </div>
-
-            <!-- Awal Instruktur -->
-            <br>
-            <h5>Data Instruktur 1</h5>
-            <hr>
-            <div class="form-group">
-              <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-              <input type="number" class="form-control form-control-user" name="noven1" value="<?= $whdb2['novend1_ins'] ?>" indexing="<?= $whdb2['novend1_ins'] ?>">
-            </div>
-            <div class="row">
-              <div class="col-lg col-xl">
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                  <input type="text" class="form-control form-control-user" id="checker" name="ins1" value="<?= $whdb2['ins1_ins'] ?>" indexing="<?= $whdb2['ins1_ins'] ?>">
-                </div>
-              </div>
-              <div class="col-lg col-xl">
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                  <input type="number" class="form-control form-control-user" name="sesins1" value="<?= $whdb2['sesins1_ins'] ?>">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg col-xl">
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                  <input type="number" class="form-control form-control-user" name="beains1" value="<?= $whdb2['beasesins1_ins'] ?>">
-                </div>
-              </div>
-              <div class="col-lg col-xl">
-                <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                <div class="custom-file" id="customFile" lang="es">
-                  <input type="file" id="file1" class="file1 custom-file-input text-truncate" onchange='$(this).next().after().text(delfakepath($(this).val()))' name="file1" aria-describedby="fileHelp">
-                  <label class="custom-file-label" for="#">
-                    Dokumen Sebelumnya : <?= $whdb2["surund1_ins"] ?>
-                  </label>
-                </div>
-              </div>
-
-            </div>
-            <!-- Akhir Instruktur -->
-            <div id="dynamic_field" data-valdb="<?php if ($whdb2["ins1_ins"] == "") {
-                                                  echo "N/A";
-                                                } else {
-                                                  echo $whdb2["ins1_ins"];
-                                                }  ?>"></div>
-
-
             <!-- End Example events -->
             <p></p>
+
+            <br>
+            <?php
+            $feching = $dis->crud->select_where("addins_dmt", array("id_plth" => $this->input->get("id_pelatihan")));
+            if ($feching->num_rows() >= 1) {
+              $i = $this->db->order_by("no_ins", "ASC")->get_where("addins_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array();
+              $no = 1;
+              foreach ($feching->result_array() as $f) {
+            ?>
+                <br>
+                <h5>Data Instruktur <?= $f["no_ins"] ?></h5>
+                <hr>
+                <div class="form-group">
+                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
+                  <input type="number" class="form-control form-control-user" name="noven[]" value="<?= $f["novend_ins"] ?>">
+                </div>
+                <div class="row">
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
+                      <input type="text" class="form-control form-control-user" id="checker" name="ins[]" value="<?= $f["ins_ins"] ?>">
+                    </div>
+                  </div>
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
+                      <input type="number" class="form-control form-control-user" name="sesins[]" value="<?= $f["sesins_ins"] ?>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary"> Tanggal Mulai Mengajar</h6>
+                      <input type="date" class="form-control form-control-user" name="tglmulai[]" value="<?= date("Y-m-d", $f["tglmulaiajar_ins"]) ?>">
+                    </div>
+                  </div>
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">Tanggal Selesai Mengajar</h6>
+                      <input type="date" class="form-control form-control-user" name="tglselesai[]" value="<?= date("Y-m-d", $f["tgldoneajar_ins"]) ?>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
+                      <input type="number" class="form-control form-control-user" name="beains[]" value="<?= $f["beasesins_ins"] ?>">
+                    </div>
+                  </div>
+                  <div class="col-lg">
+                    <div class="form-group col-lg">
+                      <h6 class="m-0 font-weight-bold text-secondary">Upload Laporan Pelatihan</h6>
+                      <div class="example">
+                        <input type="file" id="file<?= $no ?>" class="dropify-event fileget" name="berkas<?= $no ?>">
+                      </div>
+                    </div>
+                    <input type="hidden" name="pemberkasan[]" id="berkas<?= $no ?>" value="<?= $f["surund_ins"] ?>">
+                    <script>
+                      $("#file<?= $no ?>").fileinput({
+                        'maxFileSize': 25000,
+                        "dropZoneEnabled": false,
+                        "showPreview": false,
+                        "initialCaption": "<?= $f["surund_ins"] ?>",
+                        'maxFileCount': 1,
+                        'uploadUrl': '<?= base_url("upload/ins") . $no ?>',
+                        'elErrorContainer': '#errorBlock1',
+                        'uploadAsync': true,
+                        uploadExtraData: function() {}
+                      });
+                      $("#file<?= $no ?>").on('fileuploaded', function(event, data, previewId, index) {
+                        var response = data.response,
+                          reader = data.reader;
+                        $("#berkas<?= $no ?>").val(response.insfile<?= $no ?>);
+                      });
+                    </script>
+                  </div>
+                </div>
+
+              <?php
+                $no++;
+              }
+            } else {
+              $i = 1;
+              ?>
+              <br>
+              <h5>Data Instruktur 1</h5>
+              <hr>
+              <div class="form-group">
+                <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
+                <input type="number" class="form-control form-control-user" name="noven[]">
+              </div>
+              <div class="row">
+                <div class="col-lg col-xl">
+                  <div class="form-group">
+                    <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
+                    <input type="text" class="form-control form-control-user" id="checker" name="ins[]">
+                  </div>
+                </div>
+                <div class="col-lg col-xl">
+                  <div class="form-group">
+                    <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
+                    <input type="number" class="form-control form-control-user" name="sesins[]">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg col-xl">
+                  <div class="form-group">
+                    <h6 class="m-0 font-weight-bold text-secondary"> Tanggal Mulai Mengajar</h6>
+                    <input type="date" class="form-control form-control-user" name="tglmulai[]">
+                  </div>
+                </div>
+                <div class="col-lg col-xl">
+                  <div class="form-group">
+                    <h6 class="m-0 font-weight-bold text-secondary">Tanggal Selesai Mengajar</h6>
+                    <input type="date" class="form-control form-control-user" name="tglselesai[]">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg col-xl">
+                  <div class="form-group">
+                    <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
+                    <input type="number" class="form-control form-control-user" name="beains[]">
+                  </div>
+                </div>
+                <div class="col-lg">
+                  <div class="form-group col-lg">
+                    <h6 class="m-0 font-weight-bold text-secondary">Upload Laporan Pelatihan</h6>
+                    <div class="example">
+                      <input type="file" id="file1" class="dropify-event fileget" name="berkas1">
+                    </div>
+                  </div>
+                  <input type="hidden" name="pemberkasan[]" id="berkas1">
+                  <script>
+                    $(".fileget").fileinput({
+                      'maxFileSize': 25000,
+                      "dropZoneEnabled": false,
+                      "showPreview": false,
+                      'maxFileCount': 1,
+                      'uploadUrl': '<?= base_url("upload/ins1") ?>',
+                      'elErrorContainer': '#errorBlock1',
+                      'uploadAsync': true,
+                      uploadExtraData: function() {}
+                    });
+                    $("#file1").on('fileuploaded', function(event, data, previewId, index) {
+                      var response = data.response,
+                        reader = data.reader;
+                      $("#berkas1").val(response.insfile1);
+                    });
+                  </script>
+                </div>
+              </div>
+            <?php } ?>
+            <div id="isi"></div>
             <div id="buttonrz">
               <button type="button" class="btn btn-primary" id="add"><i class="fas fa-plus-square"></i> Instruktur</button>
             </div>
+
             <br>
             <div class="form-group">
               <input dbval="<?= $whdb2['status_ins'] ?>" type="checkbox" name="status" id="status" value="Completed" placeholder="" aria-describedby="helpId">
@@ -111,6 +214,7 @@
       <!-- End of Content Wrapper -->
 
     </div>
+    <input type="hidden" id="ok11" value="<?= $feching->num_rows() ?>">
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
@@ -120,43 +224,62 @@
 
     <!-- Scripting With JS -->
     <script>
-      function delfakepath(val) {
-        getData = val.split('\\').slice(-1)[0];
-        return getData;
-      }
       $(document).ready(function() {
-        if ($("#dynamic_field").attr("data-valdb") != "N/A") {
-          var i = 10;
-          $('#dynamic_field').append('<div class="elemented2"><br><h5>Data Instruktur 2</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven2" value="<?= $whdb2['novend2_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins2" value="<?= $whdb2['ins2_ins'] ?>" indexing="<?= $whdb2['ins2_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins2" value="<?= $whdb2['sesins2_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains2" value="<?= $whdb2['beasesins2_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file2" class="file2 custom-file-input" name="file2" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file2">Dokumen Sebelumnya : <?= $whdb2["surund2_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented3"><br><h5>Data Instruktur 3</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven3" value="<?= $whdb2['novend3_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins3" value="<?= $whdb2['ins3_ins'] ?>" indexing="<?= $whdb2['ins3_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins3" value="<?= $whdb2['sesins3_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains3" value="<?= $whdb2['beasesins3_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file3" class="file3 custom-file-input" name="file3" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file3">Dokumen Sebelumnya : <?= $whdb2["surund3_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented4"><br><h5>Data Instruktur 4</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven4" value="<?= $whdb2['novend4_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins4" value="<?= $whdb2['ins4_ins'] ?>" indexing="<?= $whdb2['ins4_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins4" value="<?= $whdb2['sesins4_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains4" value="<?= $whdb2['beasesins4_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file4" class="file4 custom-file-input" name="file4" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file4">Dokumen Sebelumnya : <?= $whdb2["surund4_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented5"><br><h5>Data Instruktur 5</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven5" value="<?= $whdb2['novend5_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins5" value="<?= $whdb2['ins5_ins'] ?>" indexing="<?= $whdb2['ins5_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins5" value="<?= $whdb2['sesins5_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains5" value="<?= $whdb2['beasesins5_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file5" class="file5 custom-file-input" name="file5" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file5">Dokumen Sebelumnya : <?= $whdb2["surund5_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented6"><br><h5>Data Instruktur 6</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven6" value="<?= $whdb2['novend6_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins6" value="<?= $whdb2['ins6_ins'] ?>" indexing="<?= $whdb2['ins6_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins6" value="<?= $whdb2['sesins6_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains6" value="<?= $whdb2['beasesins6_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file6" class="file6 custom-file-input" name="file6" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file6">Dokumen Sebelumnya : <?= $whdb2["surund6_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented7"><br><h5>Data Instruktur 7</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven7" value="<?= $whdb2['novend7_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins7" value="<?= $whdb2['ins7_ins'] ?>" indexing="<?= $whdb2['ins7_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins7" value="<?= $whdb2['sesins7_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains7" value="<?= $whdb2['beasesins7_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file7" class="file7 custom-file-input" name="file7" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file7">Dokumen Sebelumnya : <?= $whdb2["surund7_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented8"><br><h5>Data Instruktur 8</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven8" value="<?= $whdb2['novend8_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins8" value="<?= $whdb2['ins8_ins'] ?>" indexing="<?= $whdb2['ins8_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins8" value="<?= $whdb2['sesins8_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains8" value="<?= $whdb2['beasesins8_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file8" class="file8 custom-file-input" name="file8" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file8">Dokumen Sebelumnya : <?= $whdb2["surund8_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented9"><br><h5>Data Instruktur 9</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven9" value="<?= $whdb2['novend9_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins9" value="<?= $whdb2['ins9_ins'] ?>" indexing="<?= $whdb2['ins9_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins9" value="<?= $whdb2['sesins9_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains9" value="<?= $whdb2['beasesins9_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file9" class="file9 custom-file-input" name="file9" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file9">Dokumen Sebelumnya : <?= $whdb2["surund9_ins"] ?></label></div></div></div></div>');
-          $('#dynamic_field').append('<div class="elemented10"><br><h5>Data Instruktur 10</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven10" value="<?= $whdb2['novend10_ins'] ?>"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins10" value="<?= $whdb2['ins10_ins'] ?>" indexing="<?= $whdb2['ins10_ins'] ?>"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins10" value="<?= $whdb2['sesins10_ins'] ?>"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains10" value="<?= $whdb2['beasesins10_ins'] ?>"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file10" class="file10 custom-file-input" name="file10" aria-describedby="fileHelp" onchange="$(this).next().after().text(delfakepath($(this).val()))"><label class="custom-file-label text-truncate" for="file10">Dokumen Sebelumnya : <?= $whdb2["surund10_ins"] ?></label></div></div></div></div>');
-
-          $("#add").hide();
+        if ($("#ok11").val() >= 1) {
+          var i = $("#ok11").val();
         } else {
           var i = 1;
+        }
+        if (i > 9) {
+          $("#add").remove();
         }
 
         $('#add').click(function() {
           i++;
           if (i < 10) {
-            $('#dynamic_field').append('<div class="elemented' + i + '"><br><h5>Data Instruktur ' + i + '</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven' + i + '"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins' + i + '"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins' + i + '"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains' + i + '"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file' + i + '" class="custom-file-input" name="file' + i + '" onchange="$(this).next().after().text(delfakepath($(this).val()))" aria-describedby="fileHelp"><label class="custom-file-label" for="file' + i + '">Dokumen Sebelumnya :</label></div></div></div></div>');
+
+            $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> No. Vendor</h6><input type='number' class='form-control form-control-user' name='noven[]'></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Laporan Pelatihan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'></div></div><input type='hidden' name='berkas" + i + "' id='file" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
+            $(".fileget").fileinput({
+              'maxFileSize': 25000,
+              "dropZoneEnabled": false,
+              "showPreview": false,
+              'maxFileCount': 1,
+              'uploadUrl': '<?= base_url("upload/ins") ?>' + i,
+              'elErrorContainer': '#errorBlock1',
+              'uploadAsync': true,
+              uploadExtraData: function() {}
+            });
+            $("#file" + i).on('fileuploaded', function(event, data, previewId, index) {
+              var response = data.response,
+                reader = data.reader;
+              $("#berkas" + i).val(response.insfile + i);
+            });
           } else {
-            if (i = 10) {
-              $('#dynamic_field').append('<div class="elemented' + i + '"><br><h5>Data Instruktur ' + i + '</h5><hr><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6><input type="number" class="form-control form-control-user" name="noven' + i + '"></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6><input type="text" class="form-control form-control-user" name="ins' + i + '"></div></div><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Sesi</h6><input type="number" class="form-control form-control-user" name="sesins' + i + '"></div></div></div><div class="row"><div class="col-lg col-xl"><div class="form-group"><h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6><input type="number" class="form-control form-control-user" name="beains' + i + '"></div></div><div class="col-lg col-xl"><h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6><div class="custom-file" id="customFile" lang="es"><input type="file" id="file' + i + '" class="custom-file-input" onchange="$(this).next().after().text(delfakepath($(this).val()))" name="file' + i + '" aria-describedby="fileHelp"><label class="custom-file-label" for="file' + i + '">Dokumen Sebelumnya :</label></div></div></div></div>');
+            if (i >= 10) {
+              $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> No. Vendor</h6><input type='number' class='form-control form-control-user' name='noven[]'></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Laporan Pelatihan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'></div></div><input type='hidden' name='berkas" + i + "' id='file" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
+              $(".fileget").fileinput({
+                'maxFileSize': 25000,
+                "dropZoneEnabled": false,
+                "showPreview": false,
+                'maxFileCount': 1,
+                'uploadUrl': '<?= base_url("upload/ins") ?>' + i,
+                'elErrorContainer': '#errorBlock1',
+                'uploadAsync': true,
+                uploadExtraData: function() {}
+              });
+              $("#file" + i).on('fileuploaded', function(event, data, previewId, index) {
+                var response = data.response,
+                  reader = data.reader;
+                $("#berkas" + i).val(response.insfile + i);
+              });
               $("#add").hide();
             }
           }
-
           if (i == 2) {
             $("#buttonrz").append('<button type="button" id="' + i + '" class="btn_remove btn btn-danger"><i class="fas fa-minus-square"></i> Instruktur</button>');
           }
         });
+
 
         $(document).on('click', '.btn_remove', function() {
           var button_id = i;
@@ -164,7 +287,7 @@
             $(this).hide();
           }
           $(".elemented" + button_id).remove();
-          if (i == 10) {
+          if (i < 10) {
             $("#add").show();
           }
           i--;

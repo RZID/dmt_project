@@ -172,27 +172,27 @@
 
               <!-- Akhir data Provider -->
               <?php
-              $datanya = $dis->crud->select_where("ins_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array();
-              if ($datanya["novend1_ins"] > 0) {
-              ?>
+              $data_dari_keu = $this->db->order_by("no_ins", "ASC")->get_where("addins_dmt", array("id_plth" => $this->input->get("id_pelatihan")));
+
+              foreach ($data_dari_keu->result_array() as $ddk) { ?>
                 <br>
-                <h5>Data Instruktur 1</h5>
+                <h5>Data Instruktur <?= $ddk["no_ins"] ?></h5>
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend1_ins"] ?>" class="form-control form-control-user" disabled>
+                  <input type="number" value="<?= $ddk["novend_ins"] ?>" class="form-control form-control-user" disabled>
                 </div>
                 <div class="row">
                   <div class="col-lg col-xl">
                     <div class="form-group">
                       <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins1_ins"] ?>" class="form-control form-control-user" disabled>
+                      <input type="text" value="<?= $ddk["ins_ins"] ?>" class="form-control form-control-user" disabled>
                     </div>
                   </div>
                   <div class="col-lg col-xl">
                     <div class="form-group">
                       <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins1_ins"] ?>" class="form-control form-control-user" disabled>
+                      <input type="number" value="<?= $ddk["sesins_ins"] ?>" class="form-control form-control-user" disabled>
                     </div>
                   </div>
                 </div>
@@ -200,16 +200,15 @@
                   <div class="col-lg col-xl">
                     <div class="form-group">
                       <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins1_ins"] ?>" class="form-control form-control-user" disabled>
+                      <input type="number" value="<?= $ddk["beasesins_ins"] ?>" class="form-control form-control-user" disabled>
                     </div>
                   </div>
                   <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund1_ins"] ?>
-                      </label>
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
+                      <a href="<?= base_url("assets/uploaded_file/") . $ddk["surund_ins"] ?>">
+                        <input type="text" value="<?= $ddk["surund_ins"] ?>" class="form-control form-control-user" disabled>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -217,11 +216,11 @@
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">
-                    <select class="form-control" name="status1" id="">
-                      <?php if ($keu["status1"] == "Sudah Dibayar") { ?>
+                    <select class="form-control" name="status<?= $ddk["no_ins"] ?>" id="">
+                      <?php if ($keu["status" . $ddk['no_ins'] . ""] == "Sudah Dibayar") { ?>
                         <option value="Sudah Dibayar" selected>Sudah dibayar</option>
                         <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status1"] == "Belum Dibayar") { ?>
+                      <?php } elseif ($keu["status" . $ddk['no_ins'] . ""] == "Belum Dibayar") { ?>
                         <option value="Sudah Dibayar">Sudah dibayar</option>
                         <option value="Belum Dibayar" selected>Belum dibayar</option>
                       <?php } else { ?>
@@ -232,557 +231,9 @@
                     </select>
                   </div>
                 </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend2_ins"] > 0) {
+              <?php
+              }
               ?>
-                <br>
-                <h5>Data Instruktur 2</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend2_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins2_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins2_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins2_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund2_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status2" id="">
-                      <?php if ($keu["status2"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status2"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend3_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 3</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend3_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins3_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins3_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins3_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund3_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status3" id="">
-                      <?php if ($keu["status3"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status3"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend4_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 4</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend4_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins4_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins4_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins4_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund4_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status4" id="">
-                      <?php if ($keu["status4"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status4"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend5_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 5</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend5_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins5_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins5_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins5_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund5_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status5" id="">
-                      <?php if ($keu["status5"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status5"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend6_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 6</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend6_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins6_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins6_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins6_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund6_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status6" id="">
-                      <?php if ($keu["status6"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status6"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend7_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 7</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend7_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins7_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins7_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins7_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund7_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status7" id="">
-                      <?php if ($keu["status7"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status7"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend8_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 8</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend8_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins8_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins8_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins8_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund8_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status8" id="">
-                      <?php if ($keu["status8"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status8"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend9_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 9</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend9_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins9_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins9_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins9_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" placeholder="" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        : <?= $datanya["surund9_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status9" id="">
-                      <?php if ($keu["status9"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status9"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
-              <?php if ($datanya["novend10_ins"] > 0) {
-              ?>
-                <br>
-                <h5>Data Instruktur 10</h5>
-                <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $datanya["novend10_ins"] ?>" class="form-control form-control-user" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary"> Nama Instruktur</h6>
-                      <input type="text" value="<?= $datanya["ins10_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Sesi</h6>
-                      <input type="number" value="<?= $datanya["sesins10_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg col-xl">
-                    <div class="form-group">
-                      <h6 class="m-0 font-weight-bold text-secondary">Biaya Honor & Transport</h6>
-                      <input type="number" value="<?= $datanya["beasesins10_ins"] ?>" class="form-control form-control-user" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg col-xl">
-                    <h6 class="m-0 font-weight-bold text-secondary">Surat Undangan</h6>
-                    <div class="custom-file" id="customFile" lang="es">
-                      <input type="file" id="#" class="custom-file-input" name="#" aria-describedby="fileHelp" disabled>
-                      <label class="custom-file-label" for="#">
-                        <?= $datanya["surund10_ins"] ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
-                  <div class="form-group">
-                    <select class="form-control" name="status10" id="">
-                      <?php if ($keu["status10"] == "Sudah Dibayar") { ?>
-                        <option value="Sudah Dibayar" selected>Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } elseif ($keu["status10"] == "Belum Dibayar") { ?>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar" selected>Belum dibayar</option>
-                      <?php } else { ?>
-                        <option disabled selected>--- Pilih Salah Satu ---</option>
-                        <option value="Sudah Dibayar">Sudah dibayar</option>
-                        <option value="Belum Dibayar">Belum dibayar</option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- Akhir Instruktur -->
-              <?php } ?>
 
               <br>
               <br>

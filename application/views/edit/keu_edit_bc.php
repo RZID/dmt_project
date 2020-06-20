@@ -30,12 +30,29 @@
               <!-- Awal Data Finance BC -->
               <div class="row">
                 <div class="col-lg col-xl">
-                  <h6 class="m-0 font-weight-bold text-secondary">Absensi Kehadiran</h6>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input file-type" id="inputGroupFile01" name="file1" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" id="file1" for="inputGroupFile01">Choose file</label>
+                  <h6 class="m-0 font-weight-bold text-secondary">Upload Absensi Kehadiran</h6>
+                  <div class="example">
+                    <input type="file" id="absenkehadiran" class="dropify-event" name="absenkehadiran">
                   </div>
-                  <small id="fileHelpId" class="form-text text-muted">File Sebelumnya : <?= $whdb2["file1_keubc"] ?></small>
+                  <input type="hidden" name="absenkehadiran_up" id="absenkehadiran_up">
+                  <script>
+                    $("#absenkehadiran").fileinput({
+                      'maxFileSize': 25000,
+                      "dropZoneEnabled": false,
+                      "showPreview": false,
+                      'maxFileCount': 1,
+                      'uploadUrl': '<?= base_url("upload/keubc") ?>',
+                      'elErrorContainer': '#errorBlock1',
+                      'initialCaption': "<?= $whdb2["file1_keubc"] ?>",
+                      'uploadAsync': true,
+                      uploadExtraData: function() {}
+                    });
+                    $('#absenkehadiran').on('fileuploaded', function(event, data, previewId, index) {
+                      var response = data.response,
+                        reader = data.reader;
+                      $("#absenkehadiran_up").val(response.keubc);
+                    });
+                  </script>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">
@@ -58,12 +75,7 @@
                 </div>
 
               </div>
-              <script>
-                $(document).on('change', '.file-type', function() {
-                  let fileName = $(this).val().replace(/\\/g, '/').replace(/.*\//, '');
-                  $(this).parent('.custom-file').find('.custom-file-label').text(fileName);
-                });
-              </script>
+
               <!-- Internal PTMN -->
 
               <br>

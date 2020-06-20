@@ -591,7 +591,7 @@
         public function edit_ins_core()
         {
             $id = $this->input->post("id");
-            $query_seldata = $this->crud->select_where("ins_dmt", array("id_plth" => $id));
+            $query_seldata = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->result_array();
             if ($this->session->userdata("access_num") != 3) {
                 $this->session->set_flashdata("msg", "<script>
                 $(document).ready(function() {
@@ -606,651 +606,285 @@
             }
 
             //INSTRUKTUR 1
-            if (!$this->input->post("ins1")) {
-                $ins1 = "N/A";
-            } else {
-                $ins1 = $this->input->post("ins1");
-            }
+            //SET DATA DULU BIAR GA PUYENG
+            $noven = $this->input->post("noven", true);
+            $ins = $this->input->post("ins", true);
+            $sesins = $this->input->post("sesins", true);
+            $beains = $this->input->post("beains", true);
+            $pemberkasan = $this->input->post("pemberkasan", true);
+            $tglmulai = $this->input->post("tglmulai", true);
+            $tglselesai = $this->input->post("tglselesai", true);
 
-            //INSTRUKTUR 2
-            if (!$this->input->post("ins2")) {
-                $ins2 = "N/A";
+            if ($this->db->like("no_ins", "1", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "1"),  array(
+                    "no_ins" => 1,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[0],
+                    "ins_ins" => $ins[0],
+                    "sesins_ins" => $sesins[0],
+                    "beasesins_ins" => $beains[0],
+                    "surund_ins" => $pemberkasan[0],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[0]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[0]),
+                ));
             } else {
-                $ins2 = $this->input->post("ins2");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 1,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[0],
+                    "ins_ins" => $ins[0],
+                    "sesins_ins" => $sesins[0],
+                    "beasesins_ins" => $beains[0],
+                    "surund_ins" => $pemberkasan[0],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[0]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[0]),
+                ));
             }
-
-            //INSTRUKTUR 3
-            if (!$this->input->post("ins3")) {
-                $ins3 = "N/A";
+            if ($this->db->like("no_ins", "2", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "2"),  array(
+                    "no_ins" => 2,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[1],
+                    "ins_ins" => $ins[1],
+                    "sesins_ins" => $sesins[1],
+                    "beasesins_ins" => $beains[1],
+                    "surund_ins" => $pemberkasan[1],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[1]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[1]),
+                ));
             } else {
-                $ins3 = $this->input->post("ins3");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 2,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[1],
+                    "ins_ins" => $ins[1],
+                    "sesins_ins" => $sesins[1],
+                    "beasesins_ins" => $beains[1],
+                    "surund_ins" => $pemberkasan[1],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[1]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[1]),
+                ));
             }
-
-            //INSTRUKTUR 4
-            if (!$this->input->post("ins4")) {
-                $ins4 = "N/A";
+            if ($this->db->like("no_ins", "3", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "3"),  array(
+                    "no_ins" => 3,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[2],
+                    "ins_ins" => $ins[2],
+                    "sesins_ins" => $sesins[2],
+                    "beasesins_ins" => $beains[2],
+                    "surund_ins" => $pemberkasan[2],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[2]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[2]),
+                ));
             } else {
-                $ins4 = $this->input->post("ins4");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 3,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[2],
+                    "ins_ins" => $ins[2],
+                    "sesins_ins" => $sesins[2],
+                    "beasesins_ins" => $beains[2],
+                    "surund_ins" => $pemberkasan[2],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[2]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[2]),
+                ));
             }
-
-            //INSTRUKTUR 5
-            if (!$this->input->post("ins5")) {
-                $ins5 = "N/A";
+            if ($this->db->like("no_ins", "4", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "4"),  array(
+                    "no_ins" => 4,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[3],
+                    "ins_ins" => $ins[3],
+                    "sesins_ins" => $sesins[3],
+                    "beasesins_ins" => $beains[3],
+                    "surund_ins" => $pemberkasan[3],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[3]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[3]),
+                ));
             } else {
-                $ins5 = $this->input->post("ins5");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 4,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[3],
+                    "ins_ins" => $ins[3],
+                    "sesins_ins" => $sesins[3],
+                    "beasesins_ins" => $beains[3],
+                    "surund_ins" => $pemberkasan[3],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[3]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[3]),
+                ));
             }
-
-            if (!$this->input->post("ins6")) {
-                $ins6 = "N/A";
+            if ($this->db->like("no_ins", "5", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "5"),  array(
+                    "no_ins" => 5,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[4],
+                    "ins_ins" => $ins[4],
+                    "sesins_ins" => $sesins[4],
+                    "beasesins_ins" => $beains[4],
+                    "surund_ins" => $pemberkasan[4],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[4]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[4]),
+                ));
             } else {
-                $ins6 = $this->input->post("ins6");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 5,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[4],
+                    "ins_ins" => $ins[4],
+                    "sesins_ins" => $sesins[4],
+                    "beasesins_ins" => $beains[4],
+                    "surund_ins" => $pemberkasan[4],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[4]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[4]),
+                ));
             }
-
-            //INSTRUKTUR 2
-            if (!$this->input->post("ins7")) {
-                $ins7 = "N/A";
+            if ($this->db->like("no_ins", "6", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "6"),  array(
+                    "no_ins" => 6,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[5],
+                    "ins_ins" => $ins[5],
+                    "sesins_ins" => $sesins[5],
+                    "beasesins_ins" => $beains[5],
+                    "surund_ins" => $pemberkasan[5],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[5]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[5]),
+                ));
             } else {
-                $ins7 = $this->input->post("ins7");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 6,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[5],
+                    "ins_ins" => $ins[5],
+                    "sesins_ins" => $sesins[5],
+                    "beasesins_ins" => $beains[5],
+                    "surund_ins" => $pemberkasan[5],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[5]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[5]),
+                ));
             }
-
-            //INSTRUKTUR 3
-            if (!$this->input->post("ins8")) {
-                $ins8 = "N/A";
+            if ($this->db->like("no_ins", "7", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "7"),  array(
+                    "no_ins" => 7,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[6],
+                    "ins_ins" => $ins[6],
+                    "sesins_ins" => $sesins[6],
+                    "beasesins_ins" => $beains[6],
+                    "surund_ins" => $pemberkasan[6],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[6]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[6]),
+                ));
             } else {
-                $ins8 = $this->input->post("ins8");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 7,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[6],
+                    "ins_ins" => $ins[6],
+                    "sesins_ins" => $sesins[6],
+                    "beasesins_ins" => $beains[6],
+                    "surund_ins" => $pemberkasan[6],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[6]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[6]),
+                ));
             }
-
-            //INSTRUKTUR 4
-            if (!$this->input->post("ins9")) {
-                $ins9 = "N/A";
+            if ($this->db->like("no_ins", "8", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "8"),  array(
+                    "no_ins" => 8,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[7],
+                    "ins_ins" => $ins[7],
+                    "sesins_ins" => $sesins[7],
+                    "beasesins_ins" => $beains[7],
+                    "surund_ins" => $pemberkasan[7],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[7]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[7]),
+                ));
             } else {
-                $ins9 = $this->input->post("ins9");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 8,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[7],
+                    "ins_ins" => $ins[7],
+                    "sesins_ins" => $sesins[7],
+                    "beasesins_ins" => $beains[7],
+                    "surund_ins" => $pemberkasan[7],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[7]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[7]),
+                ));
             }
-
-            //INSTRUKTUR 5
-            if (!$this->input->post("ins10")) {
-                $ins10 = "N/A";
+            if ($this->db->like("no_ins", "9", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "9"),  array(
+                    "no_ins" => 9,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[8],
+                    "ins_ins" => $ins[8],
+                    "sesins_ins" => $sesins[8],
+                    "beasesins_ins" => $beains[8],
+                    "surund_ins" => $pemberkasan[8],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[8]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[8]),
+                ));
             } else {
-                $ins10 = $this->input->post("ins10");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 9,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[8],
+                    "ins_ins" => $ins[8],
+                    "sesins_ins" => $sesins[8],
+                    "beasesins_ins" => $beains[8],
+                    "surund_ins" => $pemberkasan[8],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[8]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[8]),
+                ));
             }
-
-            //SESI INSTRUKTUR 1
-            if (!$this->input->post("sesins1")) {
-                $sesins1 = "N/A";
+            if ($this->db->like("no_ins", "10", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
+                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "10"),  array(
+                    "no_ins" => 10,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[9],
+                    "ins_ins" => $ins[9],
+                    "sesins_ins" => $sesins[9],
+                    "beasesins_ins" => $beains[9],
+                    "surund_ins" => $pemberkasan[9],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[9]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[9]),
+                ));
             } else {
-                $sesins1 = $this->input->post("sesins1");
+                $this->crud->insert("addins_dmt", array(
+                    "no_ins" => 10,
+                    "id_plth" => $this->input->post("id"),
+                    "novend_ins" => $noven[9],
+                    "ins_ins" => $ins[9],
+                    "sesins_ins" => $sesins[9],
+                    "beasesins_ins" => $beains[9],
+                    "surund_ins" => $pemberkasan[9],
+                    "tglmulaiajar_ins" => strtotime($tglmulai[9]),
+                    "tgldoneajar_ins" => strtotime($tglselesai[9]),
+                ));
             }
-
-            //Sesi INSTRUKTUR 2
-            if (!$this->input->post("sesins2")) {
-                $sesins2 = "N/A";
-            } else {
-                $sesins2 = $this->input->post("sesins2");
-            }
-
-            //Sesi INSTRUKTUR 3
-            if (!$this->input->post("sesins3")) {
-                $sesins3 = "N/A";
-            } else {
-                $sesins3 = $this->input->post("sesins3");
-            }
-
-            //Sesi INSTRUKTUR 4
-            if (!$this->input->post("sesins4")) {
-                $sesins4 = "N/A";
-            } else {
-                $sesins4 = $this->input->post("sesins4");
-            }
-            //Sesi INSTRUKTUR 5
-            if (!$this->input->post("sesins5")) {
-                $sesins5 = "N/A";
-            } else {
-                $sesins5 = $this->input->post("sesins5");
-            }
-
-            //SESI INSTRUKTUR 1
-            if (!$this->input->post("sesins6")) {
-                $sesins6 = "N/A";
-            } else {
-                $sesins6 = $this->input->post("sesins6");
-            }
-
-            //Sesi INSTRUKTUR 2
-            if (!$this->input->post("sesins7")) {
-                $sesins7 = "N/A";
-            } else {
-                $sesins7 = $this->input->post("sesins7");
-            }
-
-            //Sesi INSTRUKTUR 3
-            if (!$this->input->post("sesins8")) {
-                $sesins8 = "N/A";
-            } else {
-                $sesins8 = $this->input->post("sesins8");
-            }
-
-            //Sesi INSTRUKTUR 4
-            if (!$this->input->post("sesins9")) {
-                $sesins9 = "N/A";
-            } else {
-                $sesins9 = $this->input->post("sesins9");
-            }
-            //Sesi INSTRUKTUR 5
-            if (!$this->input->post("sesins10")) {
-                $sesins10 = "N/A";
-            } else {
-                $sesins10 = $this->input->post("sesins10");
-            }
-
-            //Biaya Instruktur 1
-            if (!$this->input->post("beains1")) {
-                $beains1 = "N/A";
-            } else {
-                $beains1 = $this->input->post("beains1");
-            }
-
-            //Biaya Instruktur 2
-            if (!$this->input->post("beains2")) {
-                $beains2 = "N/A";
-            } else {
-                $beains2 = $this->input->post("beains2");
-            }
-
-            //Biaya Instruktur 3
-            if (!$this->input->post("beains3")) {
-                $beains3 = "N/A";
-            } else {
-                $beains3 = $this->input->post("beains3");
-            }
-
-            //Biaya Instruktur 4
-            if (!$this->input->post("beains4")) {
-                $beains4 = "N/A";
-            } else {
-                $beains4 = $this->input->post("beains4");
-            }
-
-            //Biaya Instruktur 5
-            if (!$this->input->post("beains5")) {
-                $beains5 = "N/A";
-            } else {
-                $beains5 = $this->input->post("beains5");
-            }
-
-            //Biaya Instruktur 1
-            if (!$this->input->post("beains6")) {
-                $beains6 = "N/A";
-            } else {
-                $beains6 = $this->input->post("beains6");
-            }
-
-            //Biaya Instruktur 2
-            if (!$this->input->post("beains7")) {
-                $beains7 = "N/A";
-            } else {
-                $beains7 = $this->input->post("beains7");
-            }
-
-            //Biaya Instruktur 3
-            if (!$this->input->post("beains8")) {
-                $beains8 = "N/A";
-            } else {
-                $beains8 = $this->input->post("beains8");
-            }
-
-            //Biaya Instruktur 4
-            if (!$this->input->post("beains9")) {
-                $beains9 = "N/A";
-            } else {
-                $beains9 = $this->input->post("beains9");
-            }
-
-            //Biaya Instruktur 5
-            if (!$this->input->post("beains10")) {
-                $beains10 = "N/A";
-            } else {
-                $beains10 = $this->input->post("beains10");
-            }
-
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven1")) {
-                $noven1 = 0;
-            } else {
-                $noven1 = $this->input->post("noven1");
-            }
-
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven2")) {
-                $noven2 = 0;
-            } else {
-                $noven2 = $this->input->post("noven2");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven3")) {
-                $noven3 = 0;
-            } else {
-                $noven3 = $this->input->post("noven3");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven4")) {
-                $noven4 = 0;
-            } else {
-                $noven4 = $this->input->post("noven4");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven5")) {
-                $noven5 = 0;
-            } else {
-                $noven5 = $this->input->post("noven5");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven6")) {
-                $noven6 = 0;
-            } else {
-                $noven6 = $this->input->post("noven6");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven7")) {
-                $noven7 = 0;
-            } else {
-                $noven7 = $this->input->post("noven7");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven8")) {
-                $noven8 = 0;
-            } else {
-                $noven8 = $this->input->post("noven8");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven9")) {
-                $noven9 = 0;
-            } else {
-                $noven9 = $this->input->post("noven9");
-            }
-            //Biaya Instruktur 5
-            if (!$this->input->post("noven10")) {
-                $noven10 = 0;
-            } else {
-                $noven10 = $this->input->post("noven10");
-            }
-            if (isset($_FILES['file1']['name'])) {
-                $file1 = time() . "_1." . pathinfo($_FILES["file1"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file1
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file1')) {
-                    $upload_data = $this->upload->data();
-                    $file1 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"] == NULL) {
-                    $file1 = "N/A";
-                } else {
-                    $file1 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"];
-                }
-            }
-
-            if (isset($_FILES['file2']['name'])) {
-                $file2 = time() . "_2." . pathinfo($_FILES["file2"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file2
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file2')) {
-                    $upload_data = $this->upload->data();
-                    $file2 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund2_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund2_ins"] == NULL) {
-                    $file2 = "N/A";
-                } else {
-                    $file2 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund2_ins"];
-                }
-            }
-
-            if (isset($_FILES['file3']['name'])) {
-                $file3 = time() . "_3." . pathinfo($_FILES["file3"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file3
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file3')) {
-                    $upload_data = $this->upload->data();
-                    $file3 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund3_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund3_ins"] == NULL) {
-                    $file3 = "N/A";
-                } else {
-                    $file3 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund1_ins"];
-                }
-            }
-
-            if (isset($_FILES['file4']['name'])) {
-                $file4 = time() . "_4." . pathinfo($_FILES["file4"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file4
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file4')) {
-                    $upload_data = $this->upload->data();
-                    $file4 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"] == NULL) {
-                    $file4 = "N/A";
-                } else {
-                    $file4 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund4_ins"];
-                }
-            }
-            if (isset($_FILES['file5']['name'])) {
-                $file5 = time() . "_5." . pathinfo($_FILES["file5"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file5
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file5')) {
-                    $upload_data = $this->upload->data();
-                    $file5 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"] == NULL) {
-                    $file5 = "N/A";
-                } else {
-                    $file5 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund5_ins"];
-                }
-            }
-            if (isset($_FILES['file6']['name'])) {
-                $file6 = time() . "_6." . pathinfo($_FILES["file6"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file6
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file6')) {
-                    $upload_data = $this->upload->data();
-                    $file6 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"] == NULL) {
-                    $file6 = "N/A";
-                } else {
-                    $file6 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund6_ins"];
-                }
-            }
-            if (isset($_FILES['file7']['name'])) {
-                $file7 = time() . "_7." . pathinfo($_FILES["file7"]['name'], PATHINFO_EXTENSION);
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file7
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file7')) {
-                    $upload_data = $this->upload->data();
-                    $file7 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"] == NULL) {
-                    $file7 = "N/A";
-                } else {
-                    $file7 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund7_ins"];
-                }
-            }
-            if (isset($_FILES['file8']['name'])) {
-                $file8 = time() . "_8." . pathinfo($_FILES["file8"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file8
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file8')) {
-                    $upload_data = $this->upload->data();
-                    $file8 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"] == NULL) {
-                    $file8 = "N/A";
-                } else {
-                    $file8 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund8_ins"];
-                }
-            }
-            if (isset($_FILES['file9']['name'])) {
-                $file9 = time() . "_9." . pathinfo($_FILES["file9"]['name'], PATHINFO_EXTENSION);
-
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file9
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file9')) {
-                    $upload_data = $this->upload->data();
-                    $file9 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"] == NULL) {
-                    $file9 = "N/A";
-                } else {
-                    $file9 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund9_ins"];
-                }
-            }
-            if (isset($_FILES['file10']['name'])) {
-                $file10 = time() . "_10." . pathinfo($_FILES["file10"]['name'], PATHINFO_EXTENSION);
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file10
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file10')) {
-                    $upload_data = $this->upload->data();
-                    $file10 = $upload_data['file_name'];
-                } else {
-                    $this->upload->display_errors();
-                }
-            } else {
-                if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund10_ins"] == "" or $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund10_ins"] == NULL) {
-                    $file10 = "N/A";
-                } else {
-                    $file10 = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->row_array()["surund10_ins"];
-                }
-            }
-            //Biaya Instruktur 5
             if (!$this->input->post("status")) {
                 $status = "Pending";
             } else {
-                $status = $this->input->post("status");
+                $status = "Completed";
             }
-
-            if ($query_seldata->num_rows() < 1) {
-                $array_biarrapih = array(
-                    "id_plth" => $id,
-                    "ins1_ins" => $ins1,
-                    "ins2_ins" => $ins2,
-                    "ins3_ins" => $ins3,
-                    "ins4_ins" => $ins4,
-                    "ins5_ins" => $ins5,
-                    "ins6_ins" => $ins6,
-                    "ins7_ins" => $ins7,
-                    "ins8_ins" => $ins8,
-                    "ins9_ins" => $ins9,
-                    "ins10_ins" => $ins10,
-
-                    "sesins1_ins" => $sesins1,
-                    "sesins2_ins" => $sesins2,
-                    "sesins3_ins" => $sesins3,
-                    "sesins4_ins" => $sesins4,
-                    "sesins5_ins" => $sesins5,
-                    "sesins6_ins" => $sesins6,
-                    "sesins7_ins" => $sesins7,
-                    "sesins8_ins" => $sesins8,
-                    "sesins9_ins" => $sesins9,
-                    "sesins10_ins" => $sesins10,
-
-                    "beasesins1_ins" => $beains1,
-                    "beasesins2_ins" => $beains2,
-                    "beasesins3_ins" => $beains3,
-                    "beasesins4_ins" => $beains4,
-                    "beasesins5_ins" => $beains5,
-                    "beasesins6_ins" => $beains6,
-                    "beasesins7_ins" => $beains7,
-                    "beasesins8_ins" => $beains8,
-                    "beasesins9_ins" => $beains9,
-                    "beasesins10_ins" => $beains10,
-
-                    "novend1_ins" => $noven1,
-                    "novend2_ins" => $noven2,
-                    "novend3_ins" => $noven3,
-                    "novend4_ins" => $noven4,
-                    "novend5_ins" => $noven5,
-                    "novend6_ins" => $noven6,
-                    "novend7_ins" => $noven7,
-                    "novend8_ins" => $noven8,
-                    "novend9_ins" => $noven9,
-                    "novend10_ins" => $noven10,
-
-                    "surund1_ins" => $file1,
-                    "surund2_ins" => $file2,
-                    "surund3_ins" => $file3,
-                    "surund4_ins" => $file4,
-                    "surund5_ins" => $file5,
-                    "surund6_ins" => $file6,
-                    "surund7_ins" => $file7,
-                    "surund8_ins" => $file8,
-                    "surund9_ins" => $file9,
-                    "surund10_ins" => $file10,
-
-                    "status_ins" => $status,
-                );
-                $this->crud->insert("ins_dmt", $array_biarrapih);
-                $this->session->set_flashdata("msg", "<script>
-                $(document).ready(function() {
-                    sweetAlert(
-                        'Berhasil!',
-                        'Anda berhasil input kelengkapan data.',
-                        'success'
-                    )});
-                </script>");
-                redirect("user/index");
+            if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->num_rows() < 1) {
+                $this->crud->insert("ins_dmt", array("id_plth" => $id, "status_ins" => $status));
             } else {
-                $array_biarrapih = array(
-                    "ins1_ins" => $ins1,
-                    "ins2_ins" => $ins2,
-                    "ins3_ins" => $ins3,
-                    "ins4_ins" => $ins4,
-                    "ins5_ins" => $ins5,
-                    "ins6_ins" => $ins6,
-                    "ins7_ins" => $ins7,
-                    "ins8_ins" => $ins8,
-                    "ins9_ins" => $ins9,
-                    "ins10_ins" => $ins10,
-
-                    "sesins1_ins" => $sesins1,
-                    "sesins2_ins" => $sesins2,
-                    "sesins3_ins" => $sesins3,
-                    "sesins4_ins" => $sesins4,
-                    "sesins5_ins" => $sesins5,
-                    "sesins6_ins" => $sesins6,
-                    "sesins7_ins" => $sesins7,
-                    "sesins8_ins" => $sesins8,
-                    "sesins9_ins" => $sesins9,
-                    "sesins10_ins" => $sesins10,
-
-                    "beasesins1_ins" => $beains1,
-                    "beasesins2_ins" => $beains2,
-                    "beasesins3_ins" => $beains3,
-                    "beasesins4_ins" => $beains4,
-                    "beasesins5_ins" => $beains5,
-                    "beasesins6_ins" => $beains6,
-                    "beasesins7_ins" => $beains7,
-                    "beasesins8_ins" => $beains8,
-                    "beasesins9_ins" => $beains9,
-                    "beasesins10_ins" => $beains10,
-
-                    "novend1_ins" => $noven1,
-                    "novend2_ins" => $noven2,
-                    "novend3_ins" => $noven3,
-                    "novend4_ins" => $noven4,
-                    "novend5_ins" => $noven5,
-                    "novend6_ins" => $noven6,
-                    "novend7_ins" => $noven7,
-                    "novend8_ins" => $noven8,
-                    "novend9_ins" => $noven9,
-                    "novend10_ins" => $noven10,
-
-                    "surund1_ins" => $file1,
-                    "surund2_ins" => $file2,
-                    "surund3_ins" => $file3,
-                    "surund4_ins" => $file4,
-                    "surund5_ins" => $file5,
-                    "surund6_ins" => $file6,
-                    "surund7_ins" => $file7,
-                    "surund8_ins" => $file8,
-                    "surund9_ins" => $file9,
-                    "surund10_ins" => $file10,
-
-                    "status_ins" => $status,
-                );
-                $this->crud->update("ins_dmt", "id_plth", $id, $array_biarrapih);
-                $this->session->set_flashdata("msg", "<script>
+                $this->crud->update("ins_dmt", "id_plth", "$id", array("id_plth" => $id, "status_ins" => $status));
+            }
+            $this->session->set_flashdata("msg", "<script>
                 $(document).ready(function() {
                     sweetAlert(
                         'Berhasil!',
-                        'Anda berhasil mengubah kelengkapan data.',
+                        'Anda berhasil input/ubah kelengkapan data.',
                         'success'
                     )});
                 </script>");
-                redirect("user/index");
-            }
+
+            redirect("user/index");
         }
 
         function get_time()
@@ -1259,12 +893,7 @@
             $out_date = date("d-m-Y", $time);
             echo $out_date;
         }
-        function ajaxgetdata_ins()
-        {
-            $id = $this->input->post("id_pelatihan");
-            $getdata = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->result_array();
-            echo json_encode($getdata);
-        }
+
 
         function ajaxgetdata_pstpnd()
         {
@@ -1297,6 +926,19 @@
         {
             $id = $this->input->post("id_pelatihan");
             $getdata = $this->crud->select_where("ins_dmt", array("id_plth" => $id))->result_array();
+            echo json_encode($getdata);
+        }
+        function ajaxgetdata_ins()
+        {
+            $id = $this->input->post("id_pelatihan");
+            $getdata = $this->db->order_by("no_ins", "ASC")->get_where("addins_dmt", array("id_plth" => $id))->result_array();
+            echo json_encode($getdata);
+        }
+
+        function ajaxgetdata_pnd()
+        {
+            $id = $this->input->post("id_pelatihan");
+            $getdata = $this->db->get_where("plth_dmt", array("id_plth" => $id))->result_array();
             echo json_encode($getdata);
         }
 
@@ -2493,30 +2135,10 @@
             } else {
                 $stat = $this->input->post("stat");
             }
-            if ($_FILES and $_FILES['file1']['name']) {
-                $file1_unique = time() . "_1keu." . pathinfo($_FILES["file1"]['name'], PATHINFO_EXTENSION);
-                $file1 = $_FILES["file1"]['name'];
-                $config = array(
-                    'upload_path' => 'assets/uploaded_file/',
-                    'allowed_types' => '*',
-                    'max_size' => '25000',
-                    'file_name' => $file1_unique
-                );
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('file1')) {
-                    $this->upload->data();
-                } else {
-                    $this->upload->display_errors();
-                }
+            if (!$this->input->post("absenkehadiran_up")) {
+                $file1 = "";
             } else {
-                $getCrud = $this->crud->select_where("keu_bc_dmt", array("id_plth", $this->input->post("id")))->row_array();
-                if ($getCrud["file1_keubc"] != "") {
-                    $file1 = $getCrud["file1_keubc"];
-                    $file1_unique = $getCrud["file1unik_keubc"];
-                } else {
-                    $file1 = "";
-                    $file1_unique = "";
-                }
+                $file1 = $this->input->post("absenkehadiran_up");
             }
 
 
@@ -2526,7 +2148,7 @@
 
                     "file1_keubc" => $file1,
                     "file2_keubc" => "",
-                    "file1unik_keubc" => $file1_unique,
+                    "file1unik_keubc" => $file1,
                     "file2unik_keubc" => "",
 
                     "nocs_ptmn" => $this->input->post("nocustom1"),
@@ -2562,7 +2184,7 @@
                 $array_biarrapih = array(
                     "file1_keubc" => $file1,
                     "file2_keubc" => "",
-                    "file1unik_keubc" => $file1_unique,
+                    "file1unik_keubc" => $file1,
                     "file2unik_keubc" => "",
 
                     "nocs_ptmn" => $this->input->post("nocustom1"),

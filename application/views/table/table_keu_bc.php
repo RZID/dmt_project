@@ -144,6 +144,17 @@ echo $this->session->flashdata("msg"); ?>
 
                         <!-- Vendor -->
                         <div class="row">
+                          <div class="col-xl col-lg">Memo (PND)</div>
+                          :
+                          <div class="col-xl col-lg" id="ngambilpnd1"></div>
+                        </div><!-- Vendor -->
+                        <div class="row">
+                          <div class="col-xl col-lg">Laporan Kegiatan (PND)</div>
+                          :
+                          <div class="col-xl col-lg" id="ngambilpnd2"></div>
+                        </div>
+                        <!-- Vendor -->
+                        <div class="row">
                           <div class="col-xl col-lg">Absensi Kehadiran</div>
                           :
                           <div class="col-xl col-lg" id="keu1"></div>
@@ -377,7 +388,24 @@ echo $this->session->flashdata("msg"); ?>
         $(document).ready(function() {
           var len = data2.length;
           if (len >= 1) {
-            $("#keu1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file1unik_keubc + "'>" + data2[0].file1_keubc + "</a>");
+            $("#keu1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file1_keubc + "'>" + data2[0].file1_keubc + "</a>");
+            $.ajax({
+              type: "POST",
+              dataType: 'json',
+              data: {
+                id_pelatihan: id
+              },
+              url: "<?= base_url("user/ajaxgetdata_pnd") ?>",
+              success: function(data3) {
+                $(document).ready(function() {
+                  var len = data3.length;
+                  if (len >= 1) {
+                    $("#ngambilpnd1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data3[0].filememo_plth + "'>" + data3[0].filememo_plth + "</a>");
+                    $("#ngambilpnd2").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data3[0].filelapor_plth + "'>" + data3[0].filelapor_plth + "</a>");
+                  }
+                });
+              }
+            });
             $("#keu3").html(data2[0].nocs_ptmn);
             $("#keu4").html(data2[0].namacs_ptmn);
             $("#keu5").html(data2[0].nocs_tp);

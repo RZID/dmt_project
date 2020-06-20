@@ -586,6 +586,119 @@ class Ajax extends CI_Controller
         echo json_encode($out_keu);
     }
 
+    function ajaxgetdata_ins()
+    {
+        $id = $this->input->post("id_pelatihan");
+        $getdata1 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "1"))->row_array();
+        $getdata2 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "2"))->row_array();
+        $getdata3 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "3"))->row_array();
+        $getdata4 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "4"))->row_array();
+        $getdata5 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "5"))->row_array();
+        $getdata6 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "6"))->row_array();
+        $getdata7 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "7"))->row_array();
+        $getdata8 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "8"))->row_array();
+        $getdata9 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "9"))->row_array();
+        $getdata10 = $this->crud->select_where("addins_dmt", array("id_plth" => $id, "no_ins" => "10"))->row_array();
+
+        $out_getdata["ins1_ins"] = $getdata1['ins_ins'];
+        $out_getdata["sesins1_ins"] = $getdata1['sesins_ins'];
+        $out_getdata["beasesins1_ins"] = $getdata1['beasesins_ins'];
+        $out_getdata["novend1_ins"] = $getdata1['novend_ins'];
+        $out_getdata["surund1_ins"] = $getdata1['surund_ins'];
+        $out_getdata["tglmulai1_ins"] = $getdata1['tglmulaiajar_ins'];
+        $out_getdata["tgldone1_ins"] = $getdata1['tgldoneajar_ins'];
+
+        $out_getdata["ins2_ins"] = $getdata2['ins_ins'];
+        $out_getdata["sesins2_ins"] = $getdata2['sesins_ins'];
+        $out_getdata["beasesins2_ins"] = $getdata2['beasesins_ins'];
+        $out_getdata["novend2_ins"] = $getdata2['novend_ins'];
+        $out_getdata["surund2_ins"] = $getdata2['surund_ins'];
+        $out_getdata["tglmulai2_ins"] = $getdata2['tglmulaiajar_ins'];
+        $out_getdata["tgldone2_ins"] = $getdata2['tgldoneajar_ins'];
+
+        $out_getdata["ins3_ins"] = $getdata3['ins_ins'];
+        $out_getdata["sesins3_ins"] = $getdata3['sesins_ins'];
+        $out_getdata["beasesins3_ins"] = $getdata3['beasesins_ins'];
+        $out_getdata["novend3_ins"] = $getdata3['novend_ins'];
+        $out_getdata["surund3_ins"] = $getdata3['surund_ins'];
+        $out_getdata["tglmulai3_ins"] = $getdata3['tglmulaiajar_ins'];
+        $out_getdata["tgldone3_ins"] = $getdata3['tgldoneajar_ins'];
+
+        $out_getdata["ins4_ins"] = $getdata4['ins_ins'];
+        $out_getdata["sesins4_ins"] = $getdata4['sesins_ins'];
+        $out_getdata["beasesins4_ins"] = $getdata4['beasesins_ins'];
+        $out_getdata["novend4_ins"] = $getdata4['novend_ins'];
+        $out_getdata["surund4_ins"] = $getdata4['surund_ins'];
+        $out_getdata["tglmulai4_ins"] = $getdata4['tglmulaiajar_ins'];
+        $out_getdata["tgldone4_ins"] = $getdata4['tgldoneajar_ins'];
+
+        $out_getdata["ins5_ins"] = $getdata5['ins_ins'];
+        $out_getdata["sesins5_ins"] = $getdata5['sesins_ins'];
+        $out_getdata["beasesins5_ins"] = $getdata5['beasesins_ins'];
+        $out_getdata["novend5_ins"] = $getdata5['novend_ins'];
+        $out_getdata["surund5_ins"] = $getdata5['surund_ins'];
+        $out_getdata["tglmulai5_ins"] = $getdata5['tglmulaiajar_ins'];
+        $out_getdata["tgldone5_ins"] = $getdata5['tgldoneajar_ins'];
+
+        $out_getdata["ins6_ins"] = $getdata6['ins_ins'];
+        $out_getdata["sesins6_ins"] = $getdata6['sesins_ins'];
+        $out_getdata["beasesins6_ins"] = $getdata6['beasesins_ins'];
+        $out_getdata["novend6_ins"] = $getdata6['novend_ins'];
+        $out_getdata["surund6_ins"] = $getdata6['surund_ins'];
+        $out_getdata["tglmulai6_ins"] = $getdata6['tglmulaiajar_ins'];
+        $out_getdata["tgldone6_ins"] = $getdata6['tgldoneajar_ins'];
+
+        $out_getdata["ins7_ins"] = $getdata7['ins_ins'];
+        $out_getdata["sesins7_ins"] = $getdata7['sesins_ins'];
+        $out_getdata["beasesins7_ins"] = $getdata7['beasesins_ins'];
+        $out_getdata["novend7_ins"] = $getdata7['novend_ins'];
+        $out_getdata["surund7_ins"] = $getdata7['surund_ins'];
+        $out_getdata["tglmulai7_ins"] = $getdata7['tglmulaiajar_ins'];
+        $out_getdata["tgldone7_ins"] = $getdata7['tgldoneajar_ins'];
+
+        $out_getdata["ins7_ins"] = $getdata7['ins_ins'];
+        $out_getdata["sesins7_ins"] = $getdata7['sesins_ins'];
+        $out_getdata["beasesins7_ins"] = $getdata7['beasesins_ins'];
+        $out_getdata["novend7_ins"] = $getdata7['novend_ins'];
+        $out_getdata["surund7_ins"] = $getdata7['surund_ins'];
+        $out_getdata["tglmulai7_ins"] = $getdata7['tglmulaiajar_ins'];
+        $out_getdata["tgldone7_ins"] = $getdata7['tgldoneajar_ins'];
+
+        $out_getdata["ins8_ins"] = $getdata8['ins_ins'];
+        $out_getdata["sesins8_ins"] = $getdata8['sesins_ins'];
+        $out_getdata["beasesins8_ins"] = $getdata8['beasesins_ins'];
+        $out_getdata["novend8_ins"] = $getdata8['novend_ins'];
+        $out_getdata["surund8_ins"] = $getdata8['surund_ins'];
+        $out_getdata["tglmulai8_ins"] = $getdata8['tglmulaiajar_ins'];
+        $out_getdata["tgldone8_ins"] = $getdata8['tgldoneajar_ins'];
+
+        $out_getdata["ins8_ins"] = $getdata8['ins_ins'];
+        $out_getdata["sesins8_ins"] = $getdata8['sesins_ins'];
+        $out_getdata["beasesins8_ins"] = $getdata8['beasesins_ins'];
+        $out_getdata["novend8_ins"] = $getdata8['novend_ins'];
+        $out_getdata["surund8_ins"] = $getdata8['surund_ins'];
+        $out_getdata["tglmulai8_ins"] = $getdata8['tglmulaiajar_ins'];
+        $out_getdata["tgldone8_ins"] = $getdata8['tgldoneajar_ins'];
+
+        $out_getdata["ins9_ins"] = $getdata9['ins_ins'];
+        $out_getdata["sesins9_ins"] = $getdata9['sesins_ins'];
+        $out_getdata["beasesins9_ins"] = $getdata9['beasesins_ins'];
+        $out_getdata["novend9_ins"] = $getdata9['novend_ins'];
+        $out_getdata["surund9_ins"] = $getdata9['surund_ins'];
+        $out_getdata["tglmulai9_ins"] = $getdata9['tglmulaiajar_ins'];
+        $out_getdata["tgldone9_ins"] = $getdata9['tgldoneajar_ins'];
+
+        $out_getdata["ins10_ins"] = $getdata10['ins_ins'];
+        $out_getdata["sesins10_ins"] = $getdata10['sesins_ins'];
+        $out_getdata["beasesins10_ins"] = $getdata10['beasesins_ins'];
+        $out_getdata["novend10_ins"] = $getdata10['novend_ins'];
+        $out_getdata["surund10_ins"] = $getdata10['surund_ins'];
+        $out_getdata["tglmulai10_ins"] = $getdata10['tglmulaiajar_ins'];
+        $out_getdata["tgldone10_ins"] = $getdata10['tgldoneajar_ins'];
+
+        echo json_encode($out_getdata);
+    }
+
     function getpnd_export()
     {
         $data_down = $this->input->post("data");

@@ -59,6 +59,14 @@ class Crud extends CI_Model
 
         return $update;
     }
+    function update_where($table, $wherearray, $setarray)
+    {
+        $this->db->set($setarray);
+        $this->db->where($wherearray);
+        $update = $this->db->update($table);
+
+        return $update;
+    }
     function delete($table, $arraydata)
     {
         $this->db->delete($table, $arraydata);
