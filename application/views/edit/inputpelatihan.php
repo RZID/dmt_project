@@ -69,7 +69,13 @@
               <input type="text" class="form-control form-control-user" placeholder="Sertifikasi" name="cert">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control form-control-user" placeholder="Nama Vendor Pelatihan" name="vend">
+              <h6 type="text">Nama Vendor Pelatihan</h6>
+              <select class="custom-select" name="vend">
+                <option selected disabled>--- Pilih Salah Satu ---</option>
+                <?php foreach ($dis->crud->select("nmvendor_dmt")->result_array() as $ven) { ?>
+                  <option value="<?= $ven["nama_nmvendor"] ?>"><?= $ven["nama_nmvendor"] ?></option>
+                <?php } ?>
+              </select>
             </div>
             <div class="form-group">
               <input type="text" class="form-control form-control-user" placeholder="Harga Kesepakatan Vendor" name="harga">

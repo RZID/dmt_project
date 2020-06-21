@@ -74,8 +74,14 @@
               <input type="text" class="form-control form-control-user" placeholder="Sertifikasi" name="cert" value="<?= $whdb['sertifikasi_plth'] ?>">
             </div>
             <div class="form-group">
-              <h6 class="m-0 font-weight-bold text-secondary">Nama Vendor Pelatihan</h6>
-              <input type="text" class="form-control form-control-user" placeholder="Nama Vendor Pelatihan" name="vend" value="<?= $whdb['nmvendor_plth'] ?>">
+              <h6 type="text">Nama Vendor Pelatihan</h6>
+              <select class="custom-select" name="vend">
+                <?php $vendor_ini = $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array() ?>
+                <option value="<?= $vendor_ini["nmvendor_plth"] ?>" selected><?= $vendor_ini["nmvendor_plth"] ?></option>
+                <?php foreach ($this->db->get_where("nmvendor_dmt", array("nama_nmvendor !=" => $vendor_ini["nmvendor_plth"]))->result_array() as $ven) { ?>
+                  <option value="<?= $ven["nama_nmvendor"] ?>"><?= $ven["nama_nmvendor"] ?></option>
+                <?php } ?>
+              </select>
             </div>
 
             <div class="form-group">
