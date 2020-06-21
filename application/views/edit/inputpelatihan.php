@@ -116,7 +116,7 @@
               <input type="hidden" name="berkasmemo_up" id="berkasmemo_up">
               <script>
                 $("#filemem").fileinput({
-                  'maxFileSize': 25000,
+                  'maxFileSize': 5120,
                   "dropZoneEnabled": false,
                   "showPreview": false,
                   'maxFileCount': 1,
@@ -141,17 +141,18 @@
                 <h6 class="m-0 font-weight-bold text-secondary">Upload Laporan Pelatihan</h6>
                 <div class="example">
                   <input type="file" id="filelap" class="dropify-event" name="berkaslaporan">
+                  <div id="errorBlock2"></div>
                 </div>
               </div>
               <input type="hidden" name="berkaslap_up" id="berkaslap_up">
               <script>
                 $("#filelap").fileinput({
-                  'maxFileSize': 25000,
+                  'maxFileSize': 5120,
                   "dropZoneEnabled": false,
                   "showPreview": false,
                   'maxFileCount': 1,
                   'uploadUrl': '<?= base_url("upload/plth2") ?>',
-                  'elErrorContainer': '#errorBlock1',
+                  'elErrorContainer': '#errorBlock2',
                   'uploadAsync': true,
                   uploadExtraData: function() {}
                 });

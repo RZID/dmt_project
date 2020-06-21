@@ -33,11 +33,12 @@
                   <h6 class="m-0 font-weight-bold text-secondary">Upload Absensi Kehadiran</h6>
                   <div class="example">
                     <input type="file" id="absenkehadiran" class="dropify-event" name="absenkehadiran">
+                    <div id="errorBlock1"></div>
                   </div>
                   <input type="hidden" name="absenkehadiran_up" id="absenkehadiran_up">
                   <script>
                     $("#absenkehadiran").fileinput({
-                      'maxFileSize': 25000,
+                      'maxFileSize': 5120,
                       "dropZoneEnabled": false,
                       "showPreview": false,
                       'maxFileCount': 1,
