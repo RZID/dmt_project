@@ -374,6 +374,7 @@ echo $this->session->flashdata("msg"); ?>
           $("#sifat").html(data[0].sifat_plth);
           $("#venonven").html(data[0].vendor_plth);
 
+
         });
       }
     });
@@ -388,24 +389,7 @@ echo $this->session->flashdata("msg"); ?>
         $(document).ready(function() {
           var len = data2.length;
           if (len >= 1) {
-            $("#keu1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[0].file1_keubc + "'>" + data2[0].file1_keubc + "</a>");
-            $.ajax({
-              type: "POST",
-              dataType: 'json',
-              data: {
-                id_pelatihan: id
-              },
-              url: "<?= base_url("user/ajaxgetdata_pnd") ?>",
-              success: function(data3) {
-                $(document).ready(function() {
-                  var len = data3.length;
-                  if (len >= 1) {
-                    $("#ngambilpnd1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data3[0].filememo_plth + "'>" + data3[0].filememo_plth + "</a>");
-                    $("#ngambilpnd2").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data3[0].filelapor_plth + "'>" + data3[0].filelapor_plth + "</a>");
-                  }
-                });
-              }
-            });
+
             $("#keu3").html(data2[0].nocs_ptmn);
             $("#keu4").html(data2[0].namacs_ptmn);
             $("#keu5").html(data2[0].nocs_tp);
@@ -422,7 +406,7 @@ echo $this->session->flashdata("msg"); ?>
             $("#keu16").html(data2[0].status_keu_bc);
           } else {
             var nulled = "Belum Diatur";
-            $("#keu1").html("<a class='text-danger'>" + nulled + "</a>");
+            $("#keu1").html("");
             $("#keu3").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu4").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu5").html("<a class='text-danger'>" + nulled + "</a>");
@@ -437,6 +421,53 @@ echo $this->session->flashdata("msg"); ?>
             $("#keu14").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu15").html("<a class='text-danger'>" + nulled + "</a>");
             $("#keu16").html("<a class='text-danger'>Pending</a>");
+          }
+        });
+      }
+    });
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      data: {
+        id_pelatihan: id
+      },
+      url: "<?= base_url("user/ajaxgetdata_pnd") ?>",
+      success: function(data3) {
+        $(document).ready(function() {
+          var len3 = data3.length;
+          if (len3 >= 1) {
+            if (data3[0].filememo_plth != "") {
+              $("#ngambilpnd1").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data3[0].filememo_plth + "'>" + data3[0].filememo_plth + "</a>");
+            } else {
+              $("#ngambilpnd1").html("");
+            }
+
+            if (data3[0].filelapor_plth != "") {
+              $("#ngambilpnd2").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data3[0].filelapor_plth + "'>" + data3[0].filelapor_plth + "</a>");
+            } else {
+              $("#ngambilpnd2").html("");
+            }
+          } else {
+            $("#ngambilpnd1").html("");
+            $("#ngambilpnd2").html("");
+          }
+        });
+      }
+    });
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      data: {
+        id_pelatihan: id
+      },
+      url: "<?= base_url("user/ajaxgetdata_opr") ?>",
+      success: function(data4) {
+        $(document).ready(function() {
+          var len2 = data4.length;
+          if (len2 >= 1) {
+            $("#keu1").html("<a href='<?= base_url("assets/uploaded_file/operation") ?>" + data4[0].file_opr + "'>" + data4[0].dokumen_opr + "</a>");
+          } else {
+            $("#keu1").html(" ");
           }
         });
       }

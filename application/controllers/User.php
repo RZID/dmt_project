@@ -2146,11 +2146,6 @@
                 $array_biarrapih = array(
                     "id_plth" => $this->input->post("id"),
 
-                    "file1_keubc" => $file1,
-                    "file2_keubc" => "",
-                    "file1unik_keubc" => $file1,
-                    "file2unik_keubc" => "",
-
                     "nocs_ptmn" => $this->input->post("nocustom1"),
                     "namacs_ptmn" => $this->input->post("namacustom1"),
 
@@ -2182,10 +2177,6 @@
                 redirect("user/index");
             } else {
                 $array_biarrapih = array(
-                    "file1_keubc" => $file1,
-                    "file2_keubc" => "",
-                    "file1unik_keubc" => $file1,
-                    "file2unik_keubc" => "",
 
                     "nocs_ptmn" => $this->input->post("nocustom1"),
                     "namacs_ptmn" => $this->input->post("namacustom1"),

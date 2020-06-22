@@ -31,29 +31,11 @@
               <div class="row">
                 <div class="col-lg col-xl">
                   <h6 class="m-0 font-weight-bold text-secondary">Upload Absensi Kehadiran</h6>
-                  <div class="example">
-                    <input type="file" id="absenkehadiran" class="dropify-event" name="absenkehadiran">
-                    <div id="errorBlock1"></div>
-                  </div>
-                  <input type="hidden" name="absenkehadiran_up" id="absenkehadiran_up">
-                  <script>
-                    $("#absenkehadiran").fileinput({
-                      'maxFileSize': 5120,
-                      "dropZoneEnabled": false,
-                      "showPreview": false,
-                      'maxFileCount': 1,
-                      'uploadUrl': '<?= base_url("upload/keubc") ?>',
-                      'elErrorContainer': '#errorBlock1',
-                      'initialCaption': "<?= $whdb2["file1_keubc"] ?>",
-                      'uploadAsync': true,
-                      uploadExtraData: function() {}
-                    });
-                    $('#absenkehadiran').on('fileuploaded', function(event, data, previewId, index) {
-                      var response = data.response,
-                        reader = data.reader;
-                      $("#absenkehadiran_up").val(response.keubc);
-                    });
-                  </script>
+                  <a href="<?= base_url("assets/uploaded_file/operation") . $dis->crud->select_where("opr_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["file_opr"] ?>">
+                    <div class="form-group">
+                      <input value="<?= $dis->crud->select_where("opr_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array()["dokumen_opr"] ?>" type="text" class="form-control" aria-describedby="helpId" placeholder="" disabled>
+                    </div>
+                  </a>
                 </div>
                 <div class="col-lg col-xl">
                   <div class="form-group">

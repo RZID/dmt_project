@@ -343,7 +343,9 @@
                 <tbody>
                   <?php
                   if ($this->input->get("from") && $this->input->get("to")) {
-                    $realisasikan = $dis->crud->select_where("realisasi_dmt", array("tglmulai_realisasi >=" => $this->input->get("from"), "tglsls_realisasi <=" => $this->input->get("to")))->result();
+                    $from = $this->input->get("from");
+                    $to = $this->input->get("to");
+                    $realisasikan = $this->db->query("SELECT * FROM realisasi_dmt JOIN plth_dmt WHERE (plth_dmt.tglmulai_plth >=$from AND plth_dmt.tgldone_plth <= $to AND realisasi_dmt.id_plth = plth_dmt.id_plth)")->result();
                   } else {
                     $realisasikan = $dis->crud->select("realisasi_dmt")->result();
                   }
