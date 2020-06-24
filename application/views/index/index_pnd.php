@@ -134,7 +134,13 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Learning Hours</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php $ra_countlg = $dis->crud->select_sum("lndhours_realisasi", "realisasi_dmt")->row_array();
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if ($this->input->get("from") && $this->input->get("to")) {
+                                                                    $from = $this->input->get("from");
+                                                                    $to = $this->input->get("to");
+                                                                    $ra_countlg = $this->db->query("SELECT sum(realisasi_dmt.lndhours_realisasi) as lndhours_realisasi FROM realisasi_dmt JOIN plth_dmt WHERE (plth_dmt.tglmulai_plth >=$from AND plth_dmt.tgldone_plth <= $to AND realisasi_dmt.id_plth = plth_dmt.id_plth)")->row_array();
+                                                                  } else {
+                                                                    $ra_countlg = $dis->crud->select_sum("lndhours_realisasi", "realisasi_dmt")->row_array();
+                                                                  }
                                                                   echo $ra_countlg["lndhours_realisasi"]; ?></div>
             </div>
             <div class="col-auto">
