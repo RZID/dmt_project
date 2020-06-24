@@ -74,6 +74,7 @@
                   $('#none').attr('selected', false);
                   $('#sel').attr('selected', true);
                   $("#vend").attr("disabled", true);
+
                 } else {
                   $('#sel').attr('selected', false);
                   $('#none').attr('selected', true);

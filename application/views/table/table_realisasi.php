@@ -55,6 +55,7 @@ echo $this->session->flashdata("msg"); ?>
               <th>Batch</th>
               <th>Tanggal Mulai</th>
               <th>Tanggal Selesai</th>
+              <th>Jumlah Peserta</th>
               <th>Status Realisasi</th>
               <th class="no-sort">Aksi</th>
             </tr>
@@ -70,6 +71,12 @@ echo $this->session->flashdata("msg"); ?>
                 <td><?= $row->batch_plth ?></td>
                 <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
                 <td><?= date("d-m-Y", $row->tgldone_plth) ?></td>
+                <td><?php $jmlplth = $dis->crud->select_where("opr_dmt", array("id_plth", $row->id_plth))->row_array();
+                    if ($jmlplth["jmlpsrt_plth"] == NULL) {
+                      echo "Belum Diinput Operation";
+                    } else {
+                      echo $jmlplth["jmlpsrt_plth"];
+                    } ?></td>
                 <td><?php
                     $opr_get = $dis->crud->select_where("realisasi_dmt", array("id_plth" => $row->id_plth));
                     if ($opr_get->num_rows() < 1) {
@@ -214,14 +221,14 @@ echo $this->session->flashdata("msg"); ?>
       "fnRowCallback": function(nRow, aData, iDisplayIndex) {
         var index = iDisplayIndex + 1;
         $('td:eq(0)', nRow).html(index);
-        if (aData[6] == "Belum Diinput") {
-          $(nRow).find('td:eq(6)').addClass('bg-danger text-white font-weight-bold');
+        if (aData[20] == "Belum Diinput") {
+          $(nRow).find('td:eq(20)').addClass('bg-danger text-white font-weight-bold');
         }
-        if (aData[6] == "Pending") {
-          $(nRow).find('td:eq(6)').addClass('bg-warning text-white font-weight-bold');
+        if (aData[20] == "Pending") {
+          $(nRow).find('td:eq(20)').addClass('bg-warning text-white font-weight-bold');
         }
-        if (aData[6] == 'Completed') {
-          $(nRow).find('td:eq(6)').addClass('bg-success text-white font-weight-bold');
+        if (aData[20] == 'Completed') {
+          $(nRow).find('td:eq(20)').addClass('bg-success text-white font-weight-bold');
         }
 
       },

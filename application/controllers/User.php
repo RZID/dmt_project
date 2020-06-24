@@ -385,7 +385,11 @@
             } else {
                 $fb = 1;
             }
-
+            if (!$this->input->post("vend")) {
+                $vend = "N/A";
+            } else {
+                $vend = $this->input->post("vend");
+            }
             $postdata = array(
                 'jenis_plth' => $this->input->post('jenis'),
                 'lokasi_plth' => $this->input->post('lokasi'),
@@ -398,7 +402,7 @@
                 'sifat_plth' => $this->input->post('sifat'),
                 'vendor_plth' => $this->input->post('vonv'),
                 'sertifikasi_plth' => $this->input->post('cert'),
-                'nmvendor_plth' => $this->input->post('vend'),
+                'nmvendor_plth' => $vend,
                 'hrgkspvend_plth' => $this->input->post('harga'),
                 'ketkspvend_plth' => $this->input->post('ket'),
                 'filememo_plth' => $filememo,
@@ -433,6 +437,11 @@
             } else {
                 $fb = 1;
             }
+            if (!$this->input->post("vend")) {
+                $vend = "N/A";
+            } else {
+                $vend = $this->input->post("vend");
+            }
 
             $postdata = array(
                 'jenis_plth' => $this->input->post('jenis'),
@@ -447,7 +456,7 @@
                 'sifat_plth' => $this->input->post('sifat'),
                 'vendor_plth' => $this->input->post('vonv'),
                 'sertifikasi_plth' => $this->input->post('cert'),
-                'nmvendor_plth' => $this->input->post('vend'),
+                'nmvendor_plth' => $vend,
                 'hrgkspvend_plth' => $this->input->post('harga'),
                 'ketkspvend_plth' => $this->input->post('ket'),
                 'filememo_plth' => $this->input->post("berkasmemo_up"),
