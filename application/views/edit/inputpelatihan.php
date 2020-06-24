@@ -68,10 +68,25 @@
             <div class="form-group">
               <input type="text" class="form-control form-control-user" placeholder="Sertifikasi" name="cert">
             </div>
+            <script>
+              $("#vonv").on("change", function() {
+                if ($(this).val() == "Non Vendor") {
+                  $('#none').attr('selected', false);
+                  $('#sel').attr('selected', true);
+                  $("#vend").attr("disabled", true);
+                } else {
+                  $('#sel').attr('selected', false);
+                  $('#none').attr('selected', true);
+                  $("#vend").attr("disabled", false);
+                }
+              });
+            </script>
+
             <div class="form-group">
               <h6 type="text">Nama Vendor Pelatihan</h6>
-              <select class="custom-select" name="vend">
-                <option selected disabled>--- Pilih Salah Satu ---</option>
+              <select class="custom-select" name="vend" id="vend">
+                <option id="none" selected disabled>--- Pilih Salah Satu ---</option>
+                <option value="N/A" id="sel">N/A</option>
                 <?php foreach ($dis->crud->select("nmvendor_dmt")->result_array() as $ven) { ?>
                   <option value="<?= $ven["nama_nmvendor"] ?>"><?= $ven["nama_nmvendor"] ?></option>
                 <?php } ?>

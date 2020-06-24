@@ -55,20 +55,6 @@ echo $this->session->flashdata("msg"); ?>
               <th>Batch</th>
               <th>Tanggal Mulai</th>
               <th>Tanggal Selesai</th>
-              <th>Jumlah Peserta</th>
-              <th>Sifat</th>
-              <th>Vendor atau Non Vendor</th>
-              <th>Sertifikasi</th>
-              <th>Nama Vendor</th>
-              <th>Harga Kesepakatan Vendor</th>
-              <th>Keterangan Kesepakatan Vendor</th>
-              <th>Tanggal Pre Test</th>
-              <th>Tanggal Post Test</th>
-              <th>Feedback</th>
-              <th>Tanggal Memo</th>
-              <th>Dokumen Upload Memo</th>
-              <th>Tanggal Laporan Pelatihan</th>
-              <th>Dokumen Laporan Pelatihan</th>
               <th>Status Realisasi</th>
               <th class="no-sort">Aksi</th>
             </tr>
@@ -84,53 +70,6 @@ echo $this->session->flashdata("msg"); ?>
                 <td><?= $row->batch_plth ?></td>
                 <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
                 <td><?= date("d-m-Y", $row->tgldone_plth) ?></td>
-                <td><?php $jmlplth = $dis->crud->select_where("opr_dmt", array("id_plth", $row->id_plth))->row_array();
-                    if ($jmlplth["jmlpsrt_plth"] == NULL) {
-                      echo "Belum Diinput Operation";
-                    } else {
-                      echo $jmlplth["jmlpsrt_plth"];
-                    } ?></td>
-                <td><?= $row->sifat_plth ?></td>
-                <td><?= $row->vendor_plth ?></td>
-                <td><?= $row->sertifikasi_plth ?></td>
-                <td><?= $row->nmvendor_plth ?></td>
-                <td><?= $dis->Miscellaneous->rupiahisasi($row->hrgkspvend_plth) ?>,-</td>
-                <td><?= $row->ketkspvend_plth ?></td>
-                <td><?php if ($row->pretest_plth < 1) {
-                      echo "N/A";
-                    } else {
-                      echo date("d-m-Y", $row->pretest_plth);
-                    }  ?></td>
-                <td><?php if ($row->postest_plth < 1) {
-                      echo "N/A";
-                    } else {
-                      echo date("d-m-Y", $row->postest_plth);
-                    }  ?></td>
-                <td><?php if ($row->feedback_plth) {
-                      echo "Sudah";
-                    } else {
-                      echo "Belum";
-                    } ?></td>
-                <td><?php if ($row->tglmemo_plth < 1) {
-                      echo "N/A";
-                    } else {
-                      echo date("d-m-Y", $row->tglmemo_plth);
-                    }  ?></td>
-                <td><?php if ($row->filememo_plth == "" or $row->filememo_plth == "N/A") {
-                      echo "N/A";
-                    } else {
-                      echo "<a href='" . base_url("assets/uploaded_file/") . $row->uniquememo_plth . "'>" . $row->filememo_plth . "</a>";
-                    }  ?></td>
-                <td><?php if ($row->tgllpr_plth < 1) {
-                      echo "N/A";
-                    } else {
-                      echo date("d-m-Y", $row->tgllpr_plth);
-                    }  ?></td>
-                <td><?php if ($row->filelapor_plth == "" or $row->filelapor_plth == "N/A") {
-                      echo "N/A";
-                    } else {
-                      echo "<a href='" . base_url("assets/uploaded_file/") . $row->filelapor_plth . "'>" . $row->filelapor_plth . "</a>";
-                    }  ?></td>
                 <td><?php
                     $opr_get = $dis->crud->select_where("realisasi_dmt", array("id_plth" => $row->id_plth));
                     if ($opr_get->num_rows() < 1) {
@@ -275,14 +214,14 @@ echo $this->session->flashdata("msg"); ?>
       "fnRowCallback": function(nRow, aData, iDisplayIndex) {
         var index = iDisplayIndex + 1;
         $('td:eq(0)', nRow).html(index);
-        if (aData[20] == "Belum Diinput") {
-          $(nRow).find('td:eq(20)').addClass('bg-danger text-white font-weight-bold');
+        if (aData[6] == "Belum Diinput") {
+          $(nRow).find('td:eq(6)').addClass('bg-danger text-white font-weight-bold');
         }
-        if (aData[20] == "Pending") {
-          $(nRow).find('td:eq(20)').addClass('bg-warning text-white font-weight-bold');
+        if (aData[6] == "Pending") {
+          $(nRow).find('td:eq(6)').addClass('bg-warning text-white font-weight-bold');
         }
-        if (aData[20] == 'Completed') {
-          $(nRow).find('td:eq(20)').addClass('bg-success text-white font-weight-bold');
+        if (aData[6] == 'Completed') {
+          $(nRow).find('td:eq(6)').addClass('bg-success text-white font-weight-bold');
         }
 
       },

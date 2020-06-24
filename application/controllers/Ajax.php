@@ -704,6 +704,5 @@ class Ajax extends CI_Controller
         $data_down = $this->input->post("data");
         $gave_data = $this->db->query("select * from plth_dmt where id_plth in (" . $data_down . ")")->result_array();
         echo json_encode($gave_data);
-        json_encode($gave_data);
     }
 }

@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Vendor atau Non Vendor</h6>
-              <select class="form-control" name="vonv" id="">
+              <select class="form-control" name="vonv" id="vonv">
                 <option value="<?= $whdb['vendor_plth'] ?>" selected><?= $whdb['vendor_plth'] ?></option>
                 <?php $vendor = $dis->crud->select_where("vendor_dmt", array("nama_vendor !=" => $whdb["vendor_plth"]));
                 foreach ($vendor->result() as $rowvendor) { ?>
@@ -69,13 +69,28 @@
                 <?php } ?>
               </select>
             </div>
+            <script>
+              $("#vonv").on("change", function() {
+                if ($(this).val() == "Non Vendor") {
+                  $('#none').attr('selected', false);
+                  $('#sel').attr('selected', true);
+                  $("#vend").attr("disabled", true);
+                } else {
+                  $('#sel').attr('selected', false);
+                  $('#none').attr('selected', true);
+                  $("#vend").attr("disabled", false);
+                }
+              });
+            </script>
             <div class="form-group">
               <h6 class="m-0 font-weight-bold text-secondary">Sertifikasi</h6>
               <input type="text" class="form-control form-control-user" placeholder="Sertifikasi" name="cert" value="<?= $whdb['sertifikasi_plth'] ?>">
             </div>
             <div class="form-group">
               <h6 type="text">Nama Vendor Pelatihan</h6>
-              <select class="custom-select" name="vend">
+              <select class="custom-select" name="vend" id="vend">
+                <option id="none" disabled selected>--- Pilih Salah Satu ---</option>
+                <option value="N/A" id="sel">N/A</option>
                 <?php $vendor_ini = $dis->crud->select_where("plth_dmt", array("id_plth" => $this->input->get("id_pelatihan")))->row_array() ?>
                 <option value="<?= $vendor_ini["nmvendor_plth"] ?>" selected><?= $vendor_ini["nmvendor_plth"] ?></option>
                 <?php foreach ($this->db->get_where("nmvendor_dmt", array("nama_nmvendor !=" => $vendor_ini["nmvendor_plth"]))->result_array() as $ven) { ?>

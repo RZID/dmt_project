@@ -153,9 +153,11 @@
                     </div>
                 </div>
                 <h6>(<a id="counter">0</a> Data Dipilih)</h6>
+                <br>
+                <button type="button" class="btn btn-primary" onclick="kirimData()">Ekspor Data Dipilih</button>
+                <button type="button" class="btn btn-success" onclick="kirimData()">Ekspor Semua Data</button>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" onclick="kirimData()">Ekspor Data Dipilih</button>
     </div>
     <!-- /.container-fluid -->
 
@@ -362,16 +364,16 @@
 
     <!-- Modal -->
     <div class="modal fade" id="modal-report" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Ekspor Data PND</h5>
+                    <h5 class="modal-title">Ekspor Data Dipilih PND</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <table class="table" id="t12">
+                <div class="modal-body" style="overflow-x:auto;">
+                    <table class="table table-bordered" id="t12">
                         <thead>
                         </thead>
                     </table>
