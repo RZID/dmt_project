@@ -42,7 +42,8 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Nama Vendor</h6>
-                    <input type="text" class="form-control form-control-user" name="ako2" value="<?= $keu["ako2"] ?>">
+                    <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("opr_dmt", array("id_plth" => $keu["id_plth"]))->row_array()["nmvenakom_plth"] ?>" disabled>
+                    <input type="hidden" name="ako2" value="<?= $dis->crud->select_where("opr_dmt", array("id_plth" => $keu["id_plth"]))->row_array()["nmvenakom_plth"] ?>">
                   </div>
                 </div>
               </div>
@@ -115,7 +116,8 @@
                 <div class="col-lg col-xl">
                   <div class="form-group">
                     <h6 class="m-0 font-weight-bold text-secondary">Nama Vendor</h6>
-                    <input type="text" class="form-control form-control-user" name="pro2" value="<?= $keu["pro2"] ?>">
+                    <input type="text" class="form-control form-control-user" value="<?= $dis->crud->select_where("plth_dmt", ["id_plth" => $keu["id_plth"]])->row_array()["nmvendor_plth"] ?>" disabled>
+                    <input type="hidden" name="pro2" value="<?= $dis->crud->select_where("plth_dmt", ["id_plth" => $keu["id_plth"]])->row_array()["nmvendor_plth"] ?>">
                   </div>
                 </div>
               </div>
@@ -180,7 +182,7 @@
                 <hr>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" value="<?= $ddk["novend_ins"] ?>" class="form-control form-control-user" disabled>
+                  <input type="number" value="<?= $keu["novend" . $ddk["no_ins"]] ?>" name="noven<?= $ddk["no_ins"] ?>" class="form-control form-control-user">
                 </div>
                 <div class="row">
                   <div class="col-lg col-xl">
@@ -213,6 +215,24 @@
                   </div>
                 </div>
 
+                <div class="row">
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">No. Invoice</h6>
+                      <input type="number" name="noinvins<?= $ddk["no_ins"] ?>" value="<?= $keu["noinvins" . $ddk["no_ins"]] ?>" class="form-control form-control-user">
+                    </div>
+                  </div>
+                  <div class="col-lg col-xl">
+                    <div class="form-group">
+                      <h6 class="m-0 font-weight-bold text-secondary">PO</h6>
+                      <input type="number" name="poins<?= $ddk["no_ins"] ?>" value="<?= $keu["poins" . $ddk["no_ins"]]  ?>" class="form-control form-control-user">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h6 class="m-0 font-weight-bold text-secondary">SSC/SP3ID</h6>
+                  <input type="number" name="sscins<?= $ddk["no_ins"] ?>" value="<?= $keu["sscins" . $ddk["no_ins"]]  ?>" class="form-control form-control-user">
+                </div>
                 <div class="form-group">
                   <h6 class="m-0 font-weight-bold text-secondary">Status</h6>
                   <div class="form-group">

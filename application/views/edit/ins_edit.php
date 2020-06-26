@@ -39,10 +39,7 @@
                 <br>
                 <h5>Data Instruktur <?= $f["no_ins"] ?></h5>
                 <hr>
-                <div class="form-group">
-                  <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                  <input type="number" class="form-control form-control-user" name="noven[]" value="<?= $f["novend_ins"] ?>">
-                </div>
+
                 <div class="row">
                   <div class="col-lg col-xl">
                     <div class="form-group">
@@ -117,10 +114,7 @@
               <br>
               <h5>Data Instruktur 1</h5>
               <hr>
-              <div class="form-group">
-                <h6 class="m-0 font-weight-bold text-secondary"> No. Vendor</h6>
-                <input type="number" class="form-control form-control-user" name="noven[]">
-              </div>
+
               <div class="row">
                 <div class="col-lg col-xl">
                   <div class="form-group">
@@ -240,7 +234,7 @@
           i++;
           if (i < 10) {
 
-            $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> No. Vendor</h6><input type='number' class='form-control form-control-user' name='noven[]'></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
+            $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
             <?php $nomerdari = range(2, 10);
             foreach ($nomerdari as $n) { ?>
               $("#file<?= $n ?>").fileinput({
@@ -262,7 +256,7 @@
 
           } else {
             if (i >= 10) {
-              $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> No. Vendor</h6><input type='number' class='form-control form-control-user' name='noven[]'></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
+              $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
 
               $("#file" + i).fileinput({
                 'maxFileSize': 5120,

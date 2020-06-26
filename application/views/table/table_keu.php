@@ -54,6 +54,12 @@ echo $this->session->flashdata("msg"); ?>
               <th>Batch</th>
               <th>Tanggal Mulai</th>
               <th>Tanggal Selesai</th>
+              <th>Jumlah Peserta</th>
+              <th>Sifat Pelatihan</th>
+              <th>Vendor atau Non Vendor</th>
+              <th>Nama Vendor Pelatihan</th>
+              <th>Nama Vendor Akomodasi</th>
+              <th>File SPK/BA</th>
               <th>Status Finance IP</th>
               <th class="no-sort">Aksi</th>
             </tr>
@@ -68,6 +74,17 @@ echo $this->session->flashdata("msg"); ?>
                 <td><?= $row->batch_plth ?></td>
                 <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
                 <td><?= date("d-m-Y", $row->tgldone_plth) ?></td>
+                <td><?= $dis->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["jmlpsrt_plth"]; ?></td>
+                <td><?= $row->sifat_plth ?></td>
+                <td><?= $row->vendor_plth ?></td>
+                <td><?= $row->nmvendor_plth ?></td>
+                <td><?= $dis->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["nmvenakom_plth"]; ?></td>
+                <td><?php if ($dis->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["pkba_opr"] != "N/A" && $dis->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["pkba_opr"] != NULL) {
+                    ?>
+                    <a href="<?= base_url("assets/uploaded_file/operation/") . $dis->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["filepkbaunique_opr"] ?>"><?= $dis->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["pkba_opr"] ?></a>
+                  <?php } else {
+                    }  ?></td>
+
                 <td><?php
                     $ins_get = $dis->crud->select_where("keu_dmt", array("id_plth" => $row->id_plth));
                     if ($ins_get->num_rows() < 1) {
@@ -530,11 +547,11 @@ echo $this->session->flashdata("msg"); ?>
         var index = iDisplayIndex + 1;
         $('td:eq(0)', nRow).html(index);
 
-        if (aData[5] == "Pending") {
-          $(nRow).find('td:eq(5)').addClass('bg-warning text-white font-weight-bold');
+        if (aData[11] == "Pending") {
+          $(nRow).find('td:eq(11)').addClass('bg-warning text-white font-weight-bold');
         }
-        if (aData[5] == 'Completed') {
-          $(nRow).find('td:eq(5)').addClass('bg-success text-white font-weight-bold');
+        if (aData[11] == 'Completed') {
+          $(nRow).find('td:eq(11)').addClass('bg-success text-white font-weight-bold');
         }
 
       },

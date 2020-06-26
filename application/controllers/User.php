@@ -628,7 +628,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "1"),  array(
                     "no_ins" => 1,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[0],
                     "ins_ins" => $ins[0],
                     "sesins_ins" => $sesins[0],
                     "beasesins_ins" => $beains[0],
@@ -640,7 +639,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 1,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[0],
                     "ins_ins" => $ins[0],
                     "sesins_ins" => $sesins[0],
                     "beasesins_ins" => $beains[0],
@@ -653,7 +651,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "2"),  array(
                     "no_ins" => 2,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[1],
                     "ins_ins" => $ins[1],
                     "sesins_ins" => $sesins[1],
                     "beasesins_ins" => $beains[1],
@@ -665,7 +662,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 2,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[1],
                     "ins_ins" => $ins[1],
                     "sesins_ins" => $sesins[1],
                     "beasesins_ins" => $beains[1],
@@ -678,7 +674,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "3"),  array(
                     "no_ins" => 3,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[2],
                     "ins_ins" => $ins[2],
                     "sesins_ins" => $sesins[2],
                     "beasesins_ins" => $beains[2],
@@ -690,7 +685,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 3,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[2],
                     "ins_ins" => $ins[2],
                     "sesins_ins" => $sesins[2],
                     "beasesins_ins" => $beains[2],
@@ -703,7 +697,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "4"),  array(
                     "no_ins" => 4,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[3],
                     "ins_ins" => $ins[3],
                     "sesins_ins" => $sesins[3],
                     "beasesins_ins" => $beains[3],
@@ -715,7 +708,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 4,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[3],
                     "ins_ins" => $ins[3],
                     "sesins_ins" => $sesins[3],
                     "beasesins_ins" => $beains[3],
@@ -728,7 +720,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "5"),  array(
                     "no_ins" => 5,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[4],
                     "ins_ins" => $ins[4],
                     "sesins_ins" => $sesins[4],
                     "beasesins_ins" => $beains[4],
@@ -740,7 +731,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 5,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[4],
                     "ins_ins" => $ins[4],
                     "sesins_ins" => $sesins[4],
                     "beasesins_ins" => $beains[4],
@@ -753,7 +743,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "6"),  array(
                     "no_ins" => 6,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[5],
                     "ins_ins" => $ins[5],
                     "sesins_ins" => $sesins[5],
                     "beasesins_ins" => $beains[5],
@@ -765,7 +754,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 6,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[5],
                     "ins_ins" => $ins[5],
                     "sesins_ins" => $sesins[5],
                     "beasesins_ins" => $beains[5],
@@ -778,7 +766,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "7"),  array(
                     "no_ins" => 7,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[6],
                     "ins_ins" => $ins[6],
                     "sesins_ins" => $sesins[6],
                     "beasesins_ins" => $beains[6],
@@ -790,7 +777,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 7,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[6],
                     "ins_ins" => $ins[6],
                     "sesins_ins" => $sesins[6],
                     "beasesins_ins" => $beains[6],
@@ -803,7 +789,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "8"),  array(
                     "no_ins" => 8,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[7],
                     "ins_ins" => $ins[7],
                     "sesins_ins" => $sesins[7],
                     "beasesins_ins" => $beains[7],
@@ -815,7 +800,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 8,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[7],
                     "ins_ins" => $ins[7],
                     "sesins_ins" => $sesins[7],
                     "beasesins_ins" => $beains[7],
@@ -828,7 +812,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "9"),  array(
                     "no_ins" => 9,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[8],
                     "ins_ins" => $ins[8],
                     "sesins_ins" => $sesins[8],
                     "beasesins_ins" => $beains[8],
@@ -840,7 +823,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 9,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[8],
                     "ins_ins" => $ins[8],
                     "sesins_ins" => $sesins[8],
                     "beasesins_ins" => $beains[8],
@@ -853,7 +835,6 @@
                 $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "10"),  array(
                     "no_ins" => 10,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[9],
                     "ins_ins" => $ins[9],
                     "sesins_ins" => $sesins[9],
                     "beasesins_ins" => $beains[9],
@@ -865,7 +846,6 @@
                 $this->crud->insert("addins_dmt", array(
                     "no_ins" => 10,
                     "id_plth" => $this->input->post("id"),
-                    "novend_ins" => $noven[9],
                     "ins_ins" => $ins[9],
                     "sesins_ins" => $sesins[9],
                     "beasesins_ins" => $beains[9],
@@ -1376,11 +1356,218 @@
             } else {
                 $status10 = $this->input->post("status10");
             }
+            if (!$this->input->post("noinvins1")) {
+                $noinvins1 = "N/A";
+            } else {
+                $noinvins1 = $this->input->post("noinvins1");
+            }
+            if (!$this->input->post("noinvins2")) {
+                $noinvins2 = "N/A";
+            } else {
+                $noinvins2 = $this->input->post("noinvins2");
+            }
+            if (!$this->input->post("noinvins3")) {
+                $noinvins3 = "N/A";
+            } else {
+                $noinvins3 = $this->input->post("noinvins3");
+            }
+            if (!$this->input->post("noinvins4")) {
+                $noinvins4 = "N/A";
+            } else {
+                $noinvins4 = $this->input->post("noinvins4");
+            }
+            if (!$this->input->post("noinvins5")) {
+                $noinvins5 = "N/A";
+            } else {
+                $noinvins5 = $this->input->post("noinvins5");
+            }
+            if (!$this->input->post("noinvins6")) {
+                $noinvins6 = "N/A";
+            } else {
+                $noinvins6 = $this->input->post("noinvins6");
+            }
+            if (!$this->input->post("noinvins7")) {
+                $noinvins7 = "N/A";
+            } else {
+                $noinvins7 = $this->input->post("noinvins7");
+            }
+            if (!$this->input->post("noinvins8")) {
+                $noinvins8 = "N/A";
+            } else {
+                $noinvins8 = $this->input->post("noinvins8");
+            }
+            if (!$this->input->post("noinvins9")) {
+                $noinvins9 = "N/A";
+            } else {
+                $noinvins9 = $this->input->post("noinvins9");
+            }
+            if (!$this->input->post("noinvins10")) {
+                $noinvins10 = "N/A";
+            } else {
+                $noinvins10 = $this->input->post("noinvins10");
+            }
+            if (!$this->input->post("poins1")) {
+                $poins1 = "N/A";
+            } else {
+                $poins1 = $this->input->post("poins1");
+            }
+            if (!$this->input->post("poins2")) {
+                $poins2 = "N/A";
+            } else {
+                $poins2 = $this->input->post("poins2");
+            }
+            if (!$this->input->post("poins3")) {
+                $poins3 = "N/A";
+            } else {
+                $poins3 = $this->input->post("poins3");
+            }
+            if (!$this->input->post("poins4")) {
+                $poins4 = "N/A";
+            } else {
+                $poins4 = $this->input->post("poins4");
+            }
+            if (!$this->input->post("poins5")) {
+                $poins5 = "N/A";
+            } else {
+                $poins5 = $this->input->post("poins5");
+            }
+            if (!$this->input->post("poins6")) {
+                $poins6 = "N/A";
+            } else {
+                $poins6 = $this->input->post("poins6");
+            }
+            if (!$this->input->post("poins7")) {
+                $poins7 = "N/A";
+            } else {
+                $poins7 = $this->input->post("poins7");
+            }
+            if (!$this->input->post("poins8")) {
+                $poins8 = "N/A";
+            } else {
+                $poins8 = $this->input->post("poins8");
+            }
+            if (!$this->input->post("poins9")) {
+                $poins9 = "N/A";
+            } else {
+                $poins9 = $this->input->post("poins9");
+            }
+            if (!$this->input->post("poins10")) {
+                $poins10 = "N/A";
+            } else {
+                $poins10 = $this->input->post("poins10");
+            }
+            if (!$this->input->post("sscins1")) {
+                $sscins1 = "N/A";
+            } else {
+                $sscins1 = $this->input->post("sscins1");
+            }
+            if (!$this->input->post("sscins2")) {
+                $sscins2 = "N/A";
+            } else {
+                $sscins2 = $this->input->post("sscins2");
+            }
+            if (!$this->input->post("sscins3")) {
+                $sscins3 = "N/A";
+            } else {
+                $sscins3 = $this->input->post("sscins3");
+            }
+            if (!$this->input->post("sscins4")) {
+                $sscins4 = "N/A";
+            } else {
+                $sscins4 = $this->input->post("sscins4");
+            }
+            if (!$this->input->post("sscins5")) {
+                $sscins5 = "N/A";
+            } else {
+                $sscins5 = $this->input->post("sscins5");
+            }
+            if (!$this->input->post("sscins6")) {
+                $sscins6 = "N/A";
+            } else {
+                $sscins6 = $this->input->post("sscins6");
+            }
+            if (!$this->input->post("sscins7")) {
+                $sscins7 = "N/A";
+            } else {
+                $sscins7 = $this->input->post("sscins7");
+            }
+            if (!$this->input->post("sscins8")) {
+                $sscins8 = "N/A";
+            } else {
+                $sscins8 = $this->input->post("sscins8");
+            }
+            if (!$this->input->post("sscins9")) {
+                $sscins9 = "N/A";
+            } else {
+                $sscins9 = $this->input->post("sscins9");
+            }
+            if (!$this->input->post("sscins10")) {
+                $sscins10 = "N/A";
+            } else {
+                $sscins10 = $this->input->post("sscins10");
+            }
             if (!$this->input->post("stat")) {
                 $stat = "Pending";
             } else {
                 $stat = $this->input->post("stat");
             }
+
+            if (!$this->input->post("noven1")) {
+                $noven1 = "N/A";
+            } else {
+                $noven1 = $this->input->post("noven1");
+            }
+            if (!$this->input->post("noven2")) {
+                $noven2 = "N/A";
+            } else {
+                $noven2 = $this->input->post("noven2");
+            }
+            if (!$this->input->post("noven3")) {
+                $noven3 = "N/A";
+            } else {
+                $noven3 = $this->input->post("noven3");
+            }
+            if (!$this->input->post("noven4")) {
+                $noven4 = "N/A";
+            } else {
+                $noven4 = $this->input->post("noven4");
+            }
+            if (!$this->input->post("noven5")) {
+                $noven5 = "N/A";
+            } else {
+                $noven5 = $this->input->post("noven5");
+            }
+            if (!$this->input->post("noven6")) {
+                $noven6 = "N/A";
+            } else {
+                $noven6 = $this->input->post("noven6");
+            }
+            if (!$this->input->post("noven7")) {
+                $noven7 = "N/A";
+            } else {
+                $noven7 = $this->input->post("noven7");
+            }
+            if (!$this->input->post("noven8")) {
+                $noven8 = "N/A";
+            } else {
+                $noven8 = $this->input->post("noven8");
+            }
+            if (!$this->input->post("noven9")) {
+                $noven9 = "N/A";
+            } else {
+                $noven9 = $this->input->post("noven9");
+            }
+            if (!$this->input->post("noven10")) {
+                $noven10 = "N/A";
+            } else {
+                $noven10 = $this->input->post("noven10");
+            }
+            if (!$this->input->post("stat")) {
+                $stat = "Pending";
+            } else {
+                $stat = $this->input->post("stat");
+            }
+
             $id = $this->input->post("id");
             if ($this->crud->select_where("keu_dmt", array("id_plth" => $id))->num_rows() < 1) {
                 $array_biarrapih = array(
@@ -1402,6 +1589,17 @@
                     'pro6' => $pro6,
                     'pro7' => $pro7,
 
+                    'novend1' => $noven1,
+                    'novend2' => $noven2,
+                    'novend3' => $noven3,
+                    'novend4' => $noven4,
+                    'novend5' => $noven5,
+                    'novend6' => $noven6,
+                    'novend7' => $noven7,
+                    'novend8' => $noven8,
+                    'novend9' => $noven9,
+                    'novend10' => $noven10,
+
                     'status1' => $status1,
                     'status2' => $status2,
                     'status3' => $status3,
@@ -1412,6 +1610,39 @@
                     'status8' => $status8,
                     'status9' => $status9,
                     'status10' => $status10,
+
+                    'noinvins1' => $noinvins1,
+                    'noinvins2' => $noinvins2,
+                    'noinvins3' => $noinvins3,
+                    'noinvins4' => $noinvins4,
+                    'noinvins5' => $noinvins5,
+                    'noinvins6' => $noinvins6,
+                    'noinvins7' => $noinvins7,
+                    'noinvins8' => $noinvins8,
+                    'noinvins9' => $noinvins9,
+                    'noinvins10' => $noinvins10,
+
+                    'poins1' => $poins1,
+                    'poins2' => $poins2,
+                    'poins3' => $poins3,
+                    'poins4' => $poins4,
+                    'poins5' => $poins5,
+                    'poins6' => $poins6,
+                    'poins7' => $poins7,
+                    'poins8' => $poins8,
+                    'poins9' => $poins9,
+                    'poins10' => $poins10,
+
+                    'sscins1' => $sscins1,
+                    'sscins2' => $sscins2,
+                    'sscins3' => $sscins3,
+                    'sscins4' => $sscins4,
+                    'sscins5' => $sscins5,
+                    'sscins6' => $sscins6,
+                    'sscins7' => $sscins7,
+                    'sscins8' => $sscins8,
+                    'sscins9' => $sscins9,
+                    'sscins10' => $sscins10,
 
                     'status_keu' => $stat
                 );
@@ -1443,6 +1674,17 @@
                     'pro6' => $pro6,
                     'pro7' => $pro7,
 
+                    'novend1' => $noven1,
+                    'novend2' => $noven2,
+                    'novend3' => $noven3,
+                    'novend4' => $noven4,
+                    'novend5' => $noven5,
+                    'novend6' => $noven6,
+                    'novend7' => $noven7,
+                    'novend8' => $noven8,
+                    'novend9' => $noven9,
+                    'novend10' => $noven10,
+
                     'status1' => $status1,
                     'status2' => $status2,
                     'status3' => $status3,
@@ -1453,6 +1695,39 @@
                     'status8' => $status8,
                     'status9' => $status9,
                     'status10' => $status10,
+
+                    'noinvins1' => $noinvins1,
+                    'noinvins2' => $noinvins2,
+                    'noinvins3' => $noinvins3,
+                    'noinvins4' => $noinvins4,
+                    'noinvins5' => $noinvins5,
+                    'noinvins6' => $noinvins6,
+                    'noinvins7' => $noinvins7,
+                    'noinvins8' => $noinvins8,
+                    'noinvins9' => $noinvins9,
+                    'noinvins10' => $noinvins10,
+
+                    'poins1' => $poins1,
+                    'poins2' => $poins2,
+                    'poins3' => $poins3,
+                    'poins4' => $poins4,
+                    'poins5' => $poins5,
+                    'poins6' => $poins6,
+                    'poins7' => $poins7,
+                    'poins8' => $poins8,
+                    'poins9' => $poins9,
+                    'poins10' => $poins10,
+
+                    'sscins1' => $sscins1,
+                    'sscins2' => $sscins2,
+                    'sscins3' => $sscins3,
+                    'sscins4' => $sscins4,
+                    'sscins5' => $sscins5,
+                    'sscins6' => $sscins6,
+                    'sscins7' => $sscins7,
+                    'sscins8' => $sscins8,
+                    'sscins9' => $sscins9,
+                    'sscins10' => $sscins10,
 
                     'status_keu' => $stat
                 );
