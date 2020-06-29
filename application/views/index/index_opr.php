@@ -513,16 +513,18 @@
                             <td data-valuefrm="<?= $row->id_plth ?>">
                               <?php $keu = $dis->crud->select_where("keu_dmt", array("id_plth" => $row->id_plth));
                               $keu_bc = $dis->crud->select_where("keu_bc_dmt", array("id_plth" => $row->id_plth));
-                              if ($keu->num_rows() < 1 or $keu_bc->num_rows() < 1) {
+                              if ($keu->num_rows() < 1 and $keu_bc->num_rows() < 1) {
                                 $keu_stat = "Pending";
                               } else {
-                                $keu_stat = $keu->row_array()["status_keu"];
+                                if ($keu->row_array()["status_keu"] == "Completed" or $keu_bc->row_array()["status_keu_bc"] == "Completed") {
+                                  $keu_stat = "Completed";
+                                } else {
+                                  $keu_stat = "Pending";
+                                }
                               }
-                              if ($keu->row_array()["status_keu"] == "Completed" && $keu_bc->row_array()["status_keu_bc"] == "Completed") {
-                                echo "Completed";
-                              } else {
-                                echo "Pending";
-                              }
+                              // echo $keu->row_array()["status_keu"];
+                              // echo $keu_bc->row_array()["status_keu_bc"];
+                              echo $keu_stat;
                               ?>
                             </td>
                             <td data-valuefrm="<?= $row->id_plth ?>"><?php if ($dis->crud->select_where("pesertakeu_dmt", array("id_plth" => $row->id_plth))->row_array()["status_pesertakeu"] == "Completed" && $dis->crud->select_where("pesertapnd_dmt", array("id_plth" => $row->id_plth))->row_array()["status_pesertapnd"] == "Completed") {
@@ -530,10 +532,12 @@
                                                                       } else {
                                                                         echo "Pending";
                                                                       }  ?></td>
-                            <td><?php if ($dis->crud->select_where("pesertakeu_dmt", array("id_plth" => $row->id_plth))->row_array()["status_pesertakeu"] == "Completed" and $dis->crud->select_where("pesertapnd_dmt", array("id_plth" => $row->id_plth))->row_array()["status_pesertapnd"] and $row->ketpros_plth == "Completed" and $opr_stat == "Completed" and $ins_stat == "Completed" and $keu_stat == "Completed") {
+                            <td><?php
+                                if ($row->ketpros_plth == "Completed" and $opr_stat == "Completed" and $ins_stat == "Completed" and $keu_stat == "Completed") {
                                   echo "Completed";
                                 } else {
                                   echo "Pending";
+                                  // echo 'PND = ' . $row->ketpros_plth . ' - Operation = ' . $opr_stat . ' - Instruktur = ' . $ins_stat . '- Status Keuangan IP = ' . $keu_stat . ' - Status Keuangan BC = ' . $keu_bc->row_array()["status_keu_bc"];
                                 } ?></td>
                           </tr>
 
