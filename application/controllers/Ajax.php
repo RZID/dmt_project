@@ -219,7 +219,7 @@ class Ajax extends CI_Controller
             $out_keu["status9"] = "";
             $out_keu["status10"] = "";
 
-            $out_keu["status"] = "<li>Semua data belum diisi</li>";
+            $out_keu["status"] = "<li class='font-weight-bold text-danger'>Semua data belum diisi</li>";
         } else {
             if (!isset($keu_ra["pro1"])) {
                 $out_keu["pro1"] = "<li>No. Vendor Provider Belum Diisi</li>";
@@ -404,7 +404,7 @@ class Ajax extends CI_Controller
             $out_keu["noinv"] = "";
             $out_keu["stat"] = "";
 
-            $out_keu["status_bc"] = "<li>Semua data belum diisi</li>";
+            $out_keu["status_bc"] = "<li class='font-weight-bold text-danger'>Semua data belum diisi</li>";
         } else {
             if ($keubc_ra["nocs_ptmn"] < 1) {
                 $out_keu["nocs_ptmn"] = "<li>No. Customer PTMN Belum Diisi</li>";
@@ -472,9 +472,9 @@ class Ajax extends CI_Controller
                 $out_keu["stat"] = "";
             }
             if ($keubc_ra["status_keu_bc"] == "Completed") {
-                $out_keu["status_bc"] = "<li class='text-danger'>Status Finance BC Belum diselesaikan</li>";
-            } else {
                 $out_keu["status_bc"] = "<li class='text-success'>Status Finance BC Sudah diselesaikan</li>";
+            } else {
+                $out_keu["status_bc"] = "<li class='text-danger'>Status Finance BC Belum diselesaikan</li>";
             }
         }
         echo json_encode($out_keu);

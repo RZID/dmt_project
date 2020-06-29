@@ -265,7 +265,7 @@ switch ($this->session->userdata("access_num")) {
                       } else {
                         $keu_stat = $keu->row_array()["status_keu"];
                       }
-                      if ($keu->row_array()["status_keu"] == "Completed" && $keu_bc->row_array()["status_keu_bc"] == "Completed") {
+                      if ($keu->row_array()["status_keu"] == "Completed" or $keu_bc->row_array()["status_keu_bc"] == "Completed") {
                         echo "Completed";
                       } else {
                         echo "Pending";
