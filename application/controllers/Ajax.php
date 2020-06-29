@@ -221,73 +221,73 @@ class Ajax extends CI_Controller
 
             $out_keu["status"] = "<li>Semua data belum diisi</li>";
         } else {
-            if ($keu_ra["pro1"] < 1) {
+            if (!isset($keu_ra["pro1"])) {
                 $out_keu["pro1"] = "<li>No. Vendor Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro1"] = "";
             }
-            if ($keu_ra["pro2"] == "N/A" or $keu_ra["pro2"] == "") {
+            if (!isset($keu_ra["pro2"])) {
                 $out_keu["pro2"] = "<li>Nama Vendor Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro2"] = "";
             }
-            if ($keu_ra["pro3"] == 0) {
+            if (!isset($keu_ra["pro3"])) {
                 $out_keu["pro3"] = "<li>No. Invoice Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro3"] = "";
             }
-            if ($keu_ra["pro4"] == 0) {
+            if (!isset($keu_ra["pro4"])) {
                 $out_keu["pro4"] = "<li>Nilai Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro4"] = "";
             }
-            if ($keu_ra["pro5"] == 0) {
+            if (!isset($keu_ra["pro5"])) {
                 $out_keu["pro5"] = "<li>PO Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro5"] = "";
             }
-            if ($keu_ra["pro6"] == 0) {
+            if (!isset($keu_ra["pro6"])) {
                 $out_keu["pro6"] = "<li>SSC ID Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro6"] = "";
             }
-            if ($keu_ra["pro7"] == "N/A" or $keu_ra["pro7"] == "") {
+            if (!isset($keu_ra["pro7"])) {
                 $out_keu["pro7"] = "<li>Status Provider Belum Diisi</li>";
             } else {
                 $out_keu["pro7"] = "";
             }
 
-            if ($keu_ra["ako1"] < 1) {
+            if (!isset($keu_ra["ako1"])) {
                 $out_keu["ako1"] = "<li>No. Vendor Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako1"] = "";
             }
-            if ($keu_ra["ako2"] == "N/A" or $keu_ra["ako2"] == "") {
+            if (!isset($keu_ra["ako2"])) {
                 $out_keu["ako2"] = "<li>Nama Vendor Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako2"] = "";
             }
-            if ($keu_ra["ako3"] == 0) {
+            if (!isset($keu_ra["ako3"])) {
                 $out_keu["ako3"] = "<li>No. Invoice Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako3"] = "";
             }
-            if ($keu_ra["ako4"] == 0) {
+            if (!isset($keu_ra["ako4"])) {
                 $out_keu["ako4"] = "<li>Nilai Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako4"] = "";
             }
-            if ($keu_ra["ako5"] == 0) {
+            if (!isset($keu_ra["ako5"])) {
                 $out_keu["ako5"] = "<li>PO Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako5"] = "";
             }
-            if ($keu_ra["ako6"] == 0) {
+            if (!isset($keu_ra["ako6"])) {
                 $out_keu["ako6"] = "<li>SSC ID Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako6"] = "";
             }
-            if ($keu_ra["ako7"] == "N/A" or $keu_ra["ako7"] == "") {
+            if (!isset($keu_ra["ako7"])) {
                 $out_keu["ako7"] = "<li>Status Akomodasi Belum Diisi</li>";
             } else {
                 $out_keu["ako7"] = "";
@@ -297,7 +297,7 @@ class Ajax extends CI_Controller
                 $out_keu["status1"] = "";
             } else {
                 if ($keu_ra["status1"] == "Belum Dibayar") {
-                    $out_keu["status1"] = "<li>Status Instruktur 1 Belum Dibayar</li>";
+                    $out_keu["status1"] = "<li class='text-danger'>Status Instruktur 1 Belum Dibayar</li>";
                 } else {
                     $out_keu["status1"] = "";
                 }
@@ -306,7 +306,7 @@ class Ajax extends CI_Controller
                 $out_keu["status2"] = "";
             } else {
                 if ($keu_ra["status2"] == "Belum Dibayar") {
-                    $out_keu["status2"] = "<li>Status Instruktur 2 Belum Dibayar</li>";
+                    $out_keu["status2"] = "<li class='text-danger'>Status Instruktur 2 Belum Dibayar</li>";
                 } else {
                     $out_keu["status2"] = "";
                 }
@@ -315,7 +315,7 @@ class Ajax extends CI_Controller
                 $out_keu["status3"] = "";
             } else {
                 if ($keu_ra["status3"] == "Belum Dibayar") {
-                    $out_keu["status3"] = "<li>Status Instruktur 3 Belum Dibayar</li>";
+                    $out_keu["status3"] = "<li class='text-danger'>Status Instruktur 3 Belum Dibayar</li>";
                 } else {
                     $out_keu["status3"] = "";
                 }
@@ -324,7 +324,7 @@ class Ajax extends CI_Controller
                 $out_keu["status4"] = "";
             } else {
                 if ($keu_ra["status4"] == "Belum Dibayar") {
-                    $out_keu["status4"] = "<li>Status Instruktur 4 Belum Dibayar</li>";
+                    $out_keu["status4"] = "<li class='text-danger'>Status Instruktur 4 Belum Dibayar</li>";
                 } else {
                     $out_keu["status4"] = "";
                 }
@@ -333,7 +333,7 @@ class Ajax extends CI_Controller
                 $out_keu["status5"] = "";
             } else {
                 if ($keu_ra["status5"] == "Belum Dibayar") {
-                    $out_keu["status5"] = "<li>Status Instruktur 5 Belum Dibayar</li>";
+                    $out_keu["status5"] = "<li class='text-danger'>Status Instruktur 5 Belum Dibayar</li>";
                 } else {
                     $out_keu["status5"] = "";
                 }
@@ -342,7 +342,7 @@ class Ajax extends CI_Controller
                 $out_keu["status6"] = "";
             } else {
                 if ($keu_ra["status6"] == "Belum Dibayar") {
-                    $out_keu["status6"] = "<li>Status Instruktur 6 Belum Dibayar</li>";
+                    $out_keu["status6"] = "<li class='text-danger'>Status Instruktur 6 Belum Dibayar</li>";
                 } else {
                     $out_keu["status6"] = "";
                 }
@@ -351,7 +351,7 @@ class Ajax extends CI_Controller
                 $out_keu["status7"] = "";
             } else {
                 if ($keu_ra["status7"] == "Belum Dibayar") {
-                    $out_keu["status7"] = "<li>Status Instruktur 7 Belum Dibayar</li>";
+                    $out_keu["status7"] = "<li class='text-danger'>Status Instruktur 7 Belum Dibayar</li>";
                 } else {
                     $out_keu["status7"] = "";
                 }
@@ -360,7 +360,7 @@ class Ajax extends CI_Controller
                 $out_keu["status8"] = "";
             } else {
                 if ($keu_ra["status8"] == "Belum Dibayar") {
-                    $out_keu["status8"] = "<li>Status Instruktur 8 Belum Dibayar</li>";
+                    $out_keu["status8"] = "<li class='text-danger'>Status Instruktur 8 Belum Dibayar</li>";
                 } else {
                     $out_keu["status8"] = "";
                 }
@@ -369,7 +369,7 @@ class Ajax extends CI_Controller
                 $out_keu["status9"] = "";
             } else {
                 if ($keu_ra["status9"] == "Belum Dibayar") {
-                    $out_keu["status9"] = "<li>Status Instruktur 9 Belum Dibayar</li>";
+                    $out_keu["status9"] = "<li class='text-danger'>Status Instruktur 9 Belum Dibayar</li>";
                 } else {
                     $out_keu["status9"] = "";
                 }
@@ -378,15 +378,15 @@ class Ajax extends CI_Controller
                 $out_keu["status10"] = "";
             } else {
                 if ($keu_ra["status10"] == "Belum Dibayar") {
-                    $out_keu["status10"] = "<li>Status Instruktur 10 Belum Dibayar</li>";
+                    $out_keu["status10"] = "<li class='text-danger'>Status Instruktur 10 Belum Dibayar</li>";
                 } else {
                     $out_keu["status10"] = "";
                 }
             }
             if ($keu_ra['status_keu'] == "" or $keu_ra['status_keu'] == "Pending") {
-                $out_keu["status"] = "<li>Status Finance IP Belum diselesaikan</li>";
+                $out_keu["status"] = "<li class='text-danger'>Status Finance IP Belum diselesaikan</li>";
             } else {
-                $out_keu["status"] = "";
+                $out_keu["status"] = "<li class='text-success'>Status Finance IP Sudah diselesaikan</li>";
             }
         }
         if ($keubc->num_rows() < 1) {
@@ -426,42 +426,42 @@ class Ajax extends CI_Controller
             } else {
                 $out_keu["namacs_tp"] = "";
             }
-            if ($keubc_ra["trf_trf"] < 1) {
+            if (!isset($keubc_ra["trf_trf"])) {
                 $out_keu["trf"] = "<li>Tarif Belum Diisi</li>";
             } else {
                 $out_keu["trf"] = "";
             }
-            if ($keubc_ra["cash_pro"] < 1) {
+            if (!isset($keubc_ra["cash_pro"])) {
                 $out_keu["cash"] = "<li>Cash Profit Belum Diisi</li>";
             } else {
                 $out_keu["cash"] = "";
             }
-            if ($keubc_ra["internal_pro"] < 1) {
+            if (!isset($keubc_ra["internal_pro"])) {
                 $out_keu["internal"] = "<li>Internal Profit Belum Diisi</li>";
             } else {
                 $out_keu["internal"] = "";
             }
-            if ($keubc_ra["aptp_pro"] < 1) {
+            if (!isset($keubc_ra["aptp_pro"])) {
                 $out_keu["aptp"] = "<li>AP / Third Party Profit Belum Diisi</li>";
             } else {
                 $out_keu["aptp"] = "";
             }
-            if ($keubc_ra["ttlrev_pro"] < 1) {
+            if (!isset($keubc_ra["ttlrev_pro"])) {
                 $out_keu["ttlrev"] = "<li>Total Revenue Profit Belum Diisi</li>";
             } else {
                 $out_keu["ttlrev"] = "";
             }
-            if ($keubc_ra["noso_pro"] < 1) {
+            if (!isset($keubc_ra["noso_pro"])) {
                 $out_keu["noso"] = "<li>No. SO Profit Belum Diisi</li>";
             } else {
                 $out_keu["noso"] = "";
             }
-            if ($keubc_ra["idssc_pro"] < 1) {
+            if (!isset($keubc_ra["idssc_pro"])) {
                 $out_keu["idssc"] = "<li>ID SSC Profit Belum Diisi</li>";
             } else {
                 $out_keu["idssc"] = "";
             }
-            if ($keubc_ra["noinv_pro"] < 1) {
+            if (!isset($keubc_ra["noinv_pro"])) {
                 $out_keu["noinv"] = "<li>Invoice No. Profit Belum Diisi</li>";
             } else {
                 $out_keu["noinv"] = "";
@@ -472,9 +472,9 @@ class Ajax extends CI_Controller
                 $out_keu["stat"] = "";
             }
             if ($keubc_ra["status_keu_bc"] == "Completed") {
-                $out_keu["status_bc"] = "<li class='text-success'>Completed</li>";
+                $out_keu["status_bc"] = "<li class='text-danger'>Status Finance BC Belum diselesaikan</li>";
             } else {
-                $out_keu["status_bc"] = "<li class='text-danger'>Pending</li>";
+                $out_keu["status_bc"] = "<li class='text-success'>Status Finance BC Sudah diselesaikan</li>";
             }
         }
         echo json_encode($out_keu);
