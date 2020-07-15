@@ -741,46 +741,49 @@
         success: function(data2) {
           $(document).ready(function() {
             <?php
+
             $nomer = range(0, 9);
             $nomer2 = 1;
             foreach ($nomer as $no) { ?>
-              if (data2[<?= $no ?>].ins_ins != "") {
+              var myObject = data2[<?= $no ?>];
+
+              if (myObject.hasOwnProperty('ins_ins')) {
                 $("#ins<?= $nomer2 ?>").html(data2[<?= $no ?>].ins_ins);
               } else {
                 $("#ins<?= $nomer2 ?>").html("");
               }
 
-              if (data2[<?= $no ?>].novend_ins != "") {
+              if (myObject.hasOwnProperty('novend_ins')) {
                 $("#noven<?= $nomer2 ?>").html(data2[<?= $no ?>].novend_ins);
               } else {
                 $("#noven<?= $nomer2 ?>").html("");
               }
 
-              if (data2[<?= $no ?>].sesins_ins != "") {
+              if (myObject.hasOwnProperty('sesins_ins')) {
                 $("#sesins<?= $nomer2 ?>").html(data2[<?= $no ?>].sesins_ins);
               } else {
                 $("#sesins<?= $nomer2 ?>").html("");
               }
 
-              if (data2[<?= $no ?>].beasesins_ins != "") {
+              if (myObject.hasOwnProperty('beasesins_ins')) {
                 $("#beains<?= $nomer2 ?>").html(data2[<?= $no ?>].beasesins_ins);
               } else {
                 $("#beains<?= $nomer2 ?>").html("");
               }
 
-              if (data2[<?= $no ?>].surund_ins != "") {
+              if (myObject.hasOwnProperty('surund_ins')) {
                 $("#surund<?= $nomer2 ?>").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[<?= $no ?>].surund_ins + "'>" + data2[<?= $no ?>].surund_ins + "</a>");
               } else {
                 $("#surund<?= $nomer2 ?>").html("");
               }
 
-              if (data2[<?= $no ?>].tglmulaiajar_ins != "") {
+              if (myObject.hasOwnProperty('tglmulaiajar_ins')) {
                 $("#tglmulaiajar<?= $nomer2 ?>").html($.format.date(new Date(data2[<?= $no ?>].tglmulaiajar_ins * 1000), 'dd MMMM yyyy'));
               } else {
                 $("#tglmulaiajar<?= $nomer2 ?>").html("");
               }
 
-              if (data2[<?= $no ?>].tgldoneajar_ins != "") {
+              if (myObject.hasOwnProperty('tgldoneajar_ins')) {
                 $("#tgldoneajar<?= $nomer2 ?>").html($.format.date(new Date(data2[<?= $no ?>].tgldoneajar_ins * 1000), 'dd MMMM yyyy'));
               } else {
                 $("#tgldoneajar<?= $nomer2 ?>").html("");
