@@ -745,47 +745,22 @@
             $nomer = range(0, 9);
             $nomer2 = 1;
             foreach ($nomer as $no) { ?>
-              var myObject = data2[<?= $no ?>];
 
-              if (myObject.hasOwnProperty('ins_ins')) {
+              if (data2[<?= $no ?>]) {
                 $("#ins<?= $nomer2 ?>").html(data2[<?= $no ?>].ins_ins);
-              } else {
-                $("#ins<?= $nomer2 ?>").html("");
-              }
-
-              if (myObject.hasOwnProperty('novend_ins')) {
                 $("#noven<?= $nomer2 ?>").html(data2[<?= $no ?>].novend_ins);
-              } else {
-                $("#noven<?= $nomer2 ?>").html("");
-              }
-
-              if (myObject.hasOwnProperty('sesins_ins')) {
                 $("#sesins<?= $nomer2 ?>").html(data2[<?= $no ?>].sesins_ins);
-              } else {
-                $("#sesins<?= $nomer2 ?>").html("");
-              }
-
-              if (myObject.hasOwnProperty('beasesins_ins')) {
                 $("#beains<?= $nomer2 ?>").html(data2[<?= $no ?>].beasesins_ins);
-              } else {
-                $("#beains<?= $nomer2 ?>").html("");
-              }
-
-              if (myObject.hasOwnProperty('surund_ins')) {
                 $("#surund<?= $nomer2 ?>").html("<a href='<?= base_url("assets/uploaded_file/") ?>" + data2[<?= $no ?>].surund_ins + "'>" + data2[<?= $no ?>].surund_ins + "</a>");
-              } else {
-                $("#surund<?= $nomer2 ?>").html("");
-              }
-
-              if (myObject.hasOwnProperty('tglmulaiajar_ins')) {
                 $("#tglmulaiajar<?= $nomer2 ?>").html($.format.date(new Date(data2[<?= $no ?>].tglmulaiajar_ins * 1000), 'dd MMMM yyyy'));
-              } else {
-                $("#tglmulaiajar<?= $nomer2 ?>").html("");
-              }
-
-              if (myObject.hasOwnProperty('tgldoneajar_ins')) {
                 $("#tgldoneajar<?= $nomer2 ?>").html($.format.date(new Date(data2[<?= $no ?>].tgldoneajar_ins * 1000), 'dd MMMM yyyy'));
               } else {
+                $("#ins<?= $nomer2 ?>").html("");
+                $("#noven<?= $nomer2 ?>").html("");
+                $("#sesins<?= $nomer2 ?>").html("");
+                $("#beains<?= $nomer2 ?>").html("");
+                $("#surund<?= $nomer2 ?>").html("");
+                $("#tglmulaiajar<?= $nomer2 ?>").html("");
                 $("#tgldoneajar<?= $nomer2 ?>").html("");
               }
             <?php $nomer++;
