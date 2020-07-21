@@ -616,248 +616,47 @@
 
             //INSTRUKTUR 1
             //SET DATA DULU BIAR GA PUYENG
-            $noven = $this->input->post("noven", true);
-            $ins = $this->input->post("ins", true);
-            $sesins = $this->input->post("sesins", true);
-            $beains = $this->input->post("beains", true);
-            $pemberkasan = $this->input->post("pemberkasan", true);
-            $tglmulai = $this->input->post("tglmulai", true);
-            $tglselesai = $this->input->post("tglselesai", true);
-
-            if ($this->db->like("no_ins", "1", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "1"),  array(
-                    "no_ins" => 1,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[0],
-                    "sesins_ins" => $sesins[0],
-                    "beasesins_ins" => $beains[0],
-                    "surund_ins" => $pemberkasan[0],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[0]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[0]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 1,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[0],
-                    "sesins_ins" => $sesins[0],
-                    "beasesins_ins" => $beains[0],
-                    "surund_ins" => $pemberkasan[0],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[0]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[0]),
-                ));
-            }
-            if ($this->db->like("no_ins", "2", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "2"),  array(
-                    "no_ins" => 2,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[1],
-                    "sesins_ins" => $sesins[1],
-                    "beasesins_ins" => $beains[1],
-                    "surund_ins" => $pemberkasan[1],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[1]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[1]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 2,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[1],
-                    "sesins_ins" => $sesins[1],
-                    "beasesins_ins" => $beains[1],
-                    "surund_ins" => $pemberkasan[1],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[1]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[1]),
-                ));
-            }
-            if ($this->db->like("no_ins", "3", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "3"),  array(
-                    "no_ins" => 3,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[2],
-                    "sesins_ins" => $sesins[2],
-                    "beasesins_ins" => $beains[2],
-                    "surund_ins" => $pemberkasan[2],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[2]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[2]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 3,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[2],
-                    "sesins_ins" => $sesins[2],
-                    "beasesins_ins" => $beains[2],
-                    "surund_ins" => $pemberkasan[2],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[2]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[2]),
-                ));
-            }
-            if ($this->db->like("no_ins", "4", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "4"),  array(
-                    "no_ins" => 4,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[3],
-                    "sesins_ins" => $sesins[3],
-                    "beasesins_ins" => $beains[3],
-                    "surund_ins" => $pemberkasan[3],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[3]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[3]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 4,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[3],
-                    "sesins_ins" => $sesins[3],
-                    "beasesins_ins" => $beains[3],
-                    "surund_ins" => $pemberkasan[3],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[3]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[3]),
-                ));
-            }
-            if ($this->db->like("no_ins", "5", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "5"),  array(
-                    "no_ins" => 5,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[4],
-                    "sesins_ins" => $sesins[4],
-                    "beasesins_ins" => $beains[4],
-                    "surund_ins" => $pemberkasan[4],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[4]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[4]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 5,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[4],
-                    "sesins_ins" => $sesins[4],
-                    "beasesins_ins" => $beains[4],
-                    "surund_ins" => $pemberkasan[4],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[4]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[4]),
-                ));
-            }
-            if ($this->db->like("no_ins", "6", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "6"),  array(
-                    "no_ins" => 6,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[5],
-                    "sesins_ins" => $sesins[5],
-                    "beasesins_ins" => $beains[5],
-                    "surund_ins" => $pemberkasan[5],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[5]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[5]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 6,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[5],
-                    "sesins_ins" => $sesins[5],
-                    "beasesins_ins" => $beains[5],
-                    "surund_ins" => $pemberkasan[5],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[5]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[5]),
-                ));
-            }
-            if ($this->db->like("no_ins", "7", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "7"),  array(
-                    "no_ins" => 7,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[6],
-                    "sesins_ins" => $sesins[6],
-                    "beasesins_ins" => $beains[6],
-                    "surund_ins" => $pemberkasan[6],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[6]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[6]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 7,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[6],
-                    "sesins_ins" => $sesins[6],
-                    "beasesins_ins" => $beains[6],
-                    "surund_ins" => $pemberkasan[6],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[6]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[6]),
-                ));
-            }
-            if ($this->db->like("no_ins", "8", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "8"),  array(
-                    "no_ins" => 8,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[7],
-                    "sesins_ins" => $sesins[7],
-                    "beasesins_ins" => $beains[7],
-                    "surund_ins" => $pemberkasan[7],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[7]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[7]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 8,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[7],
-                    "sesins_ins" => $sesins[7],
-                    "beasesins_ins" => $beains[7],
-                    "surund_ins" => $pemberkasan[7],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[7]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[7]),
-                ));
-            }
-            if ($this->db->like("no_ins", "9", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "9"),  array(
-                    "no_ins" => 9,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[8],
-                    "sesins_ins" => $sesins[8],
-                    "beasesins_ins" => $beains[8],
-                    "surund_ins" => $pemberkasan[8],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[8]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[8]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 9,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[8],
-                    "sesins_ins" => $sesins[8],
-                    "beasesins_ins" => $beains[8],
-                    "surund_ins" => $pemberkasan[8],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[8]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[8]),
-                ));
-            }
-            if ($this->db->like("no_ins", "10", "none")->get_where("addins_dmt", array("id_plth" => $id))->num_rows() > 0) {
-                $this->crud->update_where("addins_dmt", array("id_plth" => $id, "no_ins" => "10"),  array(
-                    "no_ins" => 10,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[9],
-                    "sesins_ins" => $sesins[9],
-                    "beasesins_ins" => $beains[9],
-                    "surund_ins" => $pemberkasan[9],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[9]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[9]),
-                ));
-            } else {
-                $this->crud->insert("addins_dmt", array(
-                    "no_ins" => 10,
-                    "id_plth" => $this->input->post("id"),
-                    "ins_ins" => $ins[9],
-                    "sesins_ins" => $sesins[9],
-                    "beasesins_ins" => $beains[9],
-                    "surund_ins" => $pemberkasan[9],
-                    "tglmulaiajar_ins" => strtotime($tglmulai[9]),
-                    "tgldoneajar_ins" => strtotime($tglselesai[9]),
-                ));
-            }
+            $ins = $this->input->post("ins");
+            $sesins = $this->input->post("sesins");
+            $beains = $this->input->post("beains");
+            $pemberkasan = $this->input->post("pemberkasan");
+            $tglmulai = $this->input->post("tglmulai");
+            $tglselesai = $this->input->post("tglselesai");
             if (!$this->input->post("status")) {
                 $status = "Pending";
             } else {
                 $status = "Completed";
+            }
+
+
+            $arr = range(1, count($ins));
+            foreach ($arr as $ok) {
+                if ($this->db->get_where("addins_dmt", ["id_plth" => $this->input->post("id"), "no_ins" => $ok])->num_rows() < 1) {
+                    $this->db->insert(
+                        "addins_dmt",
+                        [
+                            "id_plth" => $this->input->post("id"),
+                            "no_ins" => $ok,
+                            "ins_ins" => $ins[$ok - 1],
+                            "sesins_ins" => $sesins[$ok - 1],
+                            "beasesins_ins" => $beains[$ok - 1],
+                            "surund_ins" => $pemberkasan[$ok - 1],
+                            "tglmulaiajar_ins" => strtotime($tglmulai[$ok - 1]),
+                            "tgldoneajar_ins" => strtotime($tglselesai[$ok - 1])
+                        ]
+                    );
+                } else {
+                    $this->db->set([
+                        "ins_ins" => $ins[$ok - 1],
+                        "sesins_ins" => $sesins[$ok - 1],
+                        "beasesins_ins" => $beains[$ok - 1],
+                        "surund_ins" => $pemberkasan[$ok - 1],
+                        "tglmulaiajar_ins" => strtotime($tglmulai[$ok - 1]),
+                        "tgldoneajar_ins" => strtotime($tglselesai[$ok - 1])
+                    ]);
+                    $this->db->where(["id_plth" => $this->input->post("id"), "no_ins" => $ok]);
+                    $this->db->update('addins_dmt');
+                }
             }
             if ($this->crud->select_where("ins_dmt", array("id_plth" => $id))->num_rows() < 1) {
                 $this->crud->insert("ins_dmt", array("id_plth" => $id, "status_ins" => $status));
@@ -872,7 +671,6 @@
                         'success'
                     )});
                 </script>");
-
             redirect("user/index");
         }
 
@@ -909,6 +707,7 @@
         {
             $id = $this->input->post("id_pelatihan");
             $getdata = $this->crud->select_where("keu_dmt", array("id_plth" => $id))->result_array();
+
             echo json_encode($getdata);
         }
         function ajaxgetdata2_keu()

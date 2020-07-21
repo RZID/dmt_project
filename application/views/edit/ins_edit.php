@@ -83,6 +83,7 @@
                         <div id="errorBlock<?= $no ?>"></div>
                       </div>
                     </div>
+
                     <input type="hidden" name="pemberkasan[]" id="berkas<?= $no ?>" value="<?= $f["surund_ins"] ?>">
                     <script>
                       $("#file<?= $no ?>").fileinput({
@@ -91,7 +92,7 @@
                         "showPreview": false,
                         "initialCaption": "<?= $f["surund_ins"] ?>",
                         'maxFileCount': 1,
-                        'uploadUrl': '<?= base_url("upload/ins") . $no ?>',
+                        'uploadUrl': '<?= base_url("upload/ins?id_upload=") . $no ?>',
                         'elErrorContainer': '#errorBlock<?= $no ?>',
                         'uploadAsync': true,
                         uploadExtraData: function() {}
@@ -226,57 +227,31 @@
         } else {
           var i = 1;
         }
-        if (i > 9) {
-          $("#add").remove();
-        }
 
         $('#add').click(function() {
           i++;
-          if (i < 10) {
 
-            $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
-            <?php $nomerdari = range(2, 10);
-            foreach ($nomerdari as $n) { ?>
-              $("#file<?= $n ?>").fileinput({
-                'maxFileSize': 5120,
-                "dropZoneEnabled": false,
-                "showPreview": false,
-                'maxFileCount': 1,
-                'uploadUrl': '<?= base_url("upload/ins") . $n ?>',
-                'elErrorContainer': '#errorBlock<?= $n ?>',
-                'uploadAsync': true,
-                uploadExtraData: function() {}
-              });
-              $("#file<?= $n ?>").on('fileuploaded', function(event, data, previewId, index) {
-                var response = data.response,
-                  reader = data.reader;
-                $("#berkas<?= $n ?>").val(response.insfile<?= $n ?>);
-              });
-            <?php } ?>
+          $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
+          <?php $nomerdari = range(2, 100);
+          foreach ($nomerdari as $n) { ?>
+            $("#file<?= $n ?>").fileinput({
+              'maxFileSize': 5120,
+              "dropZoneEnabled": false,
+              "showPreview": false,
+              'maxFileCount': 1,
+              'uploadUrl': '<?= base_url("upload/ins") . $n ?>',
+              'elErrorContainer': '#errorBlock<?= $n ?>',
+              'uploadAsync': true,
+              uploadExtraData: function() {}
+            });
+            $("#file<?= $n ?>").on('fileuploaded', function(event, data, previewId, index) {
+              var response = data.response,
+                reader = data.reader;
+              $("#berkas<?= $n ?>").val(response.insfile<?= $n ?>);
+            });
+          <?php } ?>
 
-          } else {
-            if (i >= 10) {
-              $("#isi").append("<div class='elemented" + i + "'><br><h5>Data Instruktur " + i + "</h5><hr><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'> Nama Instruktur</h6><input type='text' class='form-control form-control-user' id='checker' name='ins[]'></div></div><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Sesi</h6><input type='number' class='form-control form-control-user' name='sesins[]'></div></div></div><div class='row'> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'> Tanggal Mulai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglmulai[]' > </div> </div> <div class='col-lg col-xl'> <div class='form-group'> <h6 class='m-0 font-weight-bold text-secondary'>Tanggal Selesai Mengajar</h6> <input type='date' class='form-control form-control-user' name='tglselesai[]'> </div> </div></div><div class='row'><div class='col-lg col-xl'><div class='form-group'><h6 class='m-0 font-weight-bold text-secondary'>Biaya Honor & Transport</h6><input type='number' class='form-control form-control-user' name='beains[]'></div></div><div class='col-lg'><div class='form-group col-lg'><h6 class='m-0 font-weight-bold text-secondary'>Upload Surat Undangan</h6><div class='example'><input type='file' id='file" + i + "' class='dropify-event fileget' name='berkas" + i + "'><div id='errorBlock" + i + "'></div></div></div><input type='hidden' name='pemberkasan[]' id='berkas" + i + "'>");
 
-              $("#file" + i).fileinput({
-                'maxFileSize': 5120,
-                "dropZoneEnabled": false,
-                "showPreview": false,
-                'maxFileCount': 1,
-                'uploadUrl': '<?= base_url("upload/ins") ?>' + i,
-                'elErrorContainer': '#errorBlock' + i,
-                'uploadAsync': true,
-                uploadExtraData: function() {}
-              });
-              <?php $sampe10 = 10; ?>
-              $("#file<?= $sampe10 ?>").on('fileuploaded', function(event, data, previewId, index) {
-                var response = data.response,
-                  reader = data.reader;
-                $("#berkas<?= $sampe10 ?>").val(response.insfile<?= $sampe10 ?>);
-              });
-              $("#add").hide();
-            }
-          }
           if (i == 2) {
             $("#buttonrz").append('<button type="button" id="' + i + '" class="btn_remove btn btn-danger"><i class="fas fa-minus-square"></i> Instruktur</button>');
           }
@@ -290,9 +265,6 @@
           }
           i--;
           $(".elemented" + button_id).remove();
-          if (i < 10) {
-            $("#add").show();
-          }
         });
       });
 
