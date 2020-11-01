@@ -127,21 +127,14 @@
       </div>
     </div>
 
-    <!-- <!-- Pending Requests Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Learning Hours</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php if ($this->input->get("from") && $this->input->get("to")) {
-                                                                    $from = $this->input->get("from");
-                                                                    $to = $this->input->get("to");
-                                                                    $ra_countlg = $this->db->query("SELECT sum(realisasi_dmt.lndhours_realisasi) as lndhours_realisasi FROM realisasi_dmt JOIN plth_dmt WHERE (plth_dmt.tglmulai_plth >=$from AND plth_dmt.tgldone_plth <= $to AND realisasi_dmt.id_plth = plth_dmt.id_plth)")->row_array();
-                                                                  } else {
-                                                                    $ra_countlg = $dis->crud->select_sum("lndhours_realisasi", "realisasi_dmt")->row_array();
-                                                                  }
-                                                                  echo $ra_countlg["lndhours_realisasi"]; ?></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" id="lndupdating"> 0
+              </div>
             </div>
             <div class="col-auto">
               <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -213,6 +206,8 @@
                   <th>Keuangan</th>
                   <th>Peserta</th>
                   <th>Status</th>
+                  <th>LND Hours</th>
+
                 </tr>
               </thead>
               <tbody>
@@ -287,6 +282,8 @@
                           echo "Pending";
                           // echo 'PND = ' . $row->ketpros_plth . ' - Operation = ' . $opr_stat . ' - Instruktur = ' . $ins_stat . '- Status Keuangan IP = ' . $keu_stat . ' - Status Keuangan BC = ' . $keu_bc->row_array()["status_keu_bc"];
                         } ?></td>
+                    <td><?php $real = $dis->db->get_where("realisasi_dmt", ["id_plth" => $row->id_plth])->row_array();
+                        echo $real["lndhours_realisasi"]; ?></td>
                   </tr>
 
                 <?php
@@ -871,45 +868,91 @@
       "bLengthChange": false,
       sDom: 'lrtip',
       "columnDefs": [{
-        "targets": "no-sort",
-        "orderable": false
-      }, {
-        "searchable": false,
-        "orderable": false,
-        "targets": 0
+          "targets": "no-sort",
+          "orderable": false
+        }, {
+          "searchable": false,
+          "orderable": false,
+          "targets": 0
 
-      }],
+        },
+        {
+          "targets": [15],
+          "visible": false,
+          "searchable": false
+        }
+      ],
       "order": [
         [1, 'asc']
       ],
+      "footerCallback": function(row, data, start, end, display) {
+        var api = this.api(),
+          data;
 
+        // converting to interger to find total
+        var intVal = function(i) {
+          return typeof i === 'string' ?
+            i.replace(/[\$,]/g, '') * 1 :
+            typeof i === 'number' ?
+            i : 0;
+        };
+
+        // computing column Total of the complete result 
+        var totalpsr = api
+          .column(5, {
+            search: 'applied'
+          })
+          .data()
+          .reduce(function(a, b) {
+            return intVal(a) + intVal(b);
+          }, 0);
+
+        var lndup = api
+          .column(15, {
+            search: 'applied'
+          })
+          .data()
+          .reduce(function(a, b) {
+            return intVal(a) + intVal(b);
+          }, 0);
+        // Update footer by showing the total with the reference of the column index 
+        $("#lndupdating").html(lndup);
+        $("#jmlhpesertacard").html(totalpsr);
+      },
+      "drawCallback": function(settings) {
+
+        var api = this.api();
+
+        var valueToFind = "Completed";
+        var valueToFind2 = "Pending";
+
+        var filteredData = api
+          .column(14, {
+            search: 'applied'
+          })
+          .data()
+          .filter(function(value, index) {
+            return value === valueToFind ? true : false;
+          }).length;
+
+        var filteredData2 = api
+          .column(14, {
+            search: 'applied'
+          })
+          .data()
+          .filter(function(value, index) {
+            return value === valueToFind2 ? true : false;
+          }).length;
+
+        $("#statselesai").html(filteredData);
+        $("#statpending").html(filteredData2);
+
+      }
       // dom: "<'pb-3'pi>"
     });
 
     // $('.table-responsive').css('display', 'block');
     t.columns.adjust().draw();
-
-    var valueToFind = "Completed";
-    var valueToFind2 = "Pending";
-
-    var filteredData = t
-      .column(14)
-      .data()
-      .filter(function(value, index) {
-        return value === valueToFind ? true : false;
-      }).length;
-
-    var filteredData2 = t
-      .column(14)
-      .data()
-      .filter(function(value, index) {
-        return value === valueToFind2 ? true : false;
-      }).length;
-
-
-
-    $("#statselesai").html(filteredData);
-    $("#statpending").html(filteredData2);
 
     $('#length_change').change(function() {
       t.page.len($(this).val()).draw();
@@ -1103,5 +1146,29 @@
         cell.innerHTML = i + 1;
       });
     });
+  });
+  $(".nav-link").click(function() {
+
+    //Pelatihan
+    var table = $('.tb_pelatihan').DataTable();
+    table
+      .search('')
+      .columns().search('')
+      .draw();
+    $("#searchTab").val("");
+    //End Of Pelatihan
+
+    //Realisasi Pelatihan
+    var table2 = $('.tb_realisasi').DataTable();
+    table2
+      .search('')
+      .columns().search('')
+      .draw();
+    $("#searchTab2").val("");
+    //End Of Realisasi Pelatihan
+
+    //Peserta Tambahan
+    $("#searchTab3").val("");
+    //End Of Peserta Tambahan
   });
 </script>
