@@ -457,8 +457,8 @@
                             <td></td>
                             <td><?= $row->nama_plth ?></td>
                             <td><?= $row->batch_plth ?></td>
-                            <td><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
-                            <td data-id=<?= $row->tgldone_plth * 1000 ?>><?= date("d-m-Y", $row->tgldone_plth) ?></td>
+                            <td data-order="<?= $row->tglmulai_plth * 1000 ?>"><?= date("d-m-Y", $row->tglmulai_plth) ?></td>
+                            <td data-order="<?= $row->tgldone_plth * 1000 ?>"><?= date("d-m-Y", $row->tgldone_plth) ?></td>
                             <td><?= $this->crud->select_where("opr_dmt", array("id_plth" => $row->id_plth))->row_array()["jmlpsrt_plth"] ?></td>
                             <td><?= $row->sifat_plth ?></td>
                             <td><?= $row->vendor_plth ?></td>
@@ -594,8 +594,8 @@
                             <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["nama_plth"] ?></td>
                             <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["batch_plth"] ?></td>
                             <td><?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["lokasi_plth"] ?></td>
-                            <td><?= date("d-m-Y", $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tglmulai_plth"]) ?></td>
-                            <td><?= date("d-m-Y", $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tgldone_plth"]) ?></td>
+                            <td data-order="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tglmulai_plth"] * 1000 ?>"><?= date("d-m-Y", $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tglmulai_plth"]) ?></td>
+                            <td data-order="<?= $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tgldone_plth"] * 1000 ?>"><?= date("d-m-Y", $dis->crud->select_where("plth_dmt", array("id_plth" => $row_rea->id_plth))->row_array()["tgldone_plth"]) ?></td>
                             <td><?= $row_rea->durasi_realisasi ?></td>
                             <td><?= $row_rea->jmlsesi_realisasi ?></td>
                             <td><?= $row_rea->undpersero_realisasi ?></td>
